@@ -22,9 +22,17 @@
     @include Montserrat-Bold;
     font-size: 34px;
   }
-  &__shoping {
-    width: 28px;
-    height: 28px;
+  .tool {
+    &__group {
+      display: flex;
+      gap: 45px;
+    }
+    &__item {
+    }
+    &__icon {
+      width: 28px;
+      height: 28px;
+    }
   }
 }
 

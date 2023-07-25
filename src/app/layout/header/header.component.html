@@ -1,6 +1,6 @@
 <header class="container-lg ">
   <div class="header">
-    <div class="header__logo" routerLink="main">
+    <div class="header__logo" routerLink="">
       <img class="header__logo__img" src="{{header.logo}}" alt="logo">
       <p class="header__title">{{header.title}}</p>
     </div>
@@ -13,8 +13,12 @@
         </li>
       </ul>
     </nav>
-    <div class="header__shoping">
-      <img src="{{header.shopingIcon}}" alt="shopping">
+    <div class="tool">
+      <ul class="tool__group" >
+        <li class="tool__item" *ngFor="let i of header.shopingIcons">
+          <img class="tool__icon" src="{{i.icon}}" alt="icon">
+        </li>
+      </ul>
     </div>
   </div>
 </header>
