@@ -1,0 +1,40 @@
+<footer class="footer">
+  <div class="container-lg">
+    <div class=" footer__wrapper">
+      <div class="footer__title">
+        Funiro.
+      </div>
+      <div class="footer__left">
+        <nav class="nav">
+          <ul class="nav__list">
+            <li *ngFor="let nav of header.nav">
+              <a class="nav__item" href="{{nav.link}}">
+                {{nav.title}}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__right">
+        <div class="contacts">
+          FuniroSome@mail.com
+        </div>
+        <div class="subscribe">
+          <input type="email">
+          <button type="submit" class="btn subscription">SUBSCRIBE</button>
+        </div>
+        <div class="adress">
+          400 University Drive Suite 200 Coral Gables,
+          FL 33134 USA
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <!-- <div class="devider"></div> -->
+      <div class="copyright">
+        2023 furino. All rights reverved
+      </div>
+    </div>
+  </div>
+
+</footer>

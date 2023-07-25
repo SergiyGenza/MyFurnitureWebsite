@@ -1,0 +1,41 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 29px 100px 30px 54px;
+  color: $link-color;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__logo__img {
+    width: 50px;
+    height: 32px;
+    margin-right: 5px;
+  }
+  &__title {
+    @include Montserrat-Bold;
+    font-size: 34px;
+  }
+  &__shoping {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 74px;
+  }
+
+  &__item {
+    font-size: 16px;
+    @include p-medium;
+  }
+}

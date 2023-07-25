@@ -1,0 +1,78 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.card {
+  position: relative;
+  width: 285px;
+  height: 446px;
+  background-color: $card-bg;
+  @include p-semiBold;
+
+  &__img {
+    width: 285px;
+    max-height: 300px;
+  }
+  &__content {
+    padding: 16px 16px;
+  }
+  &__title {
+    margin-bottom: 8px;
+    color: $card-title;
+    font-size: 24px;
+    line-height: 120%; /* 28.8px */
+  }
+  &_product-type {
+    margin-bottom: 8px;
+    color: $card-type;
+    @include p-medium;
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+  }
+  &__price {
+    color: $card-price;
+    font-size: 20px;
+    line-height: 150%; /* 30px */
+  }
+}
+
+.card-tool {
+  position: absolute;
+  background-color: $card-tool-bg;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 285px;
+  height: 446px;
+
+  .btn-add {
+    padding: 12px 52px;
+    background-color: $white;
+    color: $btn-title;
+    @include p-semiBold;
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+    margin-bottom: 24px;
+  }
+
+  &__btn-group {
+    display: flex;
+    gap: 17px;
+    color: $white;
+
+    .btn {
+      &__share,
+      &__compare,
+      &__like {
+        display: flex;
+        gap: 5px;
+      }
+      &__icon {
+        // width: 16px;
+        // height: 16px;
+      }
+    }
+  }
+}
