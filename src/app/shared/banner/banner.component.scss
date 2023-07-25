@@ -1,0 +1,60 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.banner {
+  position: relative;
+  text-align: center;
+  background-image: url("../../../assets/images/banner-bg.png");
+  width: 1440px;
+  height: 717px;
+}
+
+//need add responsive
+.box {
+  position: absolute;
+  top: 193px;
+  right: 56px;
+  background-color: $banner-box-bg;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 62px 56px 37px 39px;
+  border-radius: 10px;
+  text-align: start;
+
+  &__head {
+    @include p-semiBold;
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  &__title {
+    color: $primary;
+    @include p-bold;
+    font-size: 52px;
+    line-height: 65px; /* 125% */
+    margin-bottom: 17px;
+    margin-bottom: 46;
+  }
+  &__contetn {
+    @include p-medium;
+    font-size: 18px;
+    line-height: 24px; /* 133.333% */
+    max-width: 546px;
+    margin-bottom: 46px;
+  }
+
+  &__btn {
+  }
+
+  .btn-primary {
+    padding: 25px 72px;
+    background-color: $primary;
+    color: $white;
+    @include p-bold;
+    font-size: 16px;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}

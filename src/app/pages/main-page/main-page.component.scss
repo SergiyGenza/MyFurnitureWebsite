@@ -1,0 +1,31 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.main {
+}
+
+.products {
+  .products__title {
+    margin: 56px 0 36px 0;
+    text-align: center;
+    color: $card-title;
+    @include p-bold;
+    font-size: 40px;
+    line-height: 120%; /* 48px */
+  }
+  .products__list {
+  }
+}
+
+.show-more {
+  text-align: center;
+
+  .btn__show-more {
+    margin-top: 32px;
+    padding: 12px 74px;
+    color: $btn-title;
+    background-color: $white;
+    border: 1.5px solid $btn-title;
+    @include p-bold;
+  }
+}

@@ -1,0 +1,20 @@
+<header class="container-lg ">
+  <div class="header">
+    <div class="header__logo" routerLink="main">
+      <img class="header__logo__img" src="{{header.logo}}" alt="logo">
+      <p class="header__title">{{header.title}}</p>
+    </div>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li *ngFor="let nav of header.nav">
+          <a class="nav__item" href="{{nav.link}}">
+            {{nav.title}}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__shoping">
+      <img src="{{header.shopingIcon}}" alt="shopping">
+    </div>
+  </div>
+</header>
