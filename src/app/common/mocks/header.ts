@@ -4,11 +4,11 @@ export const HEADER_CONTENT = {
   nav: [
     {
       title: 'Home',
-      link: 'main'
+      link: ''
     },
     {
       title: 'Shop',
-      link: ''
+      link: 'shop'
     },
     {
       title: 'About',
@@ -19,5 +19,12 @@ export const HEADER_CONTENT = {
       link: ''
     }
   ],
-  shopingIcon: '../../../assets/images/icons/shopping.svg',
+  shopingIcons: [
+    {
+      icon: '../../../assets/images/icons/favoutite-header-icon.svg',
+    },
+    {
+      icon: '../../../assets/images/icons/shopping.svg',
+    }
+  ],
 }
