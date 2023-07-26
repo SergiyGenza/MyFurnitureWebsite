@@ -16,7 +16,7 @@ export const HEADER_CONTENT = {
     },
     {
       title: 'Contact',
-      link: ''
+      link: 'contact'
     }
   ],
   shopingIcons: [
