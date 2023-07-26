@@ -1,13 +1,8 @@
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
-<p>shop-page works!</p>
+<div class="container-lg">
+  <app-breadcrumb></app-breadcrumb>
+  <app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
+  <section class="container-products">
+    <app-product-card></app-product-card>
+  </section>
+  <app-benefits [benefits]="shop.benefits"></app-benefits>
+</div>
