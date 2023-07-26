@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageComponent } from './modules/main/main/main-page/main-page.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: '',
-    // component: MainPageComponent
+    path: 'home',
     loadChildren: () => import('./modules/main/main/main.module').then((m) => m.MainModule),
+    data: { breadcrumb: 'home' }
   },
   {
-    path: 'shop',
+    path: '',
     loadChildren: () => import('./modules/shop/shop.module').then((m) => m.ShopModule),
+    data: { breadcrumb: 'home' }
+
   },
 
 ];
