@@ -4,14 +4,14 @@ export const HEADER_CONTENT = {
   nav: [
     {
       title: 'Home',
-      link: ''
+      link: 'home'
     },
     {
       title: 'Shop',
       link: 'shop'
     },
     {
-      title: 'About',
+      title: 'Blog',
       link: ''
     },
     {
