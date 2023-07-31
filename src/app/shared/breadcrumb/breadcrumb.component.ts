@@ -24,7 +24,7 @@ export class BreadcrumbComponent implements OnInit {
     //   })
     // )
     .subscribe(
-      i => console.log(i)
+      // i => console.log(i)
 
     )
   }

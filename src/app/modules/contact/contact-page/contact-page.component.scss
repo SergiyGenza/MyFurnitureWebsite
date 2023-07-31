@@ -24,9 +24,12 @@
 
 .content {
   margin: 140px 0 80px 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(452px, 1fr));
 
+  @media screen and (max-width: 1023px) {
+    justify-items: center;
+  }
   .info {
     &__item {
       margin-bottom: 40px;
@@ -81,7 +84,8 @@
       font-size: 16px;
     }
     input {
-      width: 528px;
+      max-width: 528px;
+      min-width: 300px;
       height: 75px;
       padding-left: 30px;
 

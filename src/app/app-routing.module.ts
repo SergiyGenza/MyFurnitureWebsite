@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
-    loadChildren: () => import('./modules/main/main/main.module').then((m) => m.MainModule),
+    loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
     data: { breadcrumb: 'home' }
   },
   {
