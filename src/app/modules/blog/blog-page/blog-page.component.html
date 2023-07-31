@@ -1,8 +1,8 @@
+<div class="container-lg ">
+  <app-breadcrumb></app-breadcrumb>
+</div>
 <div class="container-blog">
-  <section>
-    <app-breadcrumb></app-breadcrumb>
-  </section>
-  <section class="blog-page">
+  <div class="blog-page">
     <div class="blog">
       <div class="blog__item" *ngFor="let post of blog.posts">
         <app-blog-card [post]="post" [icon]="blog.postsIcons">
@@ -44,5 +44,14 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="pagination">
+    <div class="pagination__btn-group">
+      <button class="btn-pagination">1</button>
+      <button class="btn-pagination">Next</button>
+    </div>
+  </div>
+</div>
+<div class="container-lg ">
+  <app-benefits [benefits]="benefits"></app-benefits>
 </div>

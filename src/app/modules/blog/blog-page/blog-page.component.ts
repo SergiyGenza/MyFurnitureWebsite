@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BENEFITS } from 'src/app/common/mocks/benefits';
 import { BLOG } from 'src/app/common/mocks/blog';
 
 @Component({
@@ -8,4 +9,5 @@ import { BLOG } from 'src/app/common/mocks/blog';
 })
 export class BlogPageComponent {
   blog = BLOG;
+  benefits = BENEFITS;
 }
