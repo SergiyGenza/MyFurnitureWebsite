@@ -1,0 +1,109 @@
+@import "../../../../assets/style/utils/variables";
+@import "../../../../assets/style/utils/mixins";
+
+.blog-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 820px) 393px);
+  column-gap: 70px;
+  margin-top: 100px;
+}
+
+.blog {
+  &__item {
+    margin-bottom: 54px;
+  }
+}
+.posts {
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $link-color;
+  @include p-medium;
+  font-size: 24px;
+  .filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    .search {
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      border: 1px solid $light-grey;
+      width: max-content;
+      padding: 0 10px;
+      input {
+        max-width: 290px;
+        height: 58px;
+      }
+
+      img {
+        height: 24px;
+        width: 24px;
+      }
+    }
+    .categories {
+      margin-top: 43px;
+      // padding: 43px 66px 0px 36px;
+      &__list {
+        margin-top: 33px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10rem;
+        color: $light-grey;
+        @include p-regular;
+        font-size: 16px;
+      }
+      &__title {
+      }
+      &__number {
+      }
+    }
+  }
+  .resent {
+    margin-top: 130px;
+    &__title {
+      color: $link-color;
+      @include p-medium;
+      font-size: 24px;
+    }
+    &__posts {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 250px;
+      .post {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        &__preview {
+          width: 80px;
+          height: 80px;
+        }
+        &__content {
+          display: flex;
+          flex-direction: column;
+          gap: 5px
+        }
+        &__title {
+          @include p-regular;
+          font-size: 16px;
+          height: 42px;
+        }
+        &__time {
+          color: $light-grey;
+          @include p-regular;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

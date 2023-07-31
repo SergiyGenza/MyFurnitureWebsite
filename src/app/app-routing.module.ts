@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/contact/contact.module').then((m) => m.ContactModule),
     data: { breadcrumb: 'home' }
   },
+  {
+    path: '',
+    loadChildren: () => import('./modules/blog/blog.module').then((m) => m.BlogModule),
+    data: { breadcrumb: 'home' }
+  },
 
 ];
 
