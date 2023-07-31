@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FOOTER } from 'src/app/common/mocks/footer';
 import { HEADER_CONTENT } from 'src/app/common/mocks/header';
 
 
@@ -9,4 +10,5 @@ import { HEADER_CONTENT } from 'src/app/common/mocks/header';
 })
   export class FooterComponent {
     header = HEADER_CONTENT;
+    footer = FOOTER;
   }

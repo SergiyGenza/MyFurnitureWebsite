@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { BENEFITS } from 'src/app/common/mocks/benefits';
 import { CONTACT } from 'src/app/common/mocks/contact';
-import { SHOP } from 'src/app/common/mocks/shop';
 
 @Component({
   selector: 'app-contact-page',
@@ -9,5 +9,5 @@ import { SHOP } from 'src/app/common/mocks/shop';
 })
 export class ContactPageComponent {
   contact = CONTACT;
-  shop = SHOP;
+  benefits = BENEFITS;
 }

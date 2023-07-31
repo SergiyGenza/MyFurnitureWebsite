@@ -55,12 +55,15 @@
         position: relative;
       }
       .subscription {
+        color: $link-color;
+        @include p-medium;
+        font-size: 14px;
       }
 
       input[type="email"] {
         max-width: 10rem;
         border-bottom: 2px solid $underline;
-        transition: .3s ease-in;
+        transition: 0.3s ease-in;
       }
 
       // .input[type="email"]::after
@@ -75,9 +78,9 @@
       }
     }
 
-     input[type="email"]:focus {
+    input[type="email"]:focus {
       background-color: rgb(251, 251, 251, 0.9);
-     }
+    }
 
     .adress {
     }
