@@ -1,0 +1,57 @@
+<div class="container-lg ">
+  <app-breadcrumb></app-breadcrumb>
+</div>
+<div class="container-blog">
+  <div class="blog-page">
+    <div class="blog">
+      <div class="blog__item" *ngFor="let post of blog.posts">
+        <app-blog-card [post]="post" [icon]="blog.postsIcons">
+        </app-blog-card>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="filters">
+        <div class="search">
+          <input type="text">
+          <img src="{{blog.searchIcon}}" alt="search">
+        </div>
+        <div class="categories">
+          {{blog.filterTitle}}
+          <div class="categories__list">
+            <div class="categories__item" *ngFor="let category of blog.categories">
+              <p class="category__title">{{category.title}}</p>
+              <p class="category__number">{{category.number}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resent">
+        <div class="resent__title">
+          {{blog.resentPostsTitle}}
+        </div>
+        <div class="resent__posts">
+          <div class="post" *ngFor="let post of blog.resentPosts">
+            <img class="post__preview" src="{{post.img}}" alt="preview">
+            <div class="post__content">
+              <h4 class="post__title">
+                {{post.title}}
+              </h4>
+              <p class="post__time">
+                {{post.time}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <div class="pagination__btn-group">
+      <button class="btn-pagination">1</button>
+      <button class="btn-pagination">Next</button>
+    </div>
+  </div>
+</div>
+<div class="container-lg ">
+  <app-benefits [benefits]="benefits"></app-benefits>
+</div>

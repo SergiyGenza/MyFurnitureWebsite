@@ -12,7 +12,7 @@ export const HEADER_CONTENT = {
     },
     {
       title: 'Blog',
-      link: ''
+      link: 'blog'
     },
     {
       title: 'Contact',
