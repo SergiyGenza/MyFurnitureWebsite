@@ -5,14 +5,18 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
-    loadChildren: () => import('./modules/main/main/main.module').then((m) => m.MainModule),
+    loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
     data: { breadcrumb: 'home' }
   },
   {
     path: '',
     loadChildren: () => import('./modules/shop/shop.module').then((m) => m.ShopModule),
     data: { breadcrumb: 'home' }
-
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/contact/contact.module').then((m) => m.ContactModule),
+    data: { breadcrumb: 'home' }
   },
 
 ];

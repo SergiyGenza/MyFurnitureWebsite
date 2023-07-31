@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "../style/utils/variables";
+@import "../style/utils/mixins";
 
 .container-lg {
+  @include default-m-p;
   max-width: 1500px;
-  padding: 0 30px;
-  margin: 0 auto;
 }
 
 .container-products {
-  max-width: 1236px;
-  padding: 0 30px;
-  margin: 0 auto;
+  @include default-m-p;
+  max-width: 1296px;
+}
+
+.container-contact {
+  @include default-m-p;
+  max-width: 1110px;
 }
