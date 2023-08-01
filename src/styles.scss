@@ -4,3 +4,8 @@
 @import "./assets/style/utils/mixins";
 
 @import "./assets/style/base";
+
+
+body {
+  font-family: $font-main;
+}

@@ -8,4 +8,13 @@ import { HEADER_CONTENT } from 'src/app/common/mocks/header';
 })
 export class HeaderComponent {
   header = HEADER_CONTENT;
+  isOpen: boolean = false;
+
+  openShopingCart() {
+    return this.isOpen = !this.isOpen;
+  }
+
+  onClose(isClose: boolean) {
+    this.isOpen = isClose;
+  }
 }

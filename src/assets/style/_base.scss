@@ -4,7 +4,7 @@
 
 .container-lg {
   @include default-m-p;
-  max-width: 1500px;
+  max-width: $lg;
 }
 
 .container-products {

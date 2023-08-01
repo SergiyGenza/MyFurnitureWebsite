@@ -1,0 +1,39 @@
+<div class="modal" *ngIf="isOpen">
+  <div class="container-lg">
+    <div class="shoping-cart">
+      <div class="shoping-cart__header">
+        <div class="shoping-cart__header__title">
+          {{shoping.title}}
+          <img class="shoping-cart__icon" src="{{shoping.icon}}" alt="close" (click)="onShopingCartClose()">
+        </div>
+        <div class="devider"></div>
+      </div>
+      <div class="product">
+        <div class="product__item" *ngFor="let item of shoping.testProducts">
+          <img class="product__preview" src="{{item.preview}}" alt="product">
+          <div class="product__contetn">
+            <div class="product__title">{{item.title}}</div>
+            <div class="product__number">
+              <div class="product__quantity">{{item.quantity}}</div>
+              <div class="product__multiply">x</div>
+              <div class="product__price">{{item.price}}</div>
+            </div>
+          </div>
+          <button class="btn close"></button>
+        </div>
+      </div>
+      <div class="shoping-cart__footer">
+        <div class="total">
+          <span class="total__title">{{shoping.total}}</span>
+          <span class="total__price">$1500</span>
+        </div>
+        <div class="devider"></div>
+        <div class="nav">
+          <ng-container *ngFor="let nav of shoping.nav">
+            <button routerLink="shop" class="nav__btn">{{nav.title}}</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

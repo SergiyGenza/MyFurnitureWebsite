@@ -1,0 +1,115 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.modal {
+  position: absolute;
+  // z-index: 100;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  background: $modal-bg;
+}
+
+.container-lg {
+  // @include default-m-p;
+  position: relative;
+}
+.devider {
+  width: 100%;
+  background-color: $cart-devider;
+  height: 2px;
+}
+
+.shoping-cart {
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 22px;
+  right: 30px;
+  width: 417px;
+  height: max-content;
+  background-color: $white;
+  color: $link-color;
+
+  &__header {
+    font-size: 24px;
+    font-weight: 600;
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 10px 30px 0px;
+    }
+  }
+  &__icon {
+    cursor: pointer;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 0;
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__preview {
+      border-radius: 10px;
+    }
+    &__contetn {
+      width: 40%;
+    }
+    &__title {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    &__number {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    &__quantity {
+    }
+    &__price {
+    }
+    .close {
+      background-image: url(../../../assets/images/icons/close-icon.svg);
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .total {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      font-size: 16px;
+      &__title {
+        font-weight: 400;
+      }
+      &__price {
+        font-weight: 600;
+        color: $primary;
+      }
+    }
+    .nav {
+      // margin-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      &__btn {
+        border-radius: 50px;
+        border: 1px solid $link-color;
+        font-size: 12px;
+        font-weight: 400;
+        padding: 6px 30px;
+      }
+    }
+  }
+}
