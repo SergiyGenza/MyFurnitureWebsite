@@ -19,12 +19,7 @@ export const HEADER_CONTENT = {
       link: 'contact'
     }
   ],
-  shopingIcons: [
-    {
-      icon: '../../../assets/images/icons/favoutite-header-icon.svg',
-    },
-    {
-      icon: '../../../assets/images/icons/shopping.svg',
-    }
-  ],
+  likeIcon: '../../../assets/images/icons/favoutite-header-icon.svg',
+  shopingIcon: '../../../assets/images/icons/shopping.svg',
+
 }

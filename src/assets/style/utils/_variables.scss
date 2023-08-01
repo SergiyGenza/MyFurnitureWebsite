@@ -2,19 +2,32 @@
 $font-main: "Poppins", sans-serif;
 $font-logo: "Montserrat", sans-serif;
 
+// font size
+// $bold: 700;
+// $semiBold: 600;
+// $medium: 500;
+// $regular: 400;
+// $light: 300;
+
+//containers
+$lg: 1500px;
+
+// deviders 
+$devider: #d9d9d9;
+$cart-devider: #D9D9D9;
+
 // colors
 $link-color: #000;
 $text-main: #333;
-$white: #FFF;
+$white: #fff;
 $light-text: #9f9f9f;
 
-$banner-box-bg: #FFF3E3;
-$primary: #B88E2F;
+$banner-box-bg: #fff3e3;
+$primary: #b88e2f;
 
-$devider: #D9D9D9;
 $underline: #555;
 
-$card-bg: #F4F5F7;
+$card-bg: #f4f5f7;
 $card-title: #3a3a3a;
 $card-tool-bg: rgb(58, 58, 58, 0.7);
 $card-type: #898989;
@@ -22,9 +35,11 @@ $card-price: #3a3a3a;
 
 $btn-title: #b88e2f;
 
-$benefits-bg: #FAF3EA;
-$shop-filter-bg: #F9F1E7;
+$benefits-bg: #faf3ea;
+$shop-filter-bg: #f9f1e7;
 
 $light-grey: #9f9f9f;
 $light-orange: #f9f1e7;
-$moderate-orange: #B88E2F;
+$moderate-orange: #b88e2f;
+
+$modal-bg: rgba(0, 0, 0, 0.2);

@@ -22,28 +22,27 @@
     @include Montserrat-Bold;
     font-size: 34px;
   }
-  .tool {
+  .nav {
+    &__list {
+      display: flex;
+      gap: 74px;
+    }
+    &__item {
+      font-size: 16px;
+      @include p-medium;
+    }
+  }
+  .btn {
     &__group {
       display: flex;
       gap: 45px;
     }
     &__item {
+      .icon {
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+      }
     }
-    &__icon {
-      width: 28px;
-      height: 28px;
-    }
-  }
-}
-
-.nav {
-  &__list {
-    display: flex;
-    gap: 74px;
-  }
-
-  &__item {
-    font-size: 16px;
-    @include p-medium;
   }
 }

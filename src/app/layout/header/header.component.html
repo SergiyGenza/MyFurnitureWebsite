@@ -13,12 +13,14 @@
         </li>
       </ul>
     </nav>
-    <div class="tool">
-      <ul class="tool__group" >
-        <li class="tool__item" *ngFor="let i of header.shopingIcons">
-          <img class="tool__icon" src="{{i.icon}}" alt="icon">
-        </li>
-      </ul>
-    </div>
+    <ul class="btn__group">
+      <li class="btn__item">
+        <img class="icon" src="{{header.likeIcon}}" alt="icon">
+      </li>
+      <li class="btn__item">
+        <img class="icon" src="{{header.shopingIcon}}" alt="icon" (click)="openShopingCart()">
+      </li>
+    </ul>
   </div>
+  <app-shoping-cart [isOpen]="isOpen" (isClose)="onClose($event)"></app-shoping-cart>
 </header>
