@@ -2,7 +2,11 @@
   <app-breadcrumb></app-breadcrumb>
   <app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
   <div class="container-products">
-    <app-product-card></app-product-card>
+    <div class="products">
+      <ng-container *ngFor="let p of products">
+        <app-product-card [product]="p"></app-product-card>
+      </ng-container>
+    </div>
   </div>
   <app-benefits [benefits]="benefits"></app-benefits>
 </div>

@@ -17,8 +17,12 @@
   max-width: 1110px;
 }
 
-
 .container-blog {
+  @include default-m-p;
+  max-width: 1300px;
+}
+
+.container-product-page {
   @include default-m-p;
   max-width: 1300px;
 }

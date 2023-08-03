@@ -1,0 +1,107 @@
+@import "../../../../assets/style/utils/variables";
+@import "../../../../assets/style/utils/mixins";
+
+.product {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: $link-color;
+  font-weight: 400;
+
+  &__preview {
+    justify-self: center;
+    align-self: center;
+    width: 400px;
+  }
+  &__contetn {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    font-size: 42px;
+  }
+  &__code {
+  }
+  &__rate {
+  }
+  &__description {
+    font-size: 13px;
+    max-width: 424px;
+  }
+  &__size {
+    &__title {
+    }
+    &__list {
+      display: flex;
+      gap: 24px;
+    }
+    &__item {
+      font-size: 13px;
+      border-radius: 5px;
+      background: $spanishWhite;
+      padding: 5px 8px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+  &__color {
+    &__list {
+      display: flex;
+      gap: 24px;
+    }
+    &__item {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
+  &__price {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    width: 130px;
+    padding: 17px 15px;
+    border-radius: 15px;
+    border: 1px solid $link-color;
+  }
+  .btn-group {
+    display: flex;
+    gap: 24px;
+    font-weight: 400;
+
+    font-size: 16px;
+    .quantity-reduse {
+    }
+    .quantity-add {
+    }
+    .add-to-cart {
+      font-size: 20px;
+    }
+    .compare {
+      font-size: 20px;
+    }
+  }
+}
+
+.title {
+  font-size: 14px;
+  color: $light-grey;
+  margin-bottom: 8px;
+}
+
+.btn {
+  border-radius: 15px;
+  border: 1px solid $link-color;
+  padding: 17px 40px;
+}

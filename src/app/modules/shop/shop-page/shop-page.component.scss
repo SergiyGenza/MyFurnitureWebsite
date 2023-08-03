@@ -1,3 +1,6 @@
-.container-products {
+.products {
   padding: 80px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 285px);
+  gap: 32px;
 }

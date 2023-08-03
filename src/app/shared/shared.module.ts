@@ -4,6 +4,7 @@ import { BannerComponent } from './banner/banner.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BenefitsComponent } from './benefits/benefits.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,7 +16,8 @@ import { BenefitsComponent } from './benefits/benefits.component';
     BenefitsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     BannerComponent,

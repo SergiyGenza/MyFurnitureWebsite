@@ -2,17 +2,17 @@
   <img class="card__img" src="../../../assets/images/products/01.png" alt="product">
   <div class="card__content">
     <div class="card__title">
-      Syltherine
+      {{product.title}}
     </div>
     <div class="card_product-type">
-      Stylish cafe chair
+      {{product.type}}
     </div>
     <div class="card__price">
-      $1200
+      {{product.price}}
     </div>
   </div>
   <div class="card-tool">
-    <button class="btn btn-view-more">View more</button>
+    <button routerLink="{{name}}" class="btn btn-view-more">View more</button>
     <button class="btn btn-add">Add to cart</button>
     <div class="card-tool__btn-group">
       <div class="btn__share">
