@@ -1,0 +1,57 @@
+<div class="container-lg">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="container-product-page">
+    <div class="product">
+      <img class="product__preview" src="{{product.img}}" alt="product">
+      <div class="product__contetn">
+        <div class="product__head">
+          <div class="product__title">
+            {{product.title}}
+          </div>
+          <div class="prodict__code">
+            Product code: {{product.code}}
+          </div>
+        </div>
+        <div class="product__price">
+          {{product.price}}
+        </div>
+        <!-- <div class="product__rate">
+          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+        </div> -->
+        <p class="product__description">
+          {{product.description}}
+        </p>
+        <div class="product__size">
+          <div class="title">Size:</div>
+          <div class="product__size__list">
+            <div class="product__size__item" *ngFor="let i of product.sizes">
+              {{i.s}}
+            </div>
+          </div>
+        </div>
+        <div class="product__color">
+          <div class="title">Color:</div>
+          <div class="product__color__list">
+            <div class="product__color__item" *ngFor="let i of product.colors" [style.background-color]="i.c"></div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <div class="product__quantity ">
+            <button class="quantity-reduse">-</button>
+            <p>1</p>
+            <button class="quantity-add">+</button>
+          </div>
+          <div class="">
+            <button class="btn add-to-cart ">Add to Cart</button>
+          </div>
+          <div class="">
+            <button class="btn compare ">Compare</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

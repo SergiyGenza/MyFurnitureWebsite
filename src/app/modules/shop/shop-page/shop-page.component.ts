@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BENEFITS } from 'src/app/common/mocks/benefits';
+import { PRODUCTS } from 'src/app/common/mocks/products';
 import { SHOP } from 'src/app/common/mocks/shop';
 
 @Component({
@@ -10,4 +11,5 @@ import { SHOP } from 'src/app/common/mocks/shop';
 export class ShopPageComponent {
   shop = SHOP;
   benefits = BENEFITS;
+  products = PRODUCTS;
 }
