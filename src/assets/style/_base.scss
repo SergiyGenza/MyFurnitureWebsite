@@ -26,3 +26,9 @@
   @include default-m-p;
   max-width: 1300px;
 }
+
+.devider {
+  width: 100%;
+  background-color: $cart-devider;
+  height: 2px;
+}

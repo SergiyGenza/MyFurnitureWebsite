@@ -1,0 +1,64 @@
+@import "../../../../assets/style/utils/variables";
+@import "../../../../assets/style/utils/mixins";
+
+.cart {
+  &__header {
+    padding: 10px 60px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
+    height: 60px;
+    background-color: $shop-filter-bg;
+  }
+  &__title {
+  }
+  .product {
+    height: 100px;
+    padding: 10px 60px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
+    &__preview {
+      width: 80px;
+      height: 80px;
+    }
+    &__title {
+    }
+    &__price {
+    }
+    &__quantity {
+    }
+    &__subtotal {
+    }
+    .remove-btn {
+      cursor: pointer;
+    }
+  }
+  &__bottom {
+    padding: 10px 60px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
+    .title {
+    }
+    .total-prise {
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: $primary;
+      color: $white;
+      @include p-bold;
+      font-size: 16px;
+      line-height: normal;
+    }
+  }
+}

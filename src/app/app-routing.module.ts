@@ -23,6 +23,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/blog/blog.module').then((m) => m.BlogModule),
     data: { breadcrumb: 'home' }
   },
+  {
+    path: '',
+    loadChildren: () => import('./modules/commerce/commerce.module').then((m) => m.CommerceModule),
+    data: { breadcrumb: 'home' }
+  },
 
 ];
 
