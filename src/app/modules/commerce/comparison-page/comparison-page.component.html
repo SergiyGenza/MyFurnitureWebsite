@@ -1,0 +1,72 @@
+<div class="container-lg">
+  <app-breadcrumb></app-breadcrumb>
+  
+  <div class="table">
+    <div class="table__head">
+      <div class="wrapper">
+        <div class="head">{{comparison.tableHead}}</div>
+        <button routerLink="shop" class="btn-view-more">{{comparison.btnTitle}}</button>
+      </div>
+      <div class="product__preview" *ngFor="let p of products">
+        <img src="{{p.img}}" alt="alt">
+        <div class="">{{p.title}}</div>
+        <div class="">{{p.code}}</div>
+        <div class="">{{p.price}}</div>
+      </div>
+    </div>
+    <div class="comparison">
+      <div class="comparison__general ">
+        <div class="title">{{comparison.generalTitle}}</div>
+        <div class="section">
+          <div class="position">
+            <div class="position__title" *ngFor="let i of comparison.general">{{i}}</div>
+          </div>
+          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+            <ng-container *ngFor="let text of p.productDetails.general">
+              <div class="product__desctription">{{text}}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="comparison__product ">
+        <div class="title">{{comparison.productTitle}}</div>
+        <div class="section">
+          <div class="position">
+            <div class="position__title" *ngFor="let i of comparison.product">{{i}}</div>
+          </div>
+          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+            <ng-container *ngFor="let text of p.productDetails.product">
+              <div class="product__desctription">{{text}}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="comparison__dimensions ">
+        <div class="title">{{comparison.dimensionsTitle}}</div>
+        <div class="section">
+          <div class="position">
+            <div class="position__title" *ngFor="let i of comparison.dimensions">{{i}}</div>
+          </div>
+          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+            <ng-container *ngFor="let text of p.productDetails.dimensions">
+              <div class="product__desctription">{{text}}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="comparison__warranty ">
+        <div class="title">{{comparison.warrantyTitle}}</div>
+        <div class="section">
+          <div class="position">
+            <div class="position__title" *ngFor="let i of comparison.warranty">{{i}}</div>
+          </div>
+          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+            <ng-container *ngFor="let text of p.productDetails.warranty">
+              <div class="product__desctription">{{text}}</div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

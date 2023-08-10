@@ -1,0 +1,60 @@
+@import "../../../../assets/style/utils/variables";
+@import "../../../../assets/style/utils/mixins";
+
+.table {
+  margin-top: 100px;
+  padding: 0 30px;
+}
+.comparison {
+  color: $link-color;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 126.5%; /* 25.3px */
+  max-width: 200px;
+
+  .position {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    &__title {
+    }
+  }
+  .product {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    &__desctription {
+    }
+  }
+
+  &__warranty {
+    .position {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 25px;
+      height: 100%;
+    }
+    .product {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 25px;
+      height: 100%;
+    }
+  }
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.title {
+  text-transform: capitalize;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 126.5%;
+  margin-bottom: 45px;
+  grid-area: 1/1/1/1;
+}
