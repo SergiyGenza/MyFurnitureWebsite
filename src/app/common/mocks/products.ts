@@ -31,7 +31,7 @@ export const PRODUCTS = [
     ],
   },
   {
-    img: '../../../assets/images/products/01.png',
+    img: '../../../assets/images/products/02.png',
     code: '0002',
     title: 'Syltherine',
     type: 'Stylish cafe chair',
