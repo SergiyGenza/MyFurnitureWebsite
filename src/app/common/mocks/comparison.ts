@@ -1,4 +1,5 @@
 export const COMPARISON = {
+  arrowIcon: '../../../assets/images/icons/down-arraw-icon.svg',
   tableHead: 'Go to Product page for more Products',
   btnTitle: 'View More',
   generalTitle: 'general',

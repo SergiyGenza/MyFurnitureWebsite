@@ -1,17 +1,26 @@
 <div class="container-lg">
   <app-breadcrumb></app-breadcrumb>
-  
+
   <div class="table">
-    <div class="table__head">
-      <div class="wrapper">
-        <div class="head">{{comparison.tableHead}}</div>
+    <div class="table__head section">
+      <div class="table__wrapper">
+        <div class="table__title">{{comparison.tableHead}}</div>
         <button routerLink="shop" class="btn-view-more">{{comparison.btnTitle}}</button>
       </div>
-      <div class="product__preview" *ngFor="let p of products">
-        <img src="{{p.img}}" alt="alt">
-        <div class="">{{p.title}}</div>
-        <div class="">{{p.code}}</div>
-        <div class="">{{p.price}}</div>
+      <div class="product" *ngFor="let p of products">
+        <img class="product__preview" src="{{p.img}}" alt="alt">
+        <div class="product__title">{{p.title}}</div>
+        <div class="product__code">code: {{p.code}}</div>
+        <div class="product__price">price: {{p.price}}</div>
+      </div>
+      <div class="product__picker">
+        <div class="product__picker__title">
+          Add A Product
+        </div>
+        <button class="product__picker__btn">
+          Choose a Product
+          <img class="arrow-icon" src="{{comparison.arrowIcon}}" alt="arrow icon">
+        </button>
       </div>
     </div>
     <div class="comparison">
@@ -54,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="comparison__warranty ">
+      <div class="comparison__warranty">
         <div class="title">{{comparison.warrantyTitle}}</div>
         <div class="section">
           <div class="position">

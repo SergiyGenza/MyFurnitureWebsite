@@ -4,6 +4,63 @@
 .table {
   margin-top: 100px;
   padding: 0 30px;
+  color: $link-color;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 126.5%; /* 30.36px */
+  &__wrapper {
+  }
+  &__title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .btn-view-more {
+    @include p-medium;
+    color: $link-color;
+    position: relative;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+  }
+  .product {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__preview {
+      width: 280px;
+      border-radius: 10px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__code {
+      font-size: 18px;
+    }
+    &__price {
+      font-size: 18px;
+    }
+    &__picker {
+      font-weight: 600;
+      &__title {
+        margin-bottom: 14px;
+      }
+      &__btn {
+        // text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        color: $white;
+        padding: 6px 18px;
+        font-size: 14px;
+        border-radius: 6px;
+        background-color: $primary;
+      }
+    }
+  }
+}
+.arrow-icon {
+  width: 18px;
+  height: 10px;
 }
 .comparison {
   color: $link-color;
@@ -30,13 +87,13 @@
   &__warranty {
     .position {
       display: grid;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       gap: 25px;
       height: 100%;
     }
     .product {
       display: grid;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       gap: 25px;
       height: 100%;
     }
@@ -45,7 +102,7 @@
 
 .section {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-columns: 300px 300px 300px 300px;
   gap: 80px;
   margin-bottom: 80px;
 }
