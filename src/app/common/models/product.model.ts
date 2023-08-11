@@ -8,6 +8,7 @@ export interface Product {
   description: string;
   sizes: Array<Size>;
   colors: Array<Color>;
+  productDetails: any;
 }
 
 export interface Size {

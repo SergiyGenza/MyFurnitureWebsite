@@ -23,14 +23,14 @@
         </div>
       </div>
       <div class="shoping-cart__footer">
+        <div class="devider"></div>
         <div class="total">
           <span class="total__title">{{shoping.total}}</span>
           <span class="total__price">$1500</span>
         </div>
-        <div class="devider"></div>
         <div class="nav">
           <ng-container *ngFor="let nav of shoping.nav">
-            <button routerLink="shop" class="nav__btn">{{nav.title}}</button>
+            <button routerLink="{{nav.link}}" class="nav__btn" (click)="onShopingCartClose()">{{nav.title}}</button>
           </ng-container>
         </div>
       </div>

@@ -26,3 +26,26 @@
   @include default-m-p;
   max-width: 1300px;
 }
+
+.devider {
+  width: 100%;
+  background-color: $cart-devider;
+  height: 2px;
+}
+
+.btn-secondary {
+  border-radius: 50px;
+  border: 1px solid $link-color;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 30px;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  background-color: $primary;
+  color: $white;
+  @include p-bold;
+  font-size: 16px;
+  line-height: normal;
+}
