@@ -1,20 +1,28 @@
 export interface Product {
+  key?: string;
   img: string;
   code: string;
   title: string;
   type: string;
   price: string;
   rate: number;
-  description: string;
-  sizes: Array<Size>;
-  colors: Array<Color>;
+  description: any;
+  sizes: Array<Size> | undefined;
+  colors: Array<Color> | undefined;
   productDetails: any;
 }
 
-export interface Size {
+interface Size {
   s: string;
 }
 
-export interface Color {
+interface Color {
   c: string;
+}
+
+interface ProductDetails {
+  general: Array<any>
+  product: Array<any>
+  dimensions: Array<any>
+  warranty: Array<any>
 }

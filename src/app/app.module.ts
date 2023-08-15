@@ -7,6 +7,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ShopingCartComponent } from './components/shoping-cart/shoping-cart.component';
 
+import { AngularFireModule } from '@angular/fire/compat'
+import { environment } from 'src/environments/environments';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,7 @@ import { ShopingCartComponent } from './components/shoping-cart/shoping-cart.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     
   ],
   providers: [],
