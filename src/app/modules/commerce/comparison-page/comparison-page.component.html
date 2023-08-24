@@ -1,8 +1,9 @@
 <div class="container-lg">
   <app-breadcrumb></app-breadcrumb>
-
+  <!-- comparison table -->
   <div class="table">
     <div class="table__head section">
+      <!-- need product componnent -->
       <div class="table__wrapper">
         <div class="table__title">{{comparison.tableHead}}</div>
         <button routerLink="shop" class="btn-view-more">{{comparison.btnTitle}}</button>
@@ -23,17 +24,18 @@
         </button>
       </div>
     </div>
+    <!-- need to reafactor -->
     <div class="comparison">
-      <div class="comparison__general ">
+      <!-- mb create section component -->
+      <div class="comparison__general">
         <div class="title">{{comparison.generalTitle}}</div>
         <div class="section">
           <div class="position">
-            <div class="position__title" *ngFor="let i of comparison.general">{{i}}</div>
+            <div class="position__title" *ngFor="let position of positionTitles?.general">{{position}}</div>
           </div>
           <div class="product" *ngFor="let p of products" id="{{p.code}}">
-            <ng-container *ngFor="let text of p.productDetails.general">
-              <div class="product__desctription">{{text}}</div>
-            </ng-container>
+            <div class="product__desctription" *ngFor="let text of p.productDetails.general | keyvalue:onCompare">
+              {{text.value}}</div>
           </div>
         </div>
       </div>
@@ -41,12 +43,11 @@
         <div class="title">{{comparison.productTitle}}</div>
         <div class="section">
           <div class="position">
-            <div class="position__title" *ngFor="let i of comparison.product">{{i}}</div>
+            <div class="position__title" *ngFor="let position of positionTitles?.product">{{position}}</div>
           </div>
           <div class="product" *ngFor="let p of products" id="{{p.code}}">
-            <ng-container *ngFor="let text of p.productDetails.product">
-              <div class="product__desctription">{{text}}</div>
-            </ng-container>
+            <div class="product__desctription" *ngFor="let text of p.productDetails.product | keyvalue:onCompare">
+              {{text.value}}</div>
           </div>
         </div>
       </div>
@@ -54,12 +55,11 @@
         <div class="title">{{comparison.dimensionsTitle}}</div>
         <div class="section">
           <div class="position">
-            <div class="position__title" *ngFor="let i of comparison.dimensions">{{i}}</div>
+            <div class="position__title" *ngFor="let position of positionTitles?.dimensions">{{position}}</div>
           </div>
           <div class="product" *ngFor="let p of products" id="{{p.code}}">
-            <ng-container *ngFor="let text of p.productDetails.dimensions">
-              <div class="product__desctription">{{text}}</div>
-            </ng-container>
+            <div class="product__desctription" *ngFor="let text of p.productDetails.dimensions | keyvalue:onCompare">
+              {{text.value}}</div>
           </div>
         </div>
       </div>
@@ -67,12 +67,11 @@
         <div class="title">{{comparison.warrantyTitle}}</div>
         <div class="section">
           <div class="position">
-            <div class="position__title" *ngFor="let i of comparison.warranty">{{i}}</div>
+            <div class="position__title" *ngFor="let position of positionTitles?.warranty">{{position}}</div>
           </div>
           <div class="product" *ngFor="let p of products" id="{{p.code}}">
-            <ng-container *ngFor="let text of p.productDetails.warranty">
-              <div class="product__desctription">{{text}}</div>
-            </ng-container>
+            <div class="product__desctription" *ngFor="let text of p.productDetails.warranty | keyvalue:onCompare">
+              {{text.value}}</div>
           </div>
         </div>
       </div>

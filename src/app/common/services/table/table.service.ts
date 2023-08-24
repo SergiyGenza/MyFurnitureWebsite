@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
-import { Product } from '../models/product.model';
+import { Sofa } from '../../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class TableService {
+
 
   productRef: AngularFireList<any>;
-  products$: Observable<Product[]>;
+  products$: Observable<Sofa[]>;
 
   constructor(private dataBase: AngularFireDatabase) {
-    this.productRef = this.dataBase.list('products/sofa');
+    this.productRef = this.dataBase.list('products/table');
     this.products$ = this.productRef.valueChanges();
   }
 
-  addProduct(Product: Product) {
+  addProduct(Product: Sofa) {
     const key = this.productRef.push(Product).key;
     if (key) {
       Product.key = key;
@@ -25,7 +26,7 @@ export class ProductService {
     return this.productRef.update(`/${key}`, Product)
   }
 
-  getProduct(key: string | undefined): Observable<Product | undefined> {
+  getProduct(key: string | undefined): Observable<Sofa | undefined> {
     return this.products$.pipe(
       map((products) => {
         return products.find((b) => b.key === key);
@@ -33,7 +34,7 @@ export class ProductService {
     );
   }
 
-  getAllProducts(): Observable<Product[]> {
+  getAllProducts(): Observable<Sofa[]> {
     return this.products$
   }
 

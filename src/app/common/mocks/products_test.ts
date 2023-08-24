@@ -1,17 +1,17 @@
-import { Product } from "../models/product.model";
+import { Product, Sofa } from "../models/product.model";
 
-export const PRODUCTS: Array<Product> = [
+export const PRODUCTS: Array<Sofa> = [
   {
     img: 'https://cdn4.jysk.com/getimage/wd2.medium/201611',
     code: '0001',
     title: 'HUNDESTED',
     type: 'chair',
-    price: '199',
+    price: 199,
     rate: 4,
-    description: {
+    description: '',
+    productDetails: {
       general: {
         slesPackage: '1 sectional sofa',
-        modelNumber: 'TFCBLIGRBL6SRHS',
         SecondaryMaterial: 'Solid Wood',
         Configuration: 'L - shaped',
         UpholsteryMaterial: 'Fabric + Cotton',
@@ -40,8 +40,6 @@ export const PRODUCTS: Array<Product> = [
         domesticWarrant: '1 Year',
       }
     },
-    sizes: undefined,
     colors: undefined,
-    productDetails: '',
   },
 ]

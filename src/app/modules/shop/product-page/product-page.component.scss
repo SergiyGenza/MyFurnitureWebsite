@@ -1,6 +1,11 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
+
+.wrapper {
+  height: 80vh;
+}
+
 .product {
   margin-top: 42px;
   display: grid;
