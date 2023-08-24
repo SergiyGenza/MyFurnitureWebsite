@@ -11,12 +11,11 @@ import { SofaService } from 'src/app/common/services/sofa/sofa.service';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
   // test
   productsArray: Array<Product> = PRODUCTS;
-
-  // isOpen: boolean = false;
+  /////////////////////
   products: Observable<Sofa[]> | undefined;
+  showSpinner: boolean = true
 
   constructor(
     private productService: ProductService,
@@ -34,8 +33,11 @@ export class MainPageComponent implements OnInit {
     });
     console.log('products added');
   }
+  /////////////////////
 
-  private getAllProducts(): Observable<Sofa[]> | undefined {
-    return this.products = this.sofaService.getAllProducts();
+
+  private getAllProducts() {
+    this.products = this.sofaService.getAllProducts();
+    this.products.subscribe(() => this.showSpinner = false);
   }
 }

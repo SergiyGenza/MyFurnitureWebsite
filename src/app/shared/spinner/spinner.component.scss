@@ -1,0 +1,23 @@
+@import "../../../assets/style/utils/variables";
+@import "../../../assets/style/utils/mixins";
+
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 7rem;
+}
+
+.spinner {
+  height: 120px;
+  width: 120px;
+  border: 6px solid;
+  border-color: $btn-title transparent white transparent;
+  border-radius: 50%;
+  animation: spin 1.3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
