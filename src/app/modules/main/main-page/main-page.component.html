@@ -7,15 +7,18 @@
       Our Products
     </div>
     <div class="products__list">
-      <app-product-card
-      
-      >
-      </app-product-card>
+      <ng-container *ngFor="let p of products | async">
+        <app-product-card [product]="p"></app-product-card>
+      </ng-container>
     </div>
     <div class="show-more">
       <button class="btn__show-more">Show More</button>
     </div>
   </section>
   <!-- slider -->
+  <!-- <div class="">
+    <button (click)="addProducts()">add products</button>
+  </div> -->
+  <!-- <app-slider></app-slider> -->
   <!-- Share your setup with -->
 </main>

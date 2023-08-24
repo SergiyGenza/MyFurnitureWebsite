@@ -3,6 +3,11 @@
 
 .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5em;
+  overflow: hidden;
   width: 285px;
   height: 446px;
   background-color: $card-bg;

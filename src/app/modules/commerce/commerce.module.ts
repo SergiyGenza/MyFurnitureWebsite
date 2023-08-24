@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { ComparisonPageComponent } from './comparison-page/comparison-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { ProductDescriptionItemComponent } from './product-description-item/product-description-item.component';
 
 
 
@@ -12,7 +13,8 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
   declarations: [
     CartPageComponent,
     ComparisonPageComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    ProductDescriptionItemComponent
   ],
   imports: [
     CommonModule,

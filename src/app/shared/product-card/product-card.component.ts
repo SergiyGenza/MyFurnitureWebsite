@@ -7,13 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: any;
-  name: string = '';
+  url: string = '';
 
   ngOnInit(): void {
     this.setKey();
   }
 
   private setKey() {
-    this.name = this.product.title.toLowerCase() + '-' + this.product.code;
+    this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase() + '-' + this.product.code;
   }
 }

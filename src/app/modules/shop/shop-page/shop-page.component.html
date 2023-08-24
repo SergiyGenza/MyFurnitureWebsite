@@ -3,7 +3,7 @@
   <app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
   <div class="container-products">
     <div class="products">
-      <ng-container *ngFor="let p of products">
+      <ng-container *ngFor="let p of products | async">
         <app-product-card [product]="p"></app-product-card>
       </ng-container>
     </div>
