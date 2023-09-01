@@ -11,6 +11,7 @@
   width: 285px;
   height: 446px;
   background-color: $card-bg;
+
   @include p-semiBold;
 
   &__img {
@@ -42,13 +43,13 @@
 
 .card-tool {
   position: absolute;
-  background-color: $card-tool-bg;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: $card-tool-bg;
+  top: 0;
+  left: 0;
   width: 285px;
   height: 446px;
 

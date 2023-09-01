@@ -6,14 +6,20 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
+
   @Input() product: any;
   url: string = '';
+  showMenu: boolean = false;
 
   ngOnInit(): void {
-    this.setKey();
+    this.setQuarryKey();
   }
 
-  private setKey() {
+  public setProductInLocalStorage() {
+    localStorage.setItem('product', JSON.stringify(this.product));
+  }
+  
+  private setQuarryKey() {
     this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase() + '-' + this.product.code;
   }
 }

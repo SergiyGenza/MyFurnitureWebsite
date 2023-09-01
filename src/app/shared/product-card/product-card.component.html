@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" (mouseenter)="showMenu=true" (mouseleave)="showMenu=false">
   <img class="card__img" src="{{product.img}}" alt="product">
   <div class="card__content">
     <div class="card__title">
@@ -11,9 +11,9 @@
       {{product.price | currency}}
     </div>
   </div>
-  <div class="card-tool">
+  <div class="card-tool" *ngIf="showMenu">
     <a href="{{url}}">
-      <button class="btn btn-view-more">View more</button>
+      <button class="btn btn-view-more" (click)="setProductInLocalStorage()">View more</button>
     </a>
     <button class="btn btn-add">Add to cart</button>
     <div class="card-tool__btn-group">
