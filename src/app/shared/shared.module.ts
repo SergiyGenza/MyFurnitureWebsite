@@ -5,6 +5,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BenefitsComponent } from './benefits/benefits.component';
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     BannerComponent,
     ProductCardComponent,
     BreadcrumbComponent,
-    BenefitsComponent
+    BenefitsComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,7 @@ import { RouterModule } from '@angular/router';
     ProductCardComponent,
     BreadcrumbComponent,
     BenefitsComponent,
-    
+    SpinnerComponent
   ]
 })
 export class SharedModule { }
