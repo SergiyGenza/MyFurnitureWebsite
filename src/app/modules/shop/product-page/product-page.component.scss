@@ -1,7 +1,6 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
-
 .wrapper {
   height: 80vh;
 }
@@ -74,18 +73,18 @@
   &__quantity {
     display: flex;
     align-items: center;
-    gap: 35px;
+    justify-content: space-between;
     width: 130px;
-    padding: 17px 15px;
     border-radius: 15px;
+    padding: 0px 7px;
     border: 1px solid $link-color;
   }
   .btn-group {
     display: flex;
     gap: 24px;
     font-weight: 400;
-
     font-size: 16px;
+
     .quantity-reduse {
     }
     .quantity-add {
@@ -96,6 +95,20 @@
     .compare {
       font-size: 20px;
     }
+  }
+}
+
+.quantity {
+  &__reduse,
+  &__add {
+    color: $link-color;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &__number {
+    color: $link-color;
+    font-size: 24px;
+    font-weight: 500;
   }
 }
 
