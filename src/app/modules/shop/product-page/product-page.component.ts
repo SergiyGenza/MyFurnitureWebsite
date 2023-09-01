@@ -11,21 +11,26 @@ import { Product, Sofa } from 'src/app/common/models/product.model';
 export class ProductPageComponent implements OnInit {
   key = this.route.snapshot.paramMap.get('key') as string;
   products: any = PRODUCTS;
-  product!: Sofa;
+  product!: any;
+  quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.findCurrentProduct();
+    this.getProductFromLocalStorage();
   }
 
-  findCurrentProduct() {
-    let splited = this.key.split('-');
-    let productArray: Array<Sofa> = this.products.filter((p: { code: string; }) => {
-      return p.code == splited[1];
-    })
-    this.product = productArray[0];
+  public increase() {
+    return this.quantity = this.quantity + 1;
+  }
+
+  public decrease() {
+    return this.quantity < 2 ? this.quantity = this.quantity : this.quantity = this.quantity - 1;
+  }
+
+  private getProductFromLocalStorage() {
+    this.product = JSON.parse(localStorage.getItem('product')!);
   }
 }
