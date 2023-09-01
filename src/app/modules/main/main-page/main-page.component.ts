@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   productsArray: Array<Product> = PRODUCTS;
   /////////////////////
   products: Observable<Sofa[]> | undefined;
-  showSpinner: boolean = true
+  showSpinner: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -34,7 +34,6 @@ export class MainPageComponent implements OnInit {
     console.log('products added');
   }
   /////////////////////
-
 
   private getAllProducts() {
     this.products = this.sofaService.getAllProducts();
