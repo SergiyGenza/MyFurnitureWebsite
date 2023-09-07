@@ -12,7 +12,10 @@ export class ShopingCartComponent   {
   @Input() isOpen: boolean = false;
   @Output() isClose = new EventEmitter<boolean>();
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    
+    ) { }
 
   onShopingCartClose(): void {
     this.isOpen = !this.isOpen;
