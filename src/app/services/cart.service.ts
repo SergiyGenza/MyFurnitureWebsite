@@ -8,37 +8,47 @@ import { CartItem } from '../common/models/cart.model';
 export class CartService {
 
   cart: Array<CartItem> | null = [];
-  triger: boolean = false;
 
   constructor() {
   }
 
+  // need add rxjs
   public updateCart(item: any, quantity: number = 1) {
-    this.setCart();
+    this.getCart();
     this.checkCartProductQuantity(item, quantity);
   }
 
+  public getCart(): Array<CartItem> | null {
+    this.cart = JSON.parse(localStorage.getItem('cart')!);
+    return this.cart == null ? this.cart = [] : this.cart;
+  }
+
+  public removeProduct(product: CartItem) {
+    let result: CartItem[] | undefined = this.cart?.filter(p => {
+      return p !== product;
+    });
+    return localStorage.setItem('cart', JSON.stringify(result));
+  }
+
   private checkCartProductQuantity(item: any, quantity: number) {
-    this.triger = false;
+    let flag: boolean = false;
     this.cart?.map(i => {
       if (i.product.code == item.code) {
         i.quantity = i.quantity + quantity;
-        this.triger = true;
+        flag = true;
       }
     });
 
-    if (this.triger == false) {
+    if (flag == false) {
       let product: CartItem = {
         product: item,
         quantity: quantity,
       }
       this.cart?.push(product);
     }
+
     return localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
-  private setCart() {
-    this.cart = JSON.parse(localStorage.getItem('cart')!);
-    this.cart == null ? this.cart = [] : this.cart;
-  }
+
 }

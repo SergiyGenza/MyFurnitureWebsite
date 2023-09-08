@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PRODUCTS } from 'src/app/common/mocks/products';
-import { Product, Sofa } from 'src/app/common/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -9,17 +8,19 @@ import { Product, Sofa } from 'src/app/common/models/product.model';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-  key = this.route.snapshot.paramMap.get('key') as string;
-  products: any = PRODUCTS;
+  key: string;
   product!: any;
   quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
-  ) { }
+    private cartService: CartService,
+  ) {
+    this.key = this.route.snapshot.paramMap.get('key') as string;
+    this.product = JSON.parse(localStorage.getItem('product')!);
+  }
 
   ngOnInit(): void {
-    this.getProductFromLocalStorage();
   }
 
   public increase() {
@@ -30,7 +31,7 @@ export class ProductPageComponent implements OnInit {
     return this.quantity < 2 ? this.quantity = this.quantity : this.quantity = this.quantity - 1;
   }
 
-  private getProductFromLocalStorage() {
-    this.product = JSON.parse(localStorage.getItem('product')!);
+  public addToCart() {
+    this.cartService.updateCart(this.product, this.quantity);
   }
 }

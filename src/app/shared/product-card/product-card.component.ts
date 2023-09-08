@@ -11,10 +11,10 @@ export class ProductCardComponent implements OnInit {
   @Input() product: any;
   url: string = '';
   showMenu: boolean = false;
-  cart: any;
+  cartArray: any;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
