@@ -8,25 +8,25 @@
         </div>
         <div class="devider"></div>
       </div>
-      <div class="product">
-        <div class="product__item" *ngFor="let item of shoping.testProducts">
-          <img class="product__preview" src="{{item.preview}}" alt="product">
+      <div class="product" *ngIf="cart">
+        <div class="product__item" *ngFor="let product of cart">
+          <img class="product__preview" src="{{product.product.img}}" alt="product">
           <div class="product__contetn">
-            <div class="product__title">{{item.title}}</div>
+            <div class="product__title">{{product.product.title}}</div>
             <div class="product__number">
-              <div class="product__quantity">{{item.quantity}}</div>
+              <div class="product__quantity">{{product.quantity}}</div>
               <div class="product__multiply">x</div>
-              <div class="product__price">{{item.price}}</div>
+              <div class="product__price">{{product.product.price | currency}}</div>
             </div>
           </div>
-          <button class="btn close"></button>
+          <button class="btn close" (click)="onProducRemove(product)"></button>
         </div>
       </div>
       <div class="shoping-cart__footer">
         <div class="devider"></div>
         <div class="total">
           <span class="total__title">{{shoping.total}}</span>
-          <span class="total__price">$1500</span>
+          <span class="total__price">{{totalPrice | currency}}</span>
         </div>
         <div class="nav">
           <ng-container *ngFor="let nav of shoping.nav">

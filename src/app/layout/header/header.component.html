@@ -22,5 +22,5 @@
       </li>
     </ul>
   </div>
-  <app-shoping-cart [isOpen]="isOpen" (isClose)="onClose($event)"></app-shoping-cart>
+  <app-shoping-cart *ngIf="isOpen" [isOpen]="isOpen" (isClose)="onClose($event)"></app-shoping-cart>
 </header>
