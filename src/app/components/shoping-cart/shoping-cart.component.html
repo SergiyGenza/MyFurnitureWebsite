@@ -1,5 +1,5 @@
-<div class="modal" *ngIf="isOpen">
-  <div class="container-lg">
+<div class="modal" *ngIf="isOpen" (click)="onShopingCartClose()">
+  <div clickStopPropagation class="container-lg">
     <div class="shoping-cart">
       <div class="shoping-cart__header">
         <div class="shoping-cart__header__title">
