@@ -35,6 +35,7 @@ export class ShopingCartComponent implements OnInit {
   public onProducRemove(item: CartItem) {
     this.cartService.removeProduct(item);
     this.getCart();
+    this.calcTotalPrice();
   }
 
   private getCart() {
@@ -42,6 +43,7 @@ export class ShopingCartComponent implements OnInit {
   }
 
   private calcTotalPrice() {
+    this.totalPrice = 0;
     this.cart?.map(p => {
       return this.totalPrice += p.product.price * p.quantity;
     })
