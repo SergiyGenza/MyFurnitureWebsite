@@ -77,6 +77,13 @@
     }
   }
 
+  .no-product {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 3rem 0;
+  }
+
   &__footer {
     display: flex;
     flex-direction: column;

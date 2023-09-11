@@ -24,6 +24,8 @@ export class ShopingCartComponent implements OnInit {
   ngOnInit(): void {
     this.getCart();
     this.calcTotalPrice();
+    console.log(this.cart);
+    
   }
 
   public onShopingCartClose(): void {

@@ -8,7 +8,7 @@
         </div>
         <div class="devider"></div>
       </div>
-      <div class="product" *ngIf="cart">
+      <div class="product" *ngIf="cart?.length; else noCart">
         <div class="product__item" *ngFor="let product of cart">
           <img class="product__preview" src="{{product.product.img}}" alt="product">
           <div class="product__contetn">
@@ -22,6 +22,12 @@
           <button class="btn close" (click)="onProducRemove(product)"></button>
         </div>
       </div>
+      <ng-template #noCart>
+        <div class="no-product">
+          Your cart is empty!
+          {{cart}}
+        </div>
+      </ng-template>
       <div class="shoping-cart__footer">
         <div class="devider"></div>
         <div class="total">
