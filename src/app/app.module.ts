@@ -9,18 +9,19 @@ import { ShopingCartComponent } from './components/shoping-cart/shoping-cart.com
 
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environments';
+import { ClickStopPropagationDirective } from './common/derective/click-stop-propagation.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     ShopingCartComponent,
+    ClickStopPropagationDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
