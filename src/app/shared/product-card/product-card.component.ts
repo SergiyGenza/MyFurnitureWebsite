@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -7,8 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-
-  @Input() product: any;
+  @Input() product!: Product;
   url: string = '';
   showMenu: boolean = false;
   cartArray: any;

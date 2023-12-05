@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductPageComponent implements OnInit {
   key: string;
-  product!: any;
+  product!: Product;
   quantity: number = 1;
 
   constructor(

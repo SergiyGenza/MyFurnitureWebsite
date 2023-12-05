@@ -1,54 +1,73 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { CartItem } from '../common/models/cart.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Cart } from '../common/models/cart.model';
+import { CartItem } from '../common/models/cartItem';
+import { Product } from '../common/models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private cart: Cart = this.getCartFromLocalStorage();
+  private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
-  cart: Array<CartItem> | null = [];
+  constructor() { }
 
-  constructor() {
-  }
+  public updateCart(item: Product, quantity: number = 1) {
+    let result = this.cart.items.find(i => {
+      return i.product.code == item.code;
+    })
 
-  // need add rxjs
-  public updateCart(item: any, quantity: number = 1) {
-    this.getCart();
-    this.checkCartProductQuantity(item, quantity);
-  }
-
-  public getCart(): Array<CartItem> | null {
-    this.cart = JSON.parse(localStorage.getItem('cart')!);
-    return this.cart == null ? this.cart = [] : this.cart;
-  }
-
-  public removeProduct(product: CartItem) {
-    let result: CartItem[] | undefined = this.cart?.filter(p => {
-      return p !== product;
-    });
-    return localStorage.setItem('cart', JSON.stringify(result));
-  }
-
-  private checkCartProductQuantity(item: any, quantity: number) {
-    let flag: boolean = false;
-    this.cart?.map(i => {
-      if (i.product.code == item.code) {
-        i.quantity = i.quantity + quantity;
-        flag = true;
-      }
-    });
-
-    if (flag == false) {
-      let product: CartItem = {
-        product: item,
-        quantity: quantity,
-      }
-      this.cart?.push(product);
+    if (!result) {
+      return this.addToCart(item);
     }
 
-    return localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.cart.items.map(i => {
+      if (i.product.code == item.code) {
+        i.quantity = i.quantity + quantity;
+        i.product = item;
+      }
+    })
+    this.setCartToLocalStorage(this.cart);
+    return
   }
 
+  public addToCart(item: Product, quantity: number = 1) {
+    let product: CartItem = {
+      quantity: quantity,
+      product: item,
+    }
+    this.cart.items!.push(product);
+    this.setCartToLocalStorage(this.cart);
+  }
+
+  public removeProduct(product: Product) {
+    this.cart.items = this.cart.items!.filter(p => {
+      return p.product !== product;
+    })
+    this.setCartToLocalStorage(this.cart);
+  }
+
+  public clearCart() {
+    this.cart = new Cart;
+    this.setCartToLocalStorage(this.cart);
+  }
+
+  public getCartObservable(): Observable<Cart> {
+    return this.cartSubject.asObservable();
+  }
+
+  public getCart() {
+    return this.cartSubject.value;
+  }
+
+  private setCartToLocalStorage(item: Cart) {
+    localStorage.setItem('cart', JSON.stringify(item));
+  }
+
+  private getCartFromLocalStorage(): Cart {
+    let cartJson = localStorage.getItem('cart');
+    return cartJson ? JSON.parse(cartJson) : new Cart();
+  }
 
 }
