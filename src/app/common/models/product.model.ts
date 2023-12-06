@@ -1,4 +1,5 @@
 export interface Product {
+  productDetails: any;
   key?: string;
   img: string;
   code: string;
@@ -6,7 +7,9 @@ export interface Product {
   type: string;
   price: number;
   rate: number;
-  discount?: number; 
+  discount?: number;
+  description?: '';
+  colors?: Color[];
 }
 
 interface Size {

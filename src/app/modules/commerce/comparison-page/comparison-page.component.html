@@ -1,75 +1,76 @@
-<div class="container-lg">
+<div class="container-lg" *ngIf=" products$ | async; let products">
   <app-breadcrumb></app-breadcrumb>
   <!-- comparison table -->
   <div class="table">
     <div class="table__head section">
       <!-- need product componnent -->
       <div class="table__wrapper">
-        <div class="table__title">{{comparison.tableHead}}</div>
-        <button routerLink="shop" class="btn-view-more">{{comparison.btnTitle}}</button>
+        <div class="table__title">{{comparisonTest.tableHead}}</div>
+        <button routerLink="shop" class="btn-view-more">{{comparisonTest.btnTitle}}</button>
       </div>
-      <div class="product" *ngFor="let p of products">
+      <div class="product" *ngFor="let p of products.compareArr">
         <img class="product__preview" src="{{p.img}}" alt="alt">
         <div class="product__title">{{p.title}}</div>
         <div class="product__code">code: {{p.code}}</div>
-        <div class="product__price">price: {{p.price}}</div>
+        <div class="product__price">price: {{p.price | currency}}</div>
       </div>
       <div class="product__picker">
         <div class="product__picker__title">
           Add A Product
         </div>
-        <button class="product__picker__btn">
+        <button class="product__picker__btn" (click)="onCompareToolOpen()">
           Choose a Product
-          <img class="arrow-icon" src="{{comparison.arrowIcon}}" alt="arrow icon">
+          <img class="arrow-icon" src="{{comparisonTest.arrowIcon}}" alt="arrow icon">
         </button>
+        <app-comparison-tool class="comparison-tool" *ngIf="isOpen"></app-comparison-tool>
       </div>
     </div>
     <!-- need to reafactor -->
     <div class="comparison">
       <!-- mb create section component -->
       <div class="comparison__general">
-        <div class="title">{{comparison.generalTitle}}</div>
+        <div class="title">{{comparisonTest.generalTitle}}</div>
         <div class="section">
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.general">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.general | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
         </div>
       </div>
       <div class="comparison__product ">
-        <div class="title">{{comparison.productTitle}}</div>
+        <div class="title">{{comparisonTest.productTitle}}</div>
         <div class="section">
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.product">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.product | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
         </div>
       </div>
       <div class="comparison__dimensions ">
-        <div class="title">{{comparison.dimensionsTitle}}</div>
+        <div class="title">{{comparisonTest.dimensionsTitle}}</div>
         <div class="section">
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.dimensions">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.dimensions | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
         </div>
       </div>
       <div class="comparison__warranty">
-        <div class="title">{{comparison.warrantyTitle}}</div>
+        <div class="title">{{comparisonTest.warrantyTitle}}</div>
         <div class="section">
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.warranty">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of products" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.warranty | keyvalue:onCompare">
               {{text.value}}</div>
           </div>

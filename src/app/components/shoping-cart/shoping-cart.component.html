@@ -8,38 +8,39 @@
         </div>
         <div class="devider"></div>
       </div>
-      <div class="product" *ngIf="cart?.length; else noCart">
-        <div class="product__item" *ngFor="let product of cart">
-          <img class="product__preview" src="{{product.product.img}}" alt="product">
-          <div class="product__contetn">
-            <div class="product__title">{{product.product.title}}</div>
-            <div class="product__number">
-              <div class="product__quantity">{{product.quantity}}</div>
-              <div class="product__multiply">x</div>
-              <div class="product__price">{{product.product.price | currency}}</div>
+      <ng-container *ngIf="cart | async let cart">
+        <div class="product" *ngIf="cart.items.length > 0; else noCart">
+          <div class="product__item" *ngFor="let product of cart.items">
+            <img class="product__preview" src="{{product.product.img}}" alt="product">
+            <div class="product__contetn">
+              <div class="product__title">{{product.product.title}}</div>
+              <div class="product__number">
+                <div class="product__quantity">{{product.quantity}}</div>
+                <div class="product__multiply">x</div>
+                <div class="product__price">{{product.product.price | currency}}</div>
+              </div>
             </div>
+            <button class="btn close" (click)="onProductRemove(product.product)"></button>
           </div>
-          <button class="btn close" (click)="onProducRemove(product)"></button>
         </div>
-      </div>
-      <ng-template #noCart>
-        <div class="no-product">
-          Your cart is empty!
-          {{cart}}
+        <ng-template #noCart>
+          <div class="no-product">
+            Your cart is empty!
+          </div>
+        </ng-template>
+        <div class="shoping-cart__footer">
+          <div class="devider"></div>
+          <div class="total">
+            <span class="total__title">{{shoping.total}}</span>
+            <span class="total__price">{{totalPrice | currency}}</span>
+          </div>
+          <div class="nav">
+            <ng-container *ngFor="let nav of shoping.nav">
+              <button routerLink="{{nav.link}}" class="nav__btn" (click)="onShopingCartClose()">{{nav.title}}</button>
+            </ng-container>
+          </div>
         </div>
-      </ng-template>
-      <div class="shoping-cart__footer">
-        <div class="devider"></div>
-        <div class="total">
-          <span class="total__title">{{shoping.total}}</span>
-          <span class="total__price">{{totalPrice | currency}}</span>
-        </div>
-        <div class="nav">
-          <ng-container *ngFor="let nav of shoping.nav">
-            <button routerLink="{{nav.link}}" class="nav__btn" (click)="onShopingCartClose()">{{nav.title}}</button>
-          </ng-container>
-        </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
+import { ComparisonService } from 'src/app/services/comparison.service';
 
 @Component({
   selector: 'app-product-page',
@@ -9,12 +11,13 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductPageComponent implements OnInit {
   key: string;
-  product!: any;
+  product!: Product;
   quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
+    private comparisonService: ComparisonService,
   ) {
     this.key = this.route.snapshot.paramMap.get('key') as string;
     this.product = JSON.parse(localStorage.getItem('product')!);
@@ -33,5 +36,9 @@ export class ProductPageComponent implements OnInit {
 
   public addToCart() {
     this.cartService.updateCart(this.product, this.quantity);
+  }
+
+  public onProductCompare(product: Product) {
+    this.comparisonService.addToCompareList(product);
   }
 }
