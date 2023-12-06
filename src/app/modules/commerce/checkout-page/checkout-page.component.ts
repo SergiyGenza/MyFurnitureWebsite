@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { CHECKOUT } from 'src/app/common/mocks/checkout';
 import { Cart } from 'src/app/common/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -9,10 +9,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.scss']
 })
-export class CheckoutPageComponent implements OnInit {
+export class CheckoutPageComponent implements OnInit, OnDestroy {
   checkout = CHECKOUT;
   shopingCart!: Observable<Cart>;
-  totalPrice: number = 0
+  totalPrice: number = 0;
+  subscription!: Subscription;
 
   constructor(
     private cartService: CartService,
@@ -21,12 +22,16 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.calcTotalPrice()
+    this.calcTotalPrice();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   private calcTotalPrice() {
     this.totalPrice = 0;
-    this.shopingCart.subscribe(c => {
+    this.subscription = this.shopingCart.subscribe(c => {
       c.items.map(p => {
         return this.totalPrice += p.product.price * p.quantity;
       })

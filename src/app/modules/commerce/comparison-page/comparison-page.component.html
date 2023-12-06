@@ -34,7 +34,7 @@
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.general">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of productsTest" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.general | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
@@ -46,7 +46,7 @@
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.product">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of productsTest" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.product | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
@@ -58,7 +58,7 @@
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.dimensions">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of productsTest" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.dimensions | keyvalue:onCompare">
               {{text.value}}</div>
           </div>
@@ -70,7 +70,7 @@
           <div class="position">
             <div class="position__title" *ngFor="let position of positionTitles?.warranty">{{position}}</div>
           </div>
-          <div class="product" *ngFor="let p of productsTest" id="{{p.code}}">
+          <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
             <div class="product__desctription" *ngFor="let text of p.productDetails.warranty | keyvalue:onCompare">
               {{text.value}}</div>
           </div>

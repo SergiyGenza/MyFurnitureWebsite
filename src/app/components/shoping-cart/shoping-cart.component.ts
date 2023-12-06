@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Input, Output, EventEmitter, Inject, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SHOPING_CART } from 'src/app/common/mocks/shoping-cart';
 import { Cart } from 'src/app/common/models/cart.model';
 import { Product } from 'src/app/common/models/product.model';
@@ -12,11 +12,12 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./shoping-cart.component.scss']
 })
 export class ShopingCartComponent implements OnInit {
-  shoping = SHOPING_CART;
   @Input() isOpen: boolean = false;
   @Output() isClose = new EventEmitter<boolean>();
+  shoping = SHOPING_CART;
   cart: Observable<Cart>;
   totalPrice: number = 0;
+  subscription!: Subscription;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -27,6 +28,10 @@ export class ShopingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.calcTotalPrice();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public onShopingCartClose(): void {
@@ -42,7 +47,7 @@ export class ShopingCartComponent implements OnInit {
 
   private calcTotalPrice() {
     this.totalPrice = 0;
-    this.cart.subscribe(c => {
+    this.subscription = this.cart.subscribe(c => {
       c.items.map(p => {
         return this.totalPrice += p.product.price * p.quantity;
       })

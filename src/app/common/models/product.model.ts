@@ -1,4 +1,5 @@
 export interface Product {
+  productDetails: any;
   key?: string;
   img: string;
   code: string;
