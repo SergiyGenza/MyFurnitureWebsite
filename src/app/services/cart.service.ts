@@ -9,7 +9,7 @@ import { Product } from '../common/models/product.model';
 })
 export class CartService {
   private cart: Cart = this.getCartFromLocalStorage();
-  private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
+  public cartSubject$: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
   constructor() { }
 
@@ -54,11 +54,11 @@ export class CartService {
   }
 
   public getCartObservable(): Observable<Cart> {
-    return this.cartSubject.asObservable();
+    return this.cartSubject$.asObservable();
   }
 
   public getCart() {
-    return this.cartSubject.value;
+    return this.cartSubject$.value;
   }
 
   private setCartToLocalStorage(item: Cart) {

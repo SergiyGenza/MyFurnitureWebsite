@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
+import { ComparisonService } from 'src/app/services/comparison.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,6 +16,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private comparisonService: ComparisonService,
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +27,12 @@ export class ProductCardComponent implements OnInit {
     localStorage.setItem('product', JSON.stringify(this.product));
   }
 
-  public addToCart(product: any) {
+  public onCartAdding(product: Product) {
     this.cartService.updateCart(product);
+  }
+
+  public onProductCompare(product: Product) {
+    this.comparisonService.addToCompareList(product);
   }
 
   private setQuarryKey() {
