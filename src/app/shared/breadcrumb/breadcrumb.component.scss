@@ -1,7 +1,25 @@
-.breadcrumbs {
+.breadcrumb {
   height: 10rem;
   background-image: url(../../../assets/images/breadcrums-bg.png);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  &__header {
+    color: #3a3a3a;
+    font-size: 48px;
+    line-height: 120%;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  &__items {
+    font-size: 16px;
+    font-size: 500;
+  }
 }
+
+
+// li:first-child {
+
+// }

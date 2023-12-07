@@ -36,13 +36,28 @@ export class BreadcrumbService {
       const routeUrl = parentUrl.concat(route.url.map(url => url.path));
 
       // Add an element for the current route part
-      if (route.data['breadcrumb']) {
-        const breadcrumb = {
+      if (route.params['key']) {
+        console.log(route);
+        let breadcrumb = {
           label: this.getLabel(route.data),
-          url: '/' + routeUrl.join('/')
-        };
-        breadcrumbs.push(breadcrumb);
+          url: '/' + routeUrl.join('/'),
+        }
+        // breadcrumbs.push(second);
+        let product = {
+          label: route.params['key'],
+          url: '/' + routeUrl.join('/'),
+        }
+        breadcrumbs.push(breadcrumb, product);
       }
+      else
+        if (route.data['breadcrumb']) {
+          console.log(route);
+          let breadcrumb = {
+            label: this.getLabel(route.data),
+            url: '/' + routeUrl.join('/')
+          };
+          breadcrumbs.push(breadcrumb);
+        }
 
       // Add another element for the next route part
       this.addBreadcrumb(route.firstChild, routeUrl, breadcrumbs);

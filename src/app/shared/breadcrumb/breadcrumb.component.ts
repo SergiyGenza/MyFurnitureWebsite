@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Breadcrumb } from 'src/app/common/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
@@ -9,6 +9,7 @@ import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
   styleUrls: ['./breadcrumb.component.scss']
 })
 export class BreadcrumbComponent implements OnInit {
+  @Input()
 
   breadcrumbs$: Observable<Breadcrumb[]>;
 
@@ -17,15 +18,6 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.breadcrumbs$
-    // .pipe(
-    //   map((breadcrumbs) => {
-    //     return breadcrumbs.filter
-    //   })
-    // )
-    .subscribe(
-      // i => console.log(i)
-
-    )
+    this.breadcrumbs$.subscribe()
   }
 }
