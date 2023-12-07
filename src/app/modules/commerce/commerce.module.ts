@@ -6,8 +6,9 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { ComparisonPageComponent } from './comparison-page/comparison-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductDescriptionItemComponent } from './product-description-item/product-description-item.component';
-import { ComparisonToolComponent } from 'src/app/common/modules/commerce/comparison-tool/comparison-tool.component';
+import { ComparisonToolComponent } from 'src/app/modules/commerce/comparison-tool/comparison-tool.component';
 import { FormsModule } from '@angular/forms';
+import { ComparisonHeadComponent } from './comparison-head/comparison-head.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     CheckoutPageComponent,
     ProductDescriptionItemComponent,
     ComparisonToolComponent,
+    ComparisonHeadComponent,
   ],
   imports: [
     CommonModule,

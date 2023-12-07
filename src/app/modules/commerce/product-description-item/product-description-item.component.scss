@@ -1,0 +1,27 @@
+.section {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.position {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 25px;
+}
+
+.product {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 25px;
+}
+
+.title {
+  text-transform: capitalize;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 126.5%;
+  margin-bottom: 45px;
+  grid-area: 1/1/1/1;
+}

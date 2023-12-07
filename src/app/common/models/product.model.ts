@@ -1,5 +1,5 @@
 export interface Product {
-  productDetails: any;
+  productDetails: SofaDetails;
   key?: string;
   img: string;
   code: string;
