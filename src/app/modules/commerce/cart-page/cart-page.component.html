@@ -1,66 +1,40 @@
 <div class="container-lg">
   <app-breadcrumb></app-breadcrumb>
-  <div class="cart">
-    <div class="cart__header">
-      <div class=""></div>
-      <div class="cart__title">
-        Product
+  <ng-container *ngIf="shopingCart$ | async; let shopingCart">
+    <table *ngIf="shopingCart.items.length > 0; else noCart">
+      <tr>
+        <th>Preview</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Operations</th>
+      </tr>
+      <tr *ngFor="let item of shopingCart.items">
+        <td><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
+        <td>{{item.product.title}}</td>
+        <td>{{item.product.price | currency}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.quantity * item.product.price | currency}}</td>
+        <td>
+          <img (click)="onProductRemove(item.product)" class="remove-btn"
+            src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{totalPrice | currency}}</td>
+        <td><button class="btn-primary">Checkout</button></td>
+      </tr>
+    </table>
+    <ng-template #noCart>
+      <div class="">
+        <div class="">No products!</div>
+        <a href="shop">Go to the Shop</a>
       </div>
-      <div class="cart__title">
-        Price
-      </div>
-      <div class="cart__title">
-        Quantity
-      </div>
-      <div class="cart__title">
-        Subtotal
-      </div>
-      <div class=""></div>
-    </div>
-    <div class="cart__product">
-      <div class="product">
-        <img class="product__preview" src="../../../../assets/images/products/01.png" alt="">
-        <div class="product__title">
-          {{products[0].title}}
-        </div>
-        <div class="product__price">
-          {{products[0].price}}
-        </div>
-        <div class="product__quantity">
-          1
-        </div>
-        <div class="product__subtotal">
-          $1500
-        </div>
-        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="">
-      </div>
-      <div class="product">
-        <img class="product__preview" src="../../../../assets/images/products/01.png" alt="">
-        <div class="product__title">
-          {{products[0].title}}
-        </div>
-        <div class="product__price">
-          {{products[0].price}}
-        </div>
-        <div class="product__quantity">
-          1
-        </div>
-        <div class="product__subtotal">
-          $1500
-        </div>
-        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="">
-      </div>
-    </div>
-    <div class="devider"></div>
-    <div class="cart__bottom">
-      <div class=""></div>
-      <div class=""></div>
-      <div class=""></div>
-      <div class=""></div>
-      <div class="total-prise">
-        $3000
-      </div>
-      <button class="btn-primary">Check Out</button>
-    </div>
-  </div>
+    </ng-template>
+  </ng-container>
 </div>

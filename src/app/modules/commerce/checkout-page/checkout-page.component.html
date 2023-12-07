@@ -45,9 +45,9 @@
             <div class="product__number">
               <div class="product__quantity">{{item.quantity}}</div>
               <div class="product__multiply">x</div>
-              <div class="product__price">{{item.product.price}}</div>
+              <div class="product__price">{{item.product.price | currency}}</div>
             </div>
-            <div class="product-total-price">{{item.quantity * item.product.price}}</div>
+            <div class="product-total-price">{{item.quantity * item.product.price | currency}}</div>
           </div>
         </div>
         <div class="devider"></div>

@@ -76,11 +76,13 @@
     justify-content: space-between;
     width: 130px;
     border-radius: 15px;
-    padding: 0px 7px;
+    padding: 0px 12px;
     border: 1px solid $link-color;
+    height: 4rem;
   }
   .btn-group {
     display: flex;
+    align-items: center;
     gap: 24px;
     font-weight: 400;
     font-size: 16px;
@@ -90,9 +92,11 @@
     .quantity-add {
     }
     .add-to-cart {
+      max-width: 215px;
       font-size: 20px;
     }
     .compare {
+      max-width: 215px;
       font-size: 20px;
     }
   }
