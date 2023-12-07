@@ -1,0 +1,21 @@
+<div class="table__head section">
+  <div class="table__wrapper">
+    <div class="table__title">{{comparisonTest.tableHead}}</div>
+    <button class="btn-view-more">
+      <a href="shop">{{comparisonTest.btnTitle}}</a>
+    </button>
+    <div class="comparison-tool">
+      <button class="comparison-tool__btn" (click)="onCompareToolOpen()">
+        Choose a Product
+        <img class="arrow-icon" src="{{comparisonTest.arrowIcon}}" alt="arrow icon">
+      </button>
+      <app-comparison-tool class="comparison-tool__list" *ngIf="isOpen"></app-comparison-tool>
+    </div>
+  </div>
+  <div class="product" *ngFor="let p of products">
+    <img class="product__preview" src="{{p.img}}" alt="alt">
+    <div class="product__title">{{p.title}}</div>
+    <div class="product__code">code: {{p.code}}</div>
+    <div class="product__price">price: {{p.price | currency}}</div>
+  </div>
+</div>

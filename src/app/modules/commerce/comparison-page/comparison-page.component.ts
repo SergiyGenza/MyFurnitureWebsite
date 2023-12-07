@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { COMPARISON, SOFAINFO, BEDINFO, CHARINFO, KiTCHENINFO } from 'src/app/common/mocks/comparison';
-import { PRODUCTS } from 'src/app/common/mocks/products';
 import { KeyValue } from '@angular/common';
 import { PositionTitle } from 'src/app/common/models/positionTitle';
 import { ComparisonService } from 'src/app/services/comparison.service';
@@ -14,8 +13,6 @@ import { Comparison } from 'src/app/common/models/comparison.model';
 })
 export class ComparisonPageComponent implements OnInit {
   products$!: Observable<Comparison>;
-
-  productsTest = PRODUCTS;
   comparisonTest = COMPARISON;
   positionTitles: PositionTitle | undefined;
   isOpen: boolean = true;
