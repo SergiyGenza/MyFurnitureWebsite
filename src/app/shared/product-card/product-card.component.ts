@@ -36,6 +36,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   private setQuarryKey() {
-    this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase() + '-' + this.product.code;
+    this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase();
   }
 }

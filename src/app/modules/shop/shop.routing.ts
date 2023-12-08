@@ -13,9 +13,8 @@ const routes: Routes = [
   {
     path: 'shop/:key',
     component: ProductPageComponent,
-    data: { breadcrumb: 'productName' }
+    data: { breadcrumb: 'shop' }
   },
-
 ];
 
 @NgModule({
