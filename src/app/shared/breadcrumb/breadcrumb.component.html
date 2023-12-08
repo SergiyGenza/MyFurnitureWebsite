@@ -1,14 +1,14 @@
-<div class="breadcrumb" *ngIf="breadcrumbs$ | async; let breadcrumb">
-  <div class="breadcrumb__header" *ngFor="let item of breadcrumb; index as i">
-    <span *ngIf="i == breadcrumb.length - 1">{{item.label}}</span>
-  </div>
+<div class="breadcrumb" [ngClass]="{'breadcrumb-min': min}" *ngIf="breadcrumbs$ | async; let breadcrumb">
+  <ng-template [ngIf]="!min">
+    <div class="breadcrumb__header" *ngFor="let item of breadcrumb; index as i">
+      <span *ngIf="i == breadcrumb.length - 1">{{item.label}}</span>
+    </div>
+  </ng-template>
 
-  <div class="breadcumbs__items">
+  <div class="breadcumbs__items" [ngClass]="{'breadcrumb__items-min': min}">
     <ng-container *ngFor="let item of breadcrumb; index as i">
-      <span>
-        <a [href]="item.url">{{ item.label }}</a>
-      </span>
-      <span [hidden]="i == breadcrumb.length - 1"> > </span>
+      <a [href]="item.url">{{ item.label }}</a>
+      <span *ngIf="i != breadcrumb.length - 1"> > </span>
     </ng-container>
   </div>
 </div>

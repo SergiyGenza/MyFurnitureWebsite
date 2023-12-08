@@ -37,12 +37,10 @@ export class BreadcrumbService {
 
       // Add an element for the current route part
       if (route.params['key']) {
-        console.log(route);
         let breadcrumb = {
           label: this.getLabel(route.data),
-          url: '/' + routeUrl.join('/'),
+          url: this.getLabel(route.data),
         }
-        // breadcrumbs.push(second);
         let product = {
           label: route.params['key'],
           url: '/' + routeUrl.join('/'),

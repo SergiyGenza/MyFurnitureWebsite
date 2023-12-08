@@ -5,21 +5,34 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-transform: capitalize;
 
   &__header {
     color: #3a3a3a;
     font-size: 48px;
     line-height: 120%;
     font-weight: 500;
-    text-transform: capitalize;
   }
+
   &__items {
     font-size: 16px;
     font-size: 500;
   }
+
+  &__items-min {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+
+    a:last-child {
+      font-weight: 600;
+    }
+  }
 }
 
-
-// li:first-child {
-
-// }
+.breadcrumb-min {
+  align-items: flex-start;
+  height: 100px;
+  background: #F9F1E7;
+  padding-left: 100px;
+}

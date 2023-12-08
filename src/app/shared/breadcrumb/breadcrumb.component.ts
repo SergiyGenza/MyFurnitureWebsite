@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription, map } from 'rxjs';
 import { Breadcrumb } from 'src/app/common/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
 
@@ -8,9 +8,9 @@ import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss']
 })
-export class BreadcrumbComponent implements OnInit {
-  @Input()
-
+export class BreadcrumbComponent implements OnInit, OnDestroy {
+  @Input() min = false;
+  subscription!: Subscription;
   breadcrumbs$: Observable<Breadcrumb[]>;
 
   constructor(private readonly breadcrumbService: BreadcrumbService) {
@@ -18,6 +18,10 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.breadcrumbs$.subscribe()
+    this.subscription = this.breadcrumbs$.subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
