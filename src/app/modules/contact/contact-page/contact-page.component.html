@@ -5,14 +5,6 @@
       <h2 class="contact__title">{{contact.title}}</h2>
       <p class="contact__text">{{contact.text}}</p>
     </div>
-    <!-- <div class="content"> -->
-    <!-- <div class="info">
-        <div class="info__item" *ngFor="let info of contact.info">
-          <img class="info__icon" src="{{info.icon}}" alt="icon">
-          <h3 class="info__title">{{info.title}}</h3>
-          <p class="info__text">{{info.text}}</p>
-        </div>
-      </div> -->
     <form class="form" action="">
       <div class="form__item">
         <label class="label" for="userName">{{contact.form.name}}</label>
@@ -34,7 +26,6 @@
         <button type="submit">{{contact.form.btnTitle}}</button>
       </div>
     </form>
-    <!-- </div> -->
   </div>
   <div class="info">
     <div class="info__item" *ngFor="let info of contact.info">
