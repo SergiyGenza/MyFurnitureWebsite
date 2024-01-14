@@ -1,67 +1,67 @@
 <div class="container-lg">
   <app-breadcrumb></app-breadcrumb>
-  <div class="checkout">
-    <div class="checkout__title">
-      {{checkout.title}}
-    </div>
-    <div class="content">
-      <form action="" class="form">
-        <div class="user">
-          <div class="user__first-name">
-            <label for="first">{{checkout.firstName}}</label>
-            <input type="text" name="first name">
-          </div>
-          <div class="user__last-name">
-            <label for="last">{{checkout.lastName}}</label>
-            <input type="text" name="last">
-          </div>
-        </div>
-        <div class="email">
-          <label for="email">{{checkout.email}}</label>
-          <input type="email">
-        </div>
-        <div class="phone">
-          <label for="phone">{{checkout.phone}}</label>
-          <input type="tel">
-        </div>
-        <div class="company">
-          <label for="company">{{checkout.companyName}}</label>
-          <input type="text">
-        </div>
-      </form>
-      <div class="shoping-cart">
-        <div class="shoping-cart__header">
-          <div class="title">
-            Product
-          </div>
-          <div class="total">
-            Subtotal
-          </div>
-        </div>
-        <div class="devider"></div>
-        <div class="products" *ngIf="shopingCart | async; let shoping">
-          <div class="product" *ngFor="let item of shoping.items">
-            <div class="product__title">{{item.product.title}}</div>
-            <div class="product__number">
-              <div class="product__quantity">{{item.quantity}}</div>
-              <div class="product__multiply">x</div>
-              <div class="product__price">{{item.product.price | currency}}</div>
-            </div>
-            <div class="product-total-price">{{item.quantity * item.product.price | currency}}</div>
-          </div>
-        </div>
-        <div class="devider"></div>
-        <div class="total-price">
-          <div class="title">
-            Total
-          </div>
-          <div class="total">
-            {{totalPrice | currency}}
-          </div>
-        </div>
-        <button class="btn-primary">Place order</button>
+  <div class="content">
+    <form action="" class="form">
+      <div class="form__title">
+        {{checkout.title}}
       </div>
+      <div class="user">
+        <div class="user__first-name">
+          <label for="first">{{checkout.firstName}}</label>
+          <input type="text" name="first name">
+        </div>
+        <div class="user__last-name">
+          <label for="last">{{checkout.lastName}}</label>
+          <input type="text" name="last">
+        </div>
+      </div>
+      <div class="email">
+        <label for="email">{{checkout.email}}</label>
+        <input type="email">
+      </div>
+      <div class="phone">
+        <label for="phone">{{checkout.phone}}</label>
+        <input type="tel">
+      </div>
+      <div class="company">
+        <label for="company">{{checkout.companyName}}</label>
+        <input type="text">
+      </div>
+    </form>
+    <div class="shoping-cart">
+      <div class="shoping-cart__header">
+        <div class="title">
+          Product
+        </div>
+        <div class="quantity">
+          Quantity
+        </div>
+        <div class="total">
+          Subtotal
+        </div>
+      </div>
+      <div class="products" *ngIf="shopingCart | async; let shoping">
+        <div class="devider"></div>
+        <div class="product" *ngFor="let item of shoping.items">
+          <div class="product__title">{{item.product.title}}</div>
+          <div class="product__number">
+            <div class="product__quantity">{{item.quantity}}</div>
+            <div class="product__multiply">x</div>
+            <div class="product__price">{{item.product.price | currency}}</div>
+          </div>
+          <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
+        </div>
+        <div class="devider"></div>
+      </div>
+      <div class="total-price">
+        <div class="title">
+          Total
+        </div>
+        <div class="total">
+          {{totalPrice | currency}}
+        </div>
+      </div>
+      <button class="btn-primary">Place order</button>
     </div>
   </div>
-
 </div>
