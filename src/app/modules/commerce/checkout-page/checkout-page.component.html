@@ -45,9 +45,9 @@
         <div class="product" *ngFor="let item of shoping.items">
           <div class="product__title">{{item.product.title}}</div>
           <div class="product__number">
-            <div class="product__quantity">{{item.quantity}}</div>
             <div class="product__multiply">x</div>
-            <div class="product__price">{{item.product.price | currency}}</div>
+            <div class="product__quantity">{{item.quantity}}</div>
+            <!-- <div class="product__price">{{item.product.price | currency}}</div> -->
           </div>
           <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
         </div>
@@ -64,4 +64,5 @@
       <button class="btn-primary">Place order</button>
     </div>
   </div>
+  <app-benefits></app-benefits>
 </div>

@@ -28,7 +28,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 140px;
-  margin-top: 100px;
+  margin: 100px 0;
 }
 
 .shoping-cart {
@@ -86,8 +86,8 @@
 
     &__number {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: center;
+      gap: 6px;
     }
 
     &__quantity {}
