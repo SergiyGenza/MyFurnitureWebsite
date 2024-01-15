@@ -24,36 +24,41 @@
   text-align: start;
 
   &__head {
-    @include p-semiBold;
+    font-family: $font-fira;
     font-size: 16px;
     letter-spacing: 3px;
-    margin-bottom: 4px;
+    margin-bottom: 16px;
   }
+
   &__title {
     color: $primary;
-    @include p-bold;
-    font-size: 52px;
-    line-height: 65px; /* 125% */
+    font-family: $font-hind;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 52px;
+    /* 125% */
     margin-bottom: 17px;
-    margin-bottom: 46;
   }
-  &__contetn {
-    @include p-medium;
-    font-size: 18px;
-    line-height: 24px; /* 133.333% */
+
+  &__text {
+    font-family: $font-fira;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    /* 133.333% */
     max-width: 546px;
     margin-bottom: 46px;
   }
 
-  &__btn {
-  }
+  &__btn {}
 
   .btn-primary {
-    padding: 25px 72px;
+    padding: 20px 60px;
     background-color: $primary;
     color: $white;
-    @include p-bold;
-    font-size: 16px;
+    font-family: $font-hind;
+    font-weight: 700;
+    font-size: 26px;
     line-height: normal;
     text-transform: uppercase;
   }
