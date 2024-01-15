@@ -8,29 +8,27 @@
           <div class="product__title">
             {{product.title}}
           </div>
-          <div class="prodict__code">
+          <div class="product__code">
             Product code: {{product.code}}
+          </div>
+        </div>
+        <p class="product__description">
+          {{product.description}}
+        </p>
+        <div class="product__rate-group">
+          <div class="product__rate">
+            <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+            <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+            <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+            <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+          </div>
+          <div class="devider-vertical"></div>
+          <div class="product__review">
+            5 Customer Review
           </div>
         </div>
         <div class="product__price">
           {{product.price | currency}}
-        </div>
-        <!-- <div class="product__rate">
-          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
-          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
-          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
-          <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
-        </div> -->
-        <p class="product__description">
-          {{product.description}}
-        </p>
-        <div class="product__size">
-          <div class="title">Size:</div>
-          <!-- <div class="product__size__list">
-            <div class="product__size__item" *ngFor="let i of product.sizes">
-              {{i.s}}
-            </div>
-          </div> -->
         </div>
         <div class="product__color">
           <div class="title">Color:</div>
@@ -39,16 +37,75 @@
           </div>
         </div>
         <div class="btn-group">
-          <div class="product__quantity">
-            <button class="quantity__reduse" (click)="decrease()">-</button>
-            <p class="quantity__number"> {{quantity}}</p>
-            <button class="quantity__add" (click)="increase()">+</button>
+          <div class="btn-group__united">
+            <div class="">
+              <button class="btn-add-to-cart" (click)="addToCart()">Add to Cart</button>
+            </div>
+            <div class="devider-vertical"></div>
+            <div class="btn-quantity">
+              <button class="quantity__reduse" (click)="decrease()">-</button>
+              <p class="quantity__number">{{quantity}}</p>
+              <button class="quantity__add" (click)="increase()">+</button>
+            </div>
           </div>
           <div class="">
-            <button class="btn add-to-cart" (click)="addToCart()">Add to Cart</button>
+            <button class="btn-compare" (click)="onProductCompare(product)">Compare</button>
           </div>
           <div class="">
-            <button class="btn compare " (click)="onProductCompare(product)">Compare</button>
+            <img src="../../../../assets/images/icons/add-favourite-icon.svg" alt="add favourite">
+          </div>
+          <!-- <div class="">
+            <img src="../../../../assets/images/icons/favourite-on-icon.svg" alt="add favourite">
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-container">
+      <div class="index">
+        <div tabindex="0" role="tab" (click)="tab=1" (keyup.enter)="tab=1" [ngClass]="{active: tab===1}">
+          Description
+        </div>
+        <div tabindex="0" role="tab" (click)="tab=2" (keyup.enter)="tab=2" [ngClass]="{active: tab===2}">
+          Additional
+          Information</div>
+        <div tabindex="0" role="tab" (click)="tab=3" (keyup.enter)="tab=3" [ngClass]="{active: tab===3}">
+          Reviews [5]
+        </div>
+      </div>
+      <div class="contents">
+        <div class="tab" *ngIf="tab === 1">
+          Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar
+          as one of
+          the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio
+          which boasts
+          a clear midrange and extended highs for a sound that is both articulate and pronounced. The analogue knobs
+          allow you to
+          fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and
+          stylish
+          travel.
+        </div>
+        <div class="tab" *ngIf="tab === 2">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates cumque, minus
+          voluptatibus eius numquam rerum rem consequatur magnam aliquid quas iusto expedita dicta et, vel mollitia
+          eligendi ex, culpa earum?
+        </div>
+        <div class="tab-review" *ngIf="tab === 3">
+          <div class="review-block">
+            <div class="title">
+              Штанопупка Батьківна
+            </div>
+            <div class="product__rate">
+              <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+              <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+              <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+              <img src="../../../../assets/images/icons/rate-icon.svg" alt="rate">
+            </div>
+            <div class="comment">
+              Файні крісла, срака не болить , рекомендую всім хто хоче і не хоче, то захочіть бо крісла топ купуйте
+              обов’язково,
+              крісло в кожну хату!!!!!!!!!!!!!
+            </div>
           </div>
         </div>
       </div>

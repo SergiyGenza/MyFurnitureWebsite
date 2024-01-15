@@ -17,34 +17,59 @@
     align-self: center;
     width: 400px;
   }
+
   &__contetn {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 20px;
   }
+
   &__head {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   &__title {
-    font-size: 42px;
+    font-family: $font-hind;
+    font-size: 40px;
+    font-weight: 600;
   }
+
   &__code {
+    color: #9F9F9F;
+    font-family: $font-rubik;
+    font-size: 16px;
+    font-weight: 400;
   }
-  &__rate {
+
+  &__rate-group {
+    display: flex;
+    align-items: center;
   }
+
+  &__rate {}
+
+  &__review {
+    color: #9F9F9F;
+  }
+
   &__description {
-    font-size: 13px;
     max-width: 424px;
+    font-family: $font-fira;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
   }
+
   &__size {
-    &__title {
-    }
+    &__title {}
+
     &__list {
       display: flex;
       gap: 24px;
     }
+
     &__item {
       font-size: 13px;
       border-radius: 5px;
@@ -55,60 +80,58 @@
       text-align: center;
     }
   }
+
   &__color {
     &__list {
       display: flex;
       gap: 24px;
     }
+
     &__item {
       width: 30px;
       height: 30px;
       border-radius: 50%;
     }
   }
+
   &__price {
     font-size: 24px;
     font-weight: 500;
   }
+
   &__quantity {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 130px;
-    border-radius: 15px;
-    padding: 0px 12px;
-    border: 1px solid $link-color;
-    height: 4rem;
   }
+
   .btn-group {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 24px;
     font-weight: 400;
     font-size: 16px;
 
-    .quantity-reduse {
-    }
-    .quantity-add {
-    }
-    .add-to-cart {
-      max-width: 215px;
-      font-size: 20px;
-    }
-    .compare {
-      max-width: 215px;
-      font-size: 20px;
+    &__united {
+      display: flex;
+      align-items: center;
+      border-radius: 15px;
+      border: 1px solid #9F9F9F;
+      padding: 10px 22px;
     }
   }
 }
 
 .quantity {
+
   &__reduse,
   &__add {
     color: $link-color;
     font-size: 20px;
     font-weight: 400;
   }
+
   &__number {
     color: $link-color;
     font-size: 24px;
@@ -123,7 +146,111 @@
 }
 
 .btn {
-  border-radius: 15px;
-  border: 1px solid $link-color;
   padding: 17px 40px;
+}
+
+.btn-add-to-cart,
+.btn-compare {
+  color: #000;
+  font-family: $font-fira;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.btn-compare {
+  border-radius: 15px;
+  border: 1px solid #9F9F9F;
+  padding: 10px 22px;
+  width: 172px;
+  height: 64px;
+}
+
+.btn-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+
+  &__reduse {
+    flex-shrink: 1;
+  }
+
+  &__number {
+    flex-shrink: 0;
+  }
+
+  &__add {
+    flex-shrink: 1;
+  }
+}
+
+.devider-vertical {
+  margin: 0 20px;
+}
+
+.tabs-container {
+  margin-top: 100px;
+
+  .index {
+    display: flex;
+    justify-content: center;
+    gap: 94px;
+    color: #9F9F9F;
+    margin-bottom: 32px;
+
+    color: var(--, #9F9F9F);
+    font-family: Fira Sans Condensed;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+
+    .active {
+      color: #000000;
+      transition: 0.3s;
+    }
+  }
+
+  .tab,
+  .tab-review {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeEffect {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+}
+
+.tab-review {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+.review-block {
+  max-width: 374px;
+  background-color: #FCF8F3;
+  padding: 24px;
 }

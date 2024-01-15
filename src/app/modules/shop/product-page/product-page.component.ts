@@ -13,6 +13,7 @@ export class ProductPageComponent implements OnInit {
   key: string;
   product!: Product;
   quantity: number = 1;
+  tab = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   public increase() {
+    if (this.quantity == 99) return
     return this.quantity = this.quantity + 1;
   }
 
