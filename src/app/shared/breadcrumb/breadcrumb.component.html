@@ -7,7 +7,7 @@
 
   <div class="breadcumbs__items" [ngClass]="{'breadcrumb__items-min': min}">
     <ng-container *ngFor="let item of breadcrumb; index as i">
-      <a [href]="item.url">{{ item.label }}</a>
+      <a [routerLink]="item.url">{{ item.label }}</a>
       <span *ngIf="i != breadcrumb.length - 1"> > </span>
     </ng-container>
   </div>

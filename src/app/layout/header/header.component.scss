@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 29px 100px 30px 54px;
+  padding: 30px 100px 30px 54px;
   color: $link-color;
 
   &__logo {
@@ -13,30 +13,41 @@
     align-items: center;
     cursor: pointer;
   }
+
   &__logo__img {
     width: 50px;
     height: 32px;
     margin-right: 5px;
   }
+
   &__title {
     @include Montserrat-Bold;
     font-size: 34px;
   }
+
   .nav {
     &__list {
       display: flex;
       gap: 74px;
     }
+
     &__item {
-      font-size: 16px;
-      @include p-medium;
+      font-family: $font-hind;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .active {
+      font-weight: 600;
     }
   }
+
   .btn {
     &__group {
       display: flex;
       gap: 45px;
     }
+
     &__item {
       .icon {
         width: 28px;

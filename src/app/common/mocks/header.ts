@@ -19,6 +19,7 @@ export const HEADER_CONTENT = {
       link: 'contact'
     }
   ],
+  searchIcon: '../../../assets/images/icons/search-icon.svg',
   likeIcon: '../../../assets/images/icons/favoutite-header-icon.svg',
   shopingIcon: '../../../assets/images/icons/shopping.svg',
 
