@@ -1,19 +1,22 @@
 <header class="container-lg">
   <div class="header">
-    <a href="" class="header__logo">
+    <a routerLink="home" class="header__logo">
       <img class="header__logo__img" src="{{header.logo}}" alt="logo">
       <p class="header__title">{{header.title}}</p>
     </a>
     <nav class="nav">
       <ul class="nav__list">
         <li *ngFor="let nav of header.nav">
-          <a class="nav__item" href="{{nav.link}}">
+          <a class="nav__item" routerLinkActive="active" routerLink="{{nav.link}}">
             {{nav.title}}
           </a>
         </li>
       </ul>
     </nav>
     <ul class="btn__group">
+      <li class="btn__item">
+        <img class="icon" src="{{header.searchIcon}}" alt="icon">
+      </li>
       <li class="btn__item">
         <img class="icon" src="{{header.likeIcon}}" alt="icon">
       </li>

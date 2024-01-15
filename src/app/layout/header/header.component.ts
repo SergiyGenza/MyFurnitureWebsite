@@ -18,7 +18,7 @@ export class HeaderComponent {
     return this.isOpen = !this.isOpen;
   }
 
-  onClose(isClose: boolean) {
-    this.isOpen = isClose;
+  onClose(isOpen: boolean) {
+    this.isOpen = isOpen;
   }
 }

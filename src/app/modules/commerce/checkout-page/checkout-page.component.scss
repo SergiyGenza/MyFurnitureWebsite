@@ -1,113 +1,166 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
-.checkout {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 36px;
+.form {
+  font-family: $font-fira;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  label {
+    margin-bottom: 12px;
+  }
+
   &__title {
     color: $link-color;
-    font-size: 36px;
+    font-size: 32px;
+    font-family: $font-hind;
     font-weight: 600;
+    margin-bottom: 36px;
+    font-style: normal;
+    line-height: normal;
   }
 }
+
 .content {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  gap: 150px;
+  gap: 140px;
+  margin: 100px 0;
 }
-.form {
-}
+
 .shoping-cart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 566px;
+  display: grid;
   gap: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px max-content 50px;
+  grid-template-areas:
+    "header header header"
+    "product product product"
+    "total total total"
+    "submit submit submit";
 
   &__header {
     display: flex;
+    grid-area: header;
     width: 100%;
     justify-content: space-between;
     color: $link-color;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 32px;
+    font-weight: 600;
   }
-  .title {
-  }
-  .total {
-  }
+
+
+  .title {}
+
+  .total {}
 
   .products {
     display: flex;
     flex-direction: column;
+    grid-area: product;
     gap: 50px;
+    width: 100%;
   }
 
   .product {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    align-items: center;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
-    &__contetn {
-    }
+    font-family: $font-fira;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    &__contetn {}
+
     &__title {
       width: 150px;
     }
+
     &__number {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: center;
+      gap: 6px;
     }
-    &__quantity {
+
+    &__quantity {}
+
+    &__multiply {}
+
+    &__price {}
+
+    &_total-price {
+      justify-self: self-end;
     }
-    &__multiply {
-    }
-    &__price {
-    }
-    .product-total-price {
-    }
-  }
-  .total-price {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 20px;
-    font-weight: 500;
-    .title {
-    }
-    .total {
-    }
-  }
-  .btn-primary {
-    width: max-content;
-    font-size: 24px;
-    font-weight: 400;
-    padding: 16px 50px;
-    border-radius: 10px;
-    width: 100%;
   }
 }
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: total;
+  width: 100%;
+  font-size: 24px;
+  font-family: $font-fira;
+
+  .title {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .total {
+    color: #B88E2F;
+    font-weight: 600;
+    font-family: $font-hind;
+    ;
+  }
+}
+
+.btn-primary {
+  width: max-content;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 16px 50px;
+  border-radius: 10px;
+  width: 100%;
+  grid-area: submit;
+  height: 64px;
+}
+
 .user {
   display: flex;
   gap: 32px;
+
   &__first-name {
     display: flex;
     flex-direction: column;
   }
+
   &__last-name {
     display: flex;
     flex-direction: column;
   }
 }
+
 .email {
   display: flex;
   flex-direction: column;
 }
+
 .phone {
   display: flex;
   flex-direction: column;
 }
+
 .company {
   display: flex;
   flex-direction: column;
@@ -120,11 +173,4 @@ input {
   height: 75px;
   margin-bottom: 36px;
   padding: 0px 10px;
-}
-
-label {
-  color: $link-color;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 24px;
 }

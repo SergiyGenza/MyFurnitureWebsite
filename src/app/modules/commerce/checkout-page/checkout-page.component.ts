@@ -16,7 +16,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
 
   constructor(
-    private cartService: CartService,
+    cartService: CartService,
   ) {
     this.shopingCart = cartService.cartSubject$;
   }

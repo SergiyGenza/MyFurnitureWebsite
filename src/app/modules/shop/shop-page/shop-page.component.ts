@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BENEFITS } from 'src/app/common/mocks/benefits';
 import { SHOP } from 'src/app/common/mocks/shop';
 import { SofaService } from 'src/app/common/services/sofa/sofa.service';
 
@@ -10,7 +9,6 @@ import { SofaService } from 'src/app/common/services/sofa/sofa.service';
 })
 export class ShopPageComponent implements OnInit {
   shop = SHOP;
-  benefits = BENEFITS;
   products = this.sofaService.getAllProducts();
   showSpinner: boolean = true;
 

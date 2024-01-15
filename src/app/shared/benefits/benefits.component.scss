@@ -6,10 +6,9 @@
   padding: 100px 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-  column-gap: 55px;
+  gap: 55px;
   &__item {
     display: grid;
-    max-width: 337px;
     column-gap: 5px;
   }
   &__icon {

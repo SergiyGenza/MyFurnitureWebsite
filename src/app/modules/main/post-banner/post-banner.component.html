@@ -1,0 +1,12 @@
+<div class="post__container">
+  <div class="title">
+    {{post.title}}
+  </div>
+
+  <div class="post__content">
+    <div class="post__item" *ngFor="let p of post.posts">
+      <img src="{{p.img}}" alt="">
+      <p class="post__title">{{p.title}}</p>
+    </div>
+  </div>
+</div>

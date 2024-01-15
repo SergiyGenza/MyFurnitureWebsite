@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BENEFITS } from 'src/app/common/mocks/benefits';
 import { CONTACT } from 'src/app/common/mocks/contact';
 
 @Component({
@@ -9,5 +8,4 @@ import { CONTACT } from 'src/app/common/mocks/contact';
 })
 export class ContactPageComponent {
   contact = CONTACT;
-  benefits = BENEFITS;
 }

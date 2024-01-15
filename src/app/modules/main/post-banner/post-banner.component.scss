@@ -1,0 +1,37 @@
+@import "../../../../assets/style/utils/variables";
+@import "../../../../assets/style/utils/mixins";
+
+.title {
+  font-family: $font-hind;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 80px;
+  margin-bottom: 40px;
+}
+
+.post__container {
+  text-align: center;
+  color: #333;
+}
+
+.post__content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.post__item img {
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.post__title {
+  text-align: center;
+  font-family: $font-hind;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 24px;
+  cursor: pointer;
+}

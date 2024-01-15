@@ -49,7 +49,6 @@ export class BreadcrumbService {
       }
       else
         if (route.data['breadcrumb']) {
-          console.log(route);
           let breadcrumb = {
             label: this.getLabel(route.data),
             url: '/' + routeUrl.join('/')

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainPageRoutingModule } from './main-page.routing';
+import { PostBannerComponent } from './post-banner/post-banner.component';
 // import { SliderComponent } from './slider/slider.component';
 
 
@@ -10,6 +11,7 @@ import { MainPageRoutingModule } from './main-page.routing';
 @NgModule({
   declarations: [
     MainPageComponent,
+    PostBannerComponent,
     // SliderComponent,
   ],
   imports: [

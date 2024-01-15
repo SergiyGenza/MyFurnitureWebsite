@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { BENEFITS } from 'src/app/common/mocks/benefits';
 @Component({
   selector: 'app-benefits',
   templateUrl: './benefits.component.html',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BenefitsComponent {
 
-  @Input() benefits: any; 
+  benefits = BENEFITS;
 }
