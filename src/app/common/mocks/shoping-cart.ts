@@ -4,12 +4,12 @@ export const SHOPING_CART = {
   total: 'Total',
   nav: [
     {
-      title: 'Cart',
-      link: 'cart',
-    },
-    {
       title: 'Checkout',
       link: 'checkout',
+    },
+    {
+      title: 'Cart',
+      link: 'cart',
     },
     {
       title: 'Comparison',

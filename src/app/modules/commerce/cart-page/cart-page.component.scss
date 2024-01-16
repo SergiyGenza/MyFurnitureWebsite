@@ -1,79 +1,40 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
-.cart {
-  display: block;
+.product {
+  font-family: $font-fira;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+}
 
-  &__header {
-    padding: 10px 60px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    gap: 15px;
-    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
-    height: 60px;
-    background-color: $shop-filter-bg;
-  }
-
-  &__title {}
-
-  .product {
-    height: 100px;
-    padding: 10px 60px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    gap: 15px;
-    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
-
-
-
-    &__title {}
-
-    &__price {}
-
-    &__quantity {}
-
-    &__subtotal {}
-
-
-  }
-
-  &__bottom {
-    padding: 10px 60px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    gap: 10px;
-    grid-template-columns: 120px 1fr 1fr 1fr 1fr 120px;
-
-    .title {}
-
-    .total-prise {}
-
-  }
+.total-price {
+  color: #B88E2F;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .product__preview {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 table {
   width: 100%;
-  // padding: 5rem;
 }
 
 td {
-  text-align: center
+  text-align: center;
 }
 
 tr:first-child {
   height: 3.5rem;
   background-color: $shop-filter-bg;
+}
+
+tr:first-child>th:nth-child(4),
+tr:first-child>th:last-child {
+  width: 10%;
 }
 
 tr:last-child>td {

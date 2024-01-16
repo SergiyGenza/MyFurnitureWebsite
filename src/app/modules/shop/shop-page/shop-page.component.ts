@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SHOP } from 'src/app/common/mocks/shop';
+import { Observable, Subscription } from 'rxjs';
+import { Sofa } from 'src/app/common/models/product.model';
 import { SofaService } from 'src/app/common/services/sofa/sofa.service';
 
 @Component({
@@ -9,8 +11,9 @@ import { SofaService } from 'src/app/common/services/sofa/sofa.service';
 })
 export class ShopPageComponent implements OnInit {
   shop = SHOP;
-  products = this.sofaService.getAllProducts();
+  products: Observable<Sofa[]> | undefined;
   showSpinner: boolean = true;
+  subscription!: Subscription;
 
   constructor(
     private sofaService: SofaService
@@ -22,6 +25,10 @@ export class ShopPageComponent implements OnInit {
 
   private getAllProducts() {
     this.products = this.sofaService.getAllProducts();
-    this.products.subscribe(() => this.showSpinner = false);
+    this.subscription = this.products.subscribe(() => this.showSpinner = false);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

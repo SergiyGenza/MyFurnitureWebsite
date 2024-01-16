@@ -34,6 +34,7 @@
             <span class="total__title">{{shoping.total}}</span>
             <span class="total__price">{{totalPrice | currency}}</span>
           </div>
+          <div class="devider"></div>
           <div class="nav">
             <ng-container *ngFor="let nav of shoping.nav">
               <button routerLink="{{nav.link}}" class="nav__btn" (click)="onShopingCartClose()">{{nav.title}}</button>

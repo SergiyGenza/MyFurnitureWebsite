@@ -10,7 +10,7 @@
         <th>Subtotal</th>
         <th>Operations</th>
       </tr>
-      <tr *ngFor="let item of shopingCart.items">
+      <tr class="product" *ngFor="let item of shopingCart.items">
         <td><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
         <td>{{item.product.title}}</td>
         <td>{{item.product.price | currency}}</td>
@@ -26,8 +26,8 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>{{totalPrice | currency}}</td>
-        <td><button class="btn-primary">Checkout</button></td>
+        <td class="total-price">{{totalPrice | currency}}</td>
+        <td><button class="btn-primary" routerLink="/checkout">Checkout</button></td>
       </tr>
     </table>
     <ng-template #noCart>
