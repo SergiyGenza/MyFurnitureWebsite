@@ -13,6 +13,7 @@ export class ProductCardComponent implements OnInit {
   url: string = '';
   showMenu: boolean = false;
   cartArray: any;
+  state: any;
 
   constructor(
     private cartService: CartService,
@@ -21,6 +22,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.setQuarryKey();
+    this.hasState();
   }
 
   public setProductInLocalStorage() {
@@ -37,5 +39,11 @@ export class ProductCardComponent implements OnInit {
 
   private setQuarryKey() {
     this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase();
+  }
+
+  private hasState() {
+    if (this.product!.state) {
+      this.state = this.product!.state;
+    }
   }
 }
