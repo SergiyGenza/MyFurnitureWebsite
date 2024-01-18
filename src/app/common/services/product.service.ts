@@ -32,6 +32,15 @@ export class ProductService {
       })
     );
   }
+  getProductByName(name: string): Observable<Product | undefined> {
+    return this.products$.pipe(
+      map((products) => {
+        return products.find((b) => {
+          return b.title.toLowerCase() === name
+        });
+      })
+    )
+  }
 
   getAllProducts(): Observable<Product[]> {
     return this.products$

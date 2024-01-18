@@ -6,11 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 5em;
   overflow: hidden;
   width: 285px;
   height: 446px;
-  background-color: $card-bg;
 
   @include p-semiBold;
 
@@ -27,6 +25,7 @@
 
   &__content {
     padding: 16px 16px;
+    background-color: $card-bg;
   }
 
   &__title {
@@ -64,6 +63,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  gap: 24px;
   background-color: $card-tool-bg;
   top: 0;
   left: 0;
@@ -79,7 +79,6 @@
     @include p-semiBold;
     font-size: 16px;
     line-height: 150%;
-    margin-bottom: 24px;
   }
 
   &__btn-group {
