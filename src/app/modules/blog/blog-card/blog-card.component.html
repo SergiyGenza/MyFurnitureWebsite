@@ -1,24 +1,28 @@
 <div class="post">
-  <img class="post__img" src="../../../assets/images/blog/blog_01.png" alt="Alt">
+  <div class="post__img">
+    <img class="post__img" src="{{post!.img}}" alt="Alt">
+  </div>
   <div class="post__info">
     <div class="post__auth">
       <img class="icon" src="{{icon.user}}" alt="user-icon">
-      {{post.author}}
+      {{post!.author}}
     </div>
     <div class="post__time">
       <img class="icon" src="{{icon.calendar}}" alt="calendar">
-      {{post.time}}
+      {{post!.time}}
     </div>
     <div class="post__time">
       <img class="icon" src="{{icon.tag}}" alt="tag">
-      {{post.tag}}
+      {{post!.tag}}
     </div>
   </div>
   <div class="post__content">
-    <h3 class="post__title">{{post.title}}</h3>
-    <p class="post__text">{{post.text}}</p>
+    <h3 class="post__title">{{post!.title}}</h3>
+    <p class="post__text">{{post!.text}}</p>
   </div>
   <div class="post__open">
-    <button class="btn">Read more</button>
+    <a routerLink="{{url}}">
+      <button class="btn">Read more</button>
+    </a>
   </div>
 </div>

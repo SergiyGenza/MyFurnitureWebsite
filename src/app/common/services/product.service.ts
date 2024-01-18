@@ -32,6 +32,7 @@ export class ProductService {
       })
     );
   }
+  
   getProductByName(name: string): Observable<Product | undefined> {
     return this.products$.pipe(
       map((products) => {
