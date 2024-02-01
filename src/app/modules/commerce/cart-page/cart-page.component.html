@@ -1,40 +1,79 @@
-<div class="container-lg">
+<div class="container-lg" *ngIf="shopingCart$ | async; let shopingCart">
   <app-breadcrumb></app-breadcrumb>
-  <ng-container *ngIf="shopingCart$ | async; let shopingCart">
-    <table *ngIf="shopingCart.items.length > 0; else noCart">
-      <tr>
-        <th>Preview</th>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-        <th>Operations</th>
-      </tr>
-      <tr class="product" *ngFor="let item of shopingCart.items">
-        <td><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
-        <td>{{item.product.title}}</td>
-        <td>{{item.product.price | currency}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.quantity * item.product.price | currency}}</td>
-        <td>
+  <!-- desctop -->
+  <table *ngIf="shopingCart.items.length > 0; else noCart">
+    <tr>
+      <th>Checkbox</th>
+      <th>Preview</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th class="subtotal">Subtotal</th>
+      <th>Operations</th>
+    </tr>
+    <tr class="product" *ngFor="let item of shopingCart.items">
+      <td><input type="checkbox"></td>
+      <td><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
+      <td>{{item.product.title}}</td>
+      <td>{{item.product.price | currency}}</td>
+      <td>{{item.quantity}}</td>
+      <td class="subtotal">{{item.quantity * item.product.price | currency}}</td>
+      <td>
+        <button>
           <img (click)="onProductRemove(item.product)" class="remove-btn"
             src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="total-price">{{totalPrice | currency}}</td>
-        <td><button class="btn-primary" routerLink="/checkout">Checkout</button></td>
-      </tr>
-    </table>
-    <ng-template #noCart>
-      <div class="">
-        <div class="">No products!</div>
-        <a routerLink="shop">Go to the Shop</a>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="subtotal"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="subtotal"></td>
+      <td class="total-price">{{totalPrice | currency}}</td>
+      <td class="tablet-cell"></td>
+      <td><button class="btn-primary" routerLink="/checkout">Checkout</button></td>
+    </tr>
+  </table>
+
+  <!-- mobile -->
+  <div class="cart-page__mobile" *ngIf="shopingCart.items.length > 0; else noCart">
+    <div class="cart-page__tool">
+      <div class="cart-page__tool__checkbox checkbox">
+        <input type="checkbox">
       </div>
-    </ng-template>
-  </ng-container>
+      <button class="cart-page__tool__remove-btn">
+        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
+      </button>
+    </div>
+    <div class="cart-page__product-item" *ngFor="let item of shopingCart.items">
+      <div class="checkbox">
+        <input type="checkbox">
+      </div>
+      <img class="cart-page__product-item__preview" src="{{item.product.img}}" alt="product">
+      <div class="cart-page__product-item__content">
+        <div class="title">
+          {{item.product.title}}
+        </div>
+        <div class="bottom">
+          <div class="price">
+            {{item.product.price | currency}}
+          </div>
+          <div class="btn-quantity">
+            <button class="quantity__reduse" (click)="decrease()">-</button>
+            <p class="quantity__number">{{item.quantity}}</p>
+            <button class="quantity__add" (click)="increase()">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noCart>
+    <div class="">
+      <div class="">No products!</div>
+      <a routerLink="shop">Go to the Shop</a>
+    </div>
+  </ng-template>
 </div>

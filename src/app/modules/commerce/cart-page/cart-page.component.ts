@@ -13,6 +13,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
   shopingCart$!: Observable<Cart>;
   totalPrice: number = 0;
   subscription!: Subscription;
+  quantity: number = 1;
 
   constructor(
     private cartService: CartService,
@@ -31,6 +32,15 @@ export class CartPageComponent implements OnInit, OnDestroy {
   public onProductRemove(item: Product) {
     this.cartService.removeProduct(item);
     this.calcTotalPrice();
+  }
+
+  public increase() {
+    if (this.quantity == 99) return
+    return this.quantity = this.quantity + 1;
+  }
+
+  public decrease() {
+    return this.quantity < 2 ? this.quantity = this.quantity : this.quantity = this.quantity - 1;
   }
 
   private calcTotalPrice() {
