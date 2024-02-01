@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DiscountComponent } from './discount/discount.component';
 import { ChekTypePipe } from "../common/pipes/ChekType.pipe";
+import { CheckboxComponent } from './elements/checkbox/checkbox.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,18 +21,22 @@ import { ChekTypePipe } from "../common/pipes/ChekType.pipe";
         BenefitsComponent,
         SpinnerComponent,
         DiscountComponent,
+        CheckboxComponent,
     ],
     exports: [
         BannerComponent,
         ProductCardComponent,
         BreadcrumbComponent,
         BenefitsComponent,
-        SpinnerComponent
+        DiscountComponent,
+        SpinnerComponent,
+        CheckboxComponent
     ],
     imports: [
         CommonModule,
         RouterModule,
-        ChekTypePipe
+        ChekTypePipe,
+        FormsModule
     ]
 })
 export class SharedModule { }

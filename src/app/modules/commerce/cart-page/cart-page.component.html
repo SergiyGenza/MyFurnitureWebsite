@@ -12,8 +12,10 @@
       <th>Operations</th>
     </tr>
     <tr class="product" *ngFor="let item of shopingCart.items">
-      <td><input type="checkbox"></td>
-      <td><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
+      <td>
+        <app-checkbox></app-checkbox>
+      </td>
+      <td class="product__preview"><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
       <td>{{item.product.title}}</td>
       <td>{{item.product.price | currency}}</td>
       <td>{{item.quantity}}</td>
@@ -41,7 +43,7 @@
   <div class="cart-page__mobile" *ngIf="shopingCart.items.length > 0; else noCart">
     <div class="cart-page__tool">
       <div class="cart-page__tool__checkbox checkbox">
-        <input type="checkbox">
+        <app-checkbox></app-checkbox>
       </div>
       <button class="cart-page__tool__remove-btn">
         <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
@@ -49,7 +51,7 @@
     </div>
     <div class="cart-page__product-item" *ngFor="let item of shopingCart.items">
       <div class="checkbox">
-        <input type="checkbox">
+        <app-checkbox></app-checkbox>
       </div>
       <img class="cart-page__product-item__preview" src="{{item.product.img}}" alt="product">
       <div class="cart-page__product-item__content">

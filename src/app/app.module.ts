@@ -10,6 +10,7 @@ import { ShopingCartComponent } from './layout/components/shoping-cart/shoping-c
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environments';
 import { ClickStopPropagationDirective } from './common/derective/click-stop-propagation.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
