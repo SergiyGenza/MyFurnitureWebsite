@@ -18,7 +18,7 @@
   </div>
   <div class="post__content">
     <h3 class="post__title">{{post!.title}}</h3>
-    <p class="post__text">{{post!.text}}</p>
+    <p class="post__text" [innerHTML]="post!.text"></p>
   </div>
   <div class="post__open">
     <a routerLink="{{url}}">

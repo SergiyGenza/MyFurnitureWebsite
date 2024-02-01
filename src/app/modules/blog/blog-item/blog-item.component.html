@@ -21,7 +21,7 @@
       </div>
       <div class="post__content">
         <h3 class="post__title">{{blog!.title}}</h3>
-        <p class="post__text">{{blog!.text}}</p>
+        <article class="post__text" [innerHTML]="blog!.text"></article>
       </div>
     </div>
   </div>
