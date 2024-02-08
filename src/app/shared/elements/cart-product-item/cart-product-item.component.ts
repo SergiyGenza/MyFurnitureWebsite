@@ -1,23 +1,38 @@
-import { Component, Input } from '@angular/core';
-import { CartItem } from 'src/app/common/models/cartItem';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 
 @Component({
   selector: 'app-cart-product-item',
   templateUrl: './cart-product-item.component.html',
   styleUrls: ['./cart-product-item.component.scss']
 })
-export class CartProductItemComponent {
-  @Input() item!: CartItem;
+export class CartProductItemComponent implements OnInit {
+  @Input() cartItem!: CartItem;
   @Input() remove!: boolean;
+  @Output() productForRemove = new EventEmitter<any>();
   quantity!: number;
-  isRemove!: boolean
+  products: any;
 
-  public canRemove(remove: boolean) {
-    this.isRemove = remove;
+  constructor(
+  ) {
   }
 
-  public canRemoveAll(el: boolean) {
-    // this.removeAll = el;
+
+  ngOnInit(): void {
+
+  }
+
+  public canRemove(remove: boolean) {
+    this.remove = remove;
+  }
+
+  public onItemRemove(cartItem: CartItem): void {
+    let item: CartItemForDelete = {
+      state: this.remove,
+      cartItem: cartItem,
+    }
+    this.productForRemove.emit(item);
+    console.log(this.remove);
   }
 
   public increase() {
