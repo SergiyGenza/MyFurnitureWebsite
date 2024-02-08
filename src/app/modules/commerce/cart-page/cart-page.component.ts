@@ -14,6 +14,9 @@ export class CartPageComponent implements OnInit, OnDestroy {
   totalPrice: number = 0;
   subscription!: Subscription;
   quantity: number = 1;
+  removeAll: boolean = false;
+
+  removeItemsArray = []
 
   constructor(
     private cartService: CartService,
@@ -34,14 +37,6 @@ export class CartPageComponent implements OnInit, OnDestroy {
     this.calcTotalPrice();
   }
 
-  public increase() {
-    if (this.quantity == 99) return
-    return this.quantity = this.quantity + 1;
-  }
-
-  public decrease() {
-    return this.quantity < 2 ? this.quantity = this.quantity : this.quantity = this.quantity - 1;
-  }
 
   private calcTotalPrice() {
     this.totalPrice = 0;

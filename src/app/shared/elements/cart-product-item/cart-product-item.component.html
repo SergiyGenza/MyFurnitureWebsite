@@ -1,0 +1,21 @@
+<div class="cart-page__product-item">
+  <div class="checkbox">
+    <app-checkbox [remove]="isRemove" (isClose)="canRemove($event)"></app-checkbox>
+  </div>
+  <img class="cart-page__product-item__preview" src="{{item.product.img}}" alt="product">
+  <div class="cart-page__product-item__content">
+    <div class="title">
+      {{item.product.title}}
+    </div>
+    <div class="bottom">
+      <div class="price">
+        {{item.product.price | currency}}
+      </div>
+      <div class="btn-quantity">
+        <button class="quantity__reduse" (click)="decrease()">-</button>
+        <p class="quantity__number">{{item.quantity}}</p>
+        <button class="quantity__add" (click)="increase()">+</button>
+      </div>
+    </div>
+  </div>
+</div>

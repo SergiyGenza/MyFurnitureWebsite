@@ -1,4 +1,2 @@
-<div class="">
-  <input type="checkbox" class="checkbox" [(ngModel)]="isEdit">
-  {{isEdit}}
-</div>
+<input type="checkbox" class="checkbox" [checked]="remove" [(ngModel)]="remove" #item (click)="onItemRemove(!remove)">
+<!-- <input type="checkbox" class="checkbox" [checked]="removeAll" [(ngModel)]="removeAll" #item (click)="onAllRemove(!removeAll)"> -->

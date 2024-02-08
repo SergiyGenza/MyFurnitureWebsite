@@ -10,6 +10,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { ChekTypePipe } from "../common/pipes/ChekType.pipe";
 import { CheckboxComponent } from './elements/checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
+import { CartProductItemComponent } from './elements/cart-product-item/cart-product-item.component';
 
 
 
@@ -22,6 +23,8 @@ import { FormsModule } from '@angular/forms';
         SpinnerComponent,
         DiscountComponent,
         CheckboxComponent,
+        CartProductItemComponent,
+
     ],
     exports: [
         BannerComponent,
@@ -30,7 +33,8 @@ import { FormsModule } from '@angular/forms';
         BenefitsComponent,
         DiscountComponent,
         SpinnerComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        CartProductItemComponent,
     ],
     imports: [
         CommonModule,
