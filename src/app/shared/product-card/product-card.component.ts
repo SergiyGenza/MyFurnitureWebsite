@@ -10,9 +10,10 @@ import { ComparisonService } from 'src/app/services/comparison.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
-  url: string = '';
+  url: string | undefined = '';
   showMenu: boolean = false;
   cartArray: any;
+  state: any;
 
   constructor(
     private cartService: CartService,
@@ -21,10 +22,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.setQuarryKey();
-  }
-
-  public setProductInLocalStorage() {
-    localStorage.setItem('product', JSON.stringify(this.product));
+    this.hasState();
   }
 
   public onCartAdding(product: Product) {
@@ -36,6 +34,12 @@ export class ProductCardComponent implements OnInit {
   }
 
   private setQuarryKey() {
-    this.url = 'http://localhost:4200/shop/' + this.product.title.toLowerCase();
+    this.url = this.product.title.toLowerCase();
+  }
+
+  private hasState() {
+    if (this.product!.state) {
+      this.state = this.product!.state;
+    }
   }
 }

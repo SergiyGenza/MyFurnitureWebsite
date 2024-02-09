@@ -1,6 +1,7 @@
 <div class="container-lg wrapper">
   <app-breadcrumb [min]="true"></app-breadcrumb>
-  <div class="container-product-page">
+  <app-spinner *ngIf="showSpinner"></app-spinner>
+  <div class="container-product-page" *ngIf="product$ | async; let product">
     <div class="product">
       <img class="product__preview" src="{{product.img}}" alt="product">
       <div class="product__contetn">
@@ -39,7 +40,7 @@
         <div class="btn-group">
           <div class="btn-group__united">
             <div class="">
-              <button class="btn-add-to-cart" (click)="addToCart()">Add to Cart</button>
+              <button class="btn-add-to-cart" (click)="addToCart(product)">Add to Cart</button>
             </div>
             <div class="devider-vertical"></div>
             <div class="btn-quantity">

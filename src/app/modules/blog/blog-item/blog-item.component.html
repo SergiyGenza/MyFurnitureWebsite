@@ -1,0 +1,28 @@
+<div class="container-lg ">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="container-blog">
+    <div class="blog" *ngIf="blog$ | async; let blog">
+      <div class="post__img">
+        <img class="post__img" src="{{blog!.img}}" alt="Alt">
+      </div>
+      <div class="post__info">
+        <div class="post__auth">
+          <img class="icon" src="{{b.postsIcons.user}}" alt="user-icon">
+          {{blog!.author}}
+        </div>
+        <div class="post__time">
+          <img class="icon" src="{{b.postsIcons.calendar}}" alt="calendar">
+          {{blog!.time}}
+        </div>
+        <div class="post__time">
+          <img class="icon" src="{{b.postsIcons.tag}}" alt="tag">
+          {{blog!.tag}}
+        </div>
+      </div>
+      <div class="post__content">
+        <h3 class="post__title">{{blog!.title}}</h3>
+        <article class="post__text" [innerHTML]="blog!.text"></article>
+      </div>
+    </div>
+  </div>
+</div>

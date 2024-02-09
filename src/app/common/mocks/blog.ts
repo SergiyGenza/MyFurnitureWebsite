@@ -41,30 +41,14 @@ export const BLOG = {
     calendar: '../../../assets/images/icons/calendar-icon.svg',
     tag: '../../../assets/images/icons/tag-icon.svg'
   },
-  posts: [
-    {
-      img: '../../../assets/images/blog/blog_01.png',
-      author: 'Admin',
-      time: '14 Oct 2022',
-      tag: 'Wood',
-      title: 'Going all-in with millennial design',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.'
-    },
-    {
-      img: '../../../assets/images/blog/blog_01.png',
-      author: 'Admin',
-      time: '14 Oct 2022',
-      tag: 'Wood',
-      title: 'Going all-in with millennial design',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.'
-    },
-    {
-      img: '../../../assets/images/blog/blog_01.png',
-      author: 'Admin',
-      time: '14 Oct 2022',
-      tag: 'Wood',
-      title: 'Going all-in with millennial design',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mus mauris vitae ultricies leo integer malesuada nunc. In nulla posuere sollicitudin aliquam ultrices. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Libero enim sed faucibus turpis in. Cursus mattis molestie a iaculis at erat. Nibh cras pulvinar mattis nunc sed blandit libero. Pellentesque elit ullamcorper dignissim cras tincidunt. Pharetra et ultrices neque ornare aenean euismod elementum.'
-    },
-  ]
+  // posts: [
+  //   {
+  //     img: '../../../assets/images/blog/main-post-01.png',
+  //     author: 'Admin',
+  //     time: '14 Jan 2024',
+  //     tag: 'Interior',
+  //     title: 'Going all-in with millennial design',
+  //     text: ''
+  //   },
+  // ]
 }

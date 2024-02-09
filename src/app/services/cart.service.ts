@@ -61,6 +61,10 @@ export class CartService {
     return this.cartSubject$.value;
   }
 
+  public updateProductQuantity(cart: Cart) {
+    this.setCartToLocalStorage(cart);
+  }
+
   private setCartToLocalStorage(item: Cart) {
     localStorage.setItem('cart', JSON.stringify(item));
   }

@@ -6,38 +6,54 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 5em;
   overflow: hidden;
   width: 285px;
   height: 446px;
-  background-color: $card-bg;
 
   @include p-semiBold;
+
+  &__state {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
   &__img {
     width: 285px;
     max-height: 300px;
   }
+
   &__content {
     padding: 16px 16px;
+    background-color: $card-bg;
   }
+
   &__title {
     margin-bottom: 8px;
     color: $card-title;
     font-size: 24px;
-    line-height: 120%; /* 28.8px */
+    line-height: 120%;
   }
+
   &_product-type {
     margin-bottom: 8px;
     color: $card-type;
     @include p-medium;
     font-size: 16px;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
   }
+
   &__price {
+    display: flex;
+    justify-content: space-between;
     color: $card-price;
     font-size: 20px;
-    line-height: 150%; /* 30px */
+    line-height: 150%;
+
+    &__old {
+      color: #B0B0B0;
+      text-decoration: line-through
+    }
   }
 }
 
@@ -47,6 +63,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  gap: 24px;
   background-color: $card-tool-bg;
   top: 0;
   left: 0;
@@ -61,8 +78,7 @@
     color: $btn-title;
     @include p-semiBold;
     font-size: 16px;
-    line-height: 150%; /* 24px */
-    margin-bottom: 24px;
+    line-height: 150%;
   }
 
   &__btn-group {
@@ -71,14 +87,15 @@
     color: $white;
 
     .btn {
+
       &__share,
       &__compare,
       &__like {
         display: flex;
         gap: 5px;
       }
-      &__icon {
-      }
+
+      &__icon {}
     }
   }
 }

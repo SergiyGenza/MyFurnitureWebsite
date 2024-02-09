@@ -1,0 +1,6 @@
+<!-- for one item -->
+<input type="checkbox" class="checkbox" [checked]="remove" [(ngModel)]="remove" #item (click)="onItemRemove(!remove)"
+  *ngIf="remove != undefined">
+<!-- for all items -->
+<input type="checkbox" class="checkbox" [checked]="removeAll" [(ngModel)]="removeAll" #item
+  (click)="onAllRemove(!removeAll)" *ngIf="removeAll != undefined">

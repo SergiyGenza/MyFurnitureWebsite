@@ -1,31 +1,83 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Cart } from 'src/app/common/models/cart.model';
+import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
+import { SelectItemsService } from 'src/app/services/select/select-items.service';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss']
 })
-export class CartPageComponent implements OnInit, OnDestroy {
+export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
   shopingCart$!: Observable<Cart>;
-  totalPrice: number = 0;
   subscription!: Subscription;
+
+  totalPrice: number = 0;
+  quantity: number = 1;
+
+  removeAll: boolean = false;
+  removeItemsArray: any;
 
   constructor(
     private cartService: CartService,
+    private selectItemsService: SelectItemsService,
+
   ) {
     this.shopingCart$ = cartService.cartSubject$;
+    this.removeItemsArray = selectItemsService.getProductForRemove();
   }
 
   ngOnInit(): void {
     this.calcTotalPrice();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.calcTotalPrice();
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  checkProductToRemoveList(cartItem: CartItemForDelete) {
+    cartItem.state
+      ? this.selectItemsService.addProduct(cartItem.cartItem)
+      : this.selectItemsService.removeProductFromList(cartItem.cartItem);
+  }
+
+  checkAllToRemoveList(state: boolean, cartItems: CartItem[]) {
+    this.removeAll = state;
+    state
+      ? cartItems.map(el => {
+        this.selectItemsService.addProduct(el);
+      })
+      : cartItems.map(el => {
+        this.selectItemsService.removeProductFromList(el);
+      })
+  }
+
+  getProducts() {
+    this.selectItemsService.getProductForRemove();
+  }
+
+  onProductListRemove() {
+    let list = this.selectItemsService.getProductsList();
+    list.map((i: CartItem) => {
+      this.cartService.removeProduct(i.product);
+    })
+    this.calcTotalPrice();
+  }
+
+  updateProductQuantity(newCartItem: CartItem, cartItems: CartItem[]) {
+    let cart: Cart = {
+      items: cartItems,
+      totalPrice: 0,
+      totalItems: 0,
+    }
+    this.cartService.updateProductQuantity(cart);
   }
 
   public onProductRemove(item: Product) {
@@ -35,6 +87,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   private calcTotalPrice() {
     this.totalPrice = 0;
+    // debugger
     this.subscription = this.shopingCart$.subscribe(c => {
       c.items.map(p => {
         return this.totalPrice += p.product.price * p.quantity;

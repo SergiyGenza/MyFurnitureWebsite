@@ -1,5 +1,6 @@
 <div class="card" (mouseenter)="showMenu=true" (mouseleave)="showMenu=false">
   <img class="card__img" src="{{product.img}}" alt="product">
+  <app-discount class="card__state" [state]="state"></app-discount>
   <div class="card__content">
     <div class="card__title">
       {{product.title}}
@@ -8,12 +9,17 @@
       {{product.type}}
     </div>
     <div class="card__price">
-      {{product.price | currency}}
+      <div *ngIf="state != 'new' && state != undefined">
+        {{-product.price / 100 * (state!) | currency}}
+      </div>
+      <div [ngClass]="{'card__price__old' : state != 'new' && state != undefined }">
+        {{product.price | currency}}
+      </div>
     </div>
   </div>
   <div class="card-tool" *ngIf="showMenu">
-    <a href="{{url}}">
-      <button class="btn btn-view-more" (click)="setProductInLocalStorage()">View more</button>
+    <a routerLink="{{url}}">
+      <button class="btn btn-view-more">View more</button>
     </a>
     <button class="btn btn-add" (click)="onCartAdding(product)">Add to cart</button>
     <div class="card-tool__btn-group">

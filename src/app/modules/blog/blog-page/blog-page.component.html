@@ -1,10 +1,12 @@
 <div class="container-lg ">
   <app-breadcrumb></app-breadcrumb>
+  <!-- <button (click)="addBlogs()">add blogs</button> -->
 </div>
 <div class="container-blog">
   <div class="blog-page">
-    <div class="blog">
-      <div class="blog__item" *ngFor="let post of blog.posts">
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+    <div class="blog" *ngIf="blogArray$ | async; let blogs">
+      <div class="blog__item" *ngFor="let post of blogs">
         <app-blog-card [post]="post" [icon]="blog.postsIcons">
         </app-blog-card>
       </div>
@@ -51,7 +53,4 @@
       <button class="btn-pagination">Next</button>
     </div>
   </div>
-</div>
-<div class="container-lg ">
-  <app-benefits></app-benefits>
 </div>
