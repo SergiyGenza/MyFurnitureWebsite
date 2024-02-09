@@ -11,7 +11,7 @@
 .total-price {
   color: #B88E2F;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: $font-fira;
 }
 
@@ -171,6 +171,22 @@ tr:last-child>td {
       }
     }
 
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f1e7;
+    border-radius: 10px;
+    height: 80px;
+    padding: 0 1rem;
+
+    .total-price {
+      background-color: white;
+      padding: 1.2rem;
+      border-radius: 10px;
+    }
   }
 
   .remove-btn {}

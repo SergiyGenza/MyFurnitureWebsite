@@ -7,9 +7,9 @@ import { CartItem } from 'src/app/common/models/cartItem';
 })
 export class SelectItemsService {
 
-  private removeListSource = new Subject<any>
+  private removeListSource = new Subject<any>()
   removeList$ = this.removeListSource.asObservable();
-  products: Array<any> = [];
+  products: CartItem[] = [];
 
   constructor() { }
 
@@ -17,15 +17,16 @@ export class SelectItemsService {
     return this.removeList$;
   }
 
+  getProductsList() {
+    return this.products;
+  }
+
   addProduct(cartItem: CartItem) {
     if (this.products.includes(cartItem)) {
       return
     }
-
     this.products.push(cartItem);
     this.removeListSource.next(this.products);
-    // console.log('addProduct');
-    // console.log(this.products);
   }
 
   addAllProduct() {
@@ -36,9 +37,6 @@ export class SelectItemsService {
     this.products = this.products.filter((el) => {
       return el != cartItem;
     })
-    // console.log('filtered');
-    // console.log(this.products);
-
   }
 
   removeAllProduct() {

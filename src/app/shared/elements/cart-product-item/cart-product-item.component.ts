@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 
 @Component({
@@ -6,21 +6,15 @@ import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
   templateUrl: './cart-product-item.component.html',
   styleUrls: ['./cart-product-item.component.scss']
 })
-export class CartProductItemComponent implements OnInit {
+export class CartProductItemComponent {
   @Input() cartItem!: CartItem;
   @Input() remove!: boolean;
   @Output() productForRemove = new EventEmitter<any>();
+  @Output() newProductQuantity = new EventEmitter<CartItem>();
   quantity!: number;
   products: any;
 
-  constructor(
-  ) {
-  }
-
-
-  ngOnInit(): void {
-
-  }
+  constructor() { }
 
   public canRemove(remove: boolean) {
     this.remove = remove;
@@ -36,11 +30,17 @@ export class CartProductItemComponent implements OnInit {
   }
 
   public increase() {
-    if (this.quantity == 99) return
-    return this.quantity = this.quantity + 1;
+    if (this.cartItem.quantity == 99) return;
+    this.cartItem.quantity = this.cartItem.quantity + 1;
+
+    return this.newProductQuantity.emit(this.cartItem);
   }
 
   public decrease() {
-    return this.quantity < 2 ? this.quantity = this.quantity : this.quantity = this.quantity - 1;
+    this.cartItem.quantity < 2
+      ? this.cartItem.quantity = this.cartItem.quantity
+      : this.cartItem.quantity = this.cartItem.quantity - 1;
+
+    return this.newProductQuantity.emit(this.cartItem);
   }
 }

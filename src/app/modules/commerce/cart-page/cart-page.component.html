@@ -38,15 +38,25 @@
   <div class="cart-page__mobile" *ngIf="shopingCart.items.length > 0; else noCart">
     <div class="cart-page__tool">
       <div class="cart-page__tool__checkbox checkbox">
-        <app-checkbox [removeAll]="removeAll" (canRemoveAll)="setRemoveAll($event, shopingCart.items)"></app-checkbox>
+        <app-checkbox [removeAll]="removeAll"
+          (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)"></app-checkbox>
       </div>
       <button class="cart-page__tool__remove-btn">
-        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
+        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon"
+          (click)="onProductListRemove()">
       </button>
     </div>
     <ng-container *ngFor="let cartItem of shopingCart.items">
-      <app-cart-product-item [remove]="removeAll" [cartItem]="cartItem" (productForRemove)="addProductToRemoveList($event)"></app-cart-product-item>
+      <app-cart-product-item [remove]="removeAll" [cartItem]="cartItem"
+        (productForRemove)="checkProductToRemoveList($event)"
+        (newProductQuantity)="updateProductQuantity($event, shopingCart.items)"></app-cart-product-item>
     </ng-container>
+    <div class="cart-page__bottom">
+      <button class="btn-primary" routerLink="/checkout">Checkout</button>
+      <div class="total-price">
+        {{totalPrice | currency}}
+      </div>
+    </div>
   </div>
 
   <ng-template #noCart>
