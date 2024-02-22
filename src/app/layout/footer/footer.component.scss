@@ -1,111 +1,131 @@
-@import "../../../assets//style/utils/variables";
-@import "../../../assets//style/utils/mixins";
+  @import "../../../assets//style/utils/variables";
+  @import "../../../assets//style/utils/mixins";
 
-.footer {
-  padding: 5rem 0;
-  &__wrapper {
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    grid-template-columns: 300px 300px;
-    grid-template-rows: 2rem 3fr;
-    row-gap: 2rem;
-    grid-template-areas: "a a" "l r";
-  }
-  .footer__title {
-    color: $link-color;
-    @include p-bold;
-    font-size: 24px;
-    grid-area: a;
-  }
-  .footer__left {
-    grid-area: l;
-    .nav {
-      &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 45px;
-      }
+  .footer {
+    padding: 5rem 0;
 
-      &__item {
-        font-size: 16px;
-        @include p-medium;
+    &__wrapper {
+      display: grid;
+      justify-content: center;
+      justify-items: center;
+      grid-template-columns: repeat(auto-fit, 300px);
+      row-gap: 2rem;
+    }
+
+    &__title {
+      color: $link-color;
+      @include p-bold;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    &__left {
+      .nav {
+        &__list {
+          display: flex;
+          flex-direction: column;
+          gap: 45px;
+        }
+
+        &__item {
+          font-size: 16px;
+          @include p-medium;
+        }
       }
     }
-  }
-  .footer__right {
-    grid-area: r;
 
-    display: flex;
-    flex-direction: column;
-    row-gap: 45px;
-
-    color: $light-text;
-    @include p-medium;
-    font-size: 16px;
-
-    .contacts {
-    }
-    .subscribe {
+    &__right {
       display: flex;
-      justify-content: space-between;
-      gap: 2rem;
+      flex-direction: column;
+      row-gap: 45px;
 
-      .btn {
-        position: relative;
+      color: $light-text;
+      @include p-medium;
+      font-size: 16px;
+
+      .contacts {}
+
+      .subscribe {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        .btn {
+          position: relative;
+        }
+
+        .subscription {
+          color: $link-color;
+          @include p-medium;
+          font-size: 14px;
+        }
+
+        input[type="email"] {
+          max-width: 10rem;
+          border-bottom: 2px solid $underline;
+          transition: 0.3s ease-in;
+        }
+
+        .btn::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          background-color: $underline;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+        }
       }
-      .subscription {
+
+      input[type="email"]:focus {
+        background-color: rgb(251, 251, 251, 0.9);
+      }
+
+      .adress {}
+    }
+
+    &__bottom {
+      position: relative;
+      margin-top: 5rem;
+
+      text-align: center;
+
+      .devider {}
+
+      .copyright {
         color: $link-color;
-        @include p-medium;
-        font-size: 14px;
+        @include p-regular;
+        font-size: 16px;
       }
 
-      input[type="email"] {
-        max-width: 10rem;
-        border-bottom: 2px solid $underline;
-        transition: 0.3s ease-in;
-      }
-
-      // .input[type="email"]::after
-      .btn::after {
+      &::before {
         content: "";
         position: absolute;
-        width: 100%;
-        background-color: $underline;
+        top: -25px;
+        left: 10%;
+        width: 80%;
         height: 2px;
-        bottom: 0;
-        left: 0;
+        background-color: $devider;
       }
     }
-
-    input[type="email"]:focus {
-      background-color: rgb(251, 251, 251, 0.9);
-    }
-
-    .adress {
-    }
   }
 
-  &__bottom {
-    position: relative;
-    margin-top: 5rem;
+  @media screen and (max-width:659px) {
+    .footer {
+      &__left {
+        order: 2;
 
-    text-align: center;
-    .devider {
-    }
-    .copyright {
-      color: $link-color;
-      @include p-regular;
-      font-size: 16px;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: -25px;
-      left: 10%;
-      width: 80%;
-      height: 2px;
-      background-color: $devider;
+        .nav {
+          &__list {
+            flex-direction: row
+          }
+        }
+      }
+
+      &__right {
+        order: 1;
+        align-items: center;
+      }
     }
   }
-}
