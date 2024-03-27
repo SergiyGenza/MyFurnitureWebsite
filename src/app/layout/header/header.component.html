@@ -4,10 +4,18 @@
       <img class="header__logo__img" src="{{header.logo}}" alt="logo">
       <p class="header__title">{{header.title}}</p>
     </a>
-    <nav class="nav">
+    <button type="button" class="btn-menu" *ngIf="!mobileMenu else mobile" (click)="onMenuOpen()">
+      <img src="{{header.menuIcon}}" alt="{{header.menuIconAlt}}">
+    </button>
+    <ng-template #mobile>
+      <button type="button" class="btn-menu close" (click)="onMenuOpen()">
+        <img src="{{header.closeMenu}}" alt="{{header.closeMenuAlt}}">
+      </button>
+    </ng-template>
+    <nav class="nav" [ngClass]="{'menu-open': mobileMenu}">
       <ul class="nav__list">
         <li *ngFor="let nav of header.nav">
-          <a class="nav__item" routerLinkActive="active" routerLink="{{nav.link}}">
+          <a class="nav__item" routerLinkActive="active" routerLink="{{nav.link}}" (click)="onMenuOpen()">
             {{nav.title}}
           </a>
         </li>
