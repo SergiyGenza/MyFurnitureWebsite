@@ -10,15 +10,20 @@ import { HEADER_CONTENT } from 'src/app/common/mocks/header';
 export class HeaderComponent {
   header = HEADER_CONTENT;
   isOpen: boolean = false;
+  mobileMenu: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
-  openShopingCart() {
+  public openShopingCart(): void {
     this.document.body.classList.add('modal-window');
-    return this.isOpen = !this.isOpen;
+    this.isOpen = !this.isOpen;
   }
 
-  onClose(isOpen: boolean) {
+  public onClose(isOpen: boolean) {
     this.isOpen = isOpen;
+  }
+
+  public onMenuOpen(): void {
+    this.mobileMenu = !this.mobileMenu;
   }
 }

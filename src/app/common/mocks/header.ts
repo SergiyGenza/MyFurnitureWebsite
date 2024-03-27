@@ -1,5 +1,9 @@
 export const HEADER_CONTENT = {
   logo: '../../../assets/images/icons/logo.svg',
+  menuIcon: '../../../assets/images/icons/burger-menu.svg',
+  menuIconAlt: 'menu',
+  closeMenu: '../../../assets/images/icons/close.svg',
+  closeMenuAlt: 'close-menu',
   title: 'Furniro',
   nav: [
     {

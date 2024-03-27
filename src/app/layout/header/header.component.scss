@@ -2,22 +2,23 @@
 @import "../../../assets/style/utils/mixins";
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 100px 30px 54px;
+  padding: 2rem;
   color: $link-color;
 
   &__logo {
     display: flex;
     align-items: center;
     cursor: pointer;
+    gap: 6px;
   }
 
   &__logo__img {
     width: 50px;
     height: 32px;
-    margin-right: 5px;
   }
 
   &__title {
@@ -28,12 +29,12 @@
   .nav {
     &__list {
       display: flex;
-      gap: 74px;
+      gap: 3vw;
     }
 
     &__item {
       font-family: $font-hind;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 400;
     }
 
@@ -45,15 +46,82 @@
   .btn {
     &__group {
       display: flex;
-      gap: 45px;
+      gap: 3vw;
     }
 
     &__item {
-      .icon {
+      img {
         width: 28px;
         height: 28px;
         cursor: pointer;
       }
     }
+  }
+}
+
+.side-bar {
+  z-index: 100;
+  background-color: $shop-filter-bg;
+}
+
+.btn-menu {
+  display: none;
+}
+
+.btn-menu img {
+  width: 50px;
+}
+
+
+@media screen and (max-width: 769px) {
+  .header {
+    background-color: $shop-filter-bg;
+
+    &__logo {
+      display: none;
+    }
+
+    .btn {
+      &__group {
+        gap: 2rem;
+      }
+
+      &__item img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .nav {
+      position: absolute;
+      display: none;
+      background-color: $shop-filter-bg;
+      padding: 0 1rem 2rem;
+      top: 114px;
+      width: 100%;
+      left: 0;
+      border-radius: 0 0 10px 10px;
+
+      &__list {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      &__list li {
+        background-color: $white;
+        height: 36px;
+        border-radius: 10px;
+        padding: 0 0 0 1rem;
+      }
+    }
+
+  }
+
+  .menu-open {
+    display: block !important;
+  }
+
+  .btn-menu {
+    display: block;
   }
 }
