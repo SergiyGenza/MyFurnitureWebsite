@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { COMPARISON, SOFAINFO, BEDINFO, CHARINFO, KiTCHENINFO } from 'src/app/common/mocks/comparison';
-import { KeyValue, NgIf, NgFor, AsyncPipe, KeyValuePipe } from '@angular/common';
+import { KeyValue, AsyncPipe, KeyValuePipe } from '@angular/common';
 import { PositionTitle } from 'src/app/common/models/positionTitle';
 import { ComparisonService } from 'src/app/services/comparison.service';
 import { Observable } from 'rxjs';
@@ -10,29 +10,23 @@ import { ComparisonHeadComponent } from '../comparison-head/comparison-head.comp
 import { ProductDescriptionItemComponent } from '../product-description-item/product-description-item.component';
 
 @Component({
-    selector: 'app-comparison-page',
-    templateUrl: './comparison-page.component.html',
-    styleUrls: ['./comparison-page.component.scss'],
-    standalone: true,
-    imports: [NgIf, BreadcrumbComponent, ComparisonHeadComponent, ProductDescriptionItemComponent, NgFor, AsyncPipe, KeyValuePipe]
+  selector: 'app-comparison-page',
+  templateUrl: './comparison-page.component.html',
+  styleUrls: ['./comparison-page.component.scss'],
+  standalone: true,
+  imports: [BreadcrumbComponent, ComparisonHeadComponent, ProductDescriptionItemComponent, AsyncPipe, KeyValuePipe]
 })
 export class ComparisonPageComponent implements OnInit {
-  products$!: Observable<Comparison>;
-  comparisonTest = COMPARISON;
-  positionTitles: PositionTitle | undefined;
-  isOpen: boolean = true;
+  private readonly comparisonService = inject(ComparisonService);
 
-  constructor(
-    private comparisonService: ComparisonService,
-  ) {
-  }
+  public products$!: Observable<Comparison>;
+  public comparisonTest = COMPARISON;
+  positionTitles: PositionTitle | undefined;
+
+  constructor() { }
 
   ngOnInit(): void {
     // this.setProductsType();
-    this.getProducts();
-  }
-
-  getProducts() {
     this.products$ = this.comparisonService.comparisoneSubject$;
   }
 
@@ -40,9 +34,6 @@ export class ComparisonPageComponent implements OnInit {
     return 0;
   }
 
-  public onCompareToolOpen() {
-    this.isOpen = !this.isOpen;
-  }
 
   // private setProductsType() {
   //   switch (this.products[0].type) {

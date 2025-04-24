@@ -1,41 +1,34 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Cart } from 'src/app/common/models/cart.model';
 import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { SelectItemsService } from 'src/app/services/select/select-items.service';
-import { NgIf, NgFor, AsyncPipe, CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { RouterLink } from '@angular/router';
 import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
 
 @Component({
-    selector: 'app-cart-page',
-    templateUrl: './cart-page.component.html',
-    styleUrls: ['./cart-page.component.scss'],
-    standalone: true,
-    imports: [NgIf, BreadcrumbComponent, NgFor, RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
+  selector: 'app-cart-page',
+  templateUrl: './cart-page.component.html',
+  styleUrls: ['./cart-page.component.scss'],
+  standalone: true,
+  imports: [BreadcrumbComponent, RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
 })
 export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
-  shopingCart$!: Observable<Cart>;
-  subscription!: Subscription;
+  private readonly cartService = inject(CartService);
+  private readonly selectItemsService = inject(SelectItemsService);
 
-  totalPrice: number = 0;
-  quantity: number = 1;
+  public shopingCart$: Observable<Cart> = this.cartService.cartSubject$;
+  public removeAll: boolean = false;
 
-  removeAll: boolean = false;
-  removeItemsArray: any;
+  public totalPrice: number = 0;
+  private subscription!: Subscription;
 
-  constructor(
-    private cartService: CartService,
-    private selectItemsService: SelectItemsService,
-
-  ) {
-    this.shopingCart$ = cartService.cartSubject$;
-    this.removeItemsArray = selectItemsService.getProductForRemove();
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.calcTotalPrice();
@@ -49,13 +42,13 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
     this.subscription.unsubscribe();
   }
 
-  checkProductToRemoveList(cartItem: CartItemForDelete) {
+  public checkProductToRemoveList(cartItem: CartItemForDelete) {
     cartItem.state
       ? this.selectItemsService.addProduct(cartItem.cartItem)
       : this.selectItemsService.removeProductFromList(cartItem.cartItem);
   }
 
-  checkAllToRemoveList(state: boolean, cartItems: CartItem[]) {
+  public checkAllToRemoveList(state: boolean, cartItems: CartItem[]): void {
     this.removeAll = state;
     state
       ? cartItems.map(el => {
@@ -66,11 +59,11 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
       })
   }
 
-  getProducts() {
+  public getProducts(): void {
     this.selectItemsService.getProductForRemove();
   }
 
-  onProductListRemove() {
+  onProductListRemove(): void {
     let list = this.selectItemsService.getProductsList();
     list.map((i: CartItem) => {
       this.cartService.removeProduct(i.product);
@@ -78,7 +71,7 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
     this.calcTotalPrice();
   }
 
-  updateProductQuantity(newCartItem: CartItem, cartItems: CartItem[]) {
+  public updateProductQuantity(newCartItem: CartItem, cartItems: CartItem[]): void {
     let cart: Cart = {
       items: cartItems,
       totalPrice: 0,
@@ -87,12 +80,13 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
     this.cartService.updateProductQuantity(cart);
   }
 
-  public onProductRemove(item: Product) {
+  public onProductRemove(item: Product): void {
     this.cartService.removeProduct(item);
     this.calcTotalPrice();
   }
 
-  private calcTotalPrice() {
+  // need ref
+  private calcTotalPrice(): void {
     this.totalPrice = 0;
     // debugger
     this.subscription = this.shopingCart$.subscribe(c => {

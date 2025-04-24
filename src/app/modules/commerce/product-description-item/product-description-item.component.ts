@@ -1,17 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-product-description-item',
-    templateUrl: './product-description-item.component.html',
-    styleUrls: ['./product-description-item.component.scss'],
-    standalone: true
+  selector: 'app-product-description-item',
+  templateUrl: './product-description-item.component.html',
+  styleUrls: ['./product-description-item.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDescriptionItemComponent implements OnInit {
-  @Input() products: any;
-  @Input() comparisonTest: any;
-
-
-  ngOnInit(): void {
-  }
-
+export class ProductDescriptionItemComponent {
+  @Input() public products: any;
+  @Input() public comparisonTest: any;
 }

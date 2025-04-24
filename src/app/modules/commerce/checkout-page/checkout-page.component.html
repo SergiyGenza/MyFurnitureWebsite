@@ -40,9 +40,11 @@
           Subtotal
         </div>
       </div>
-      <div class="products" *ngIf="shopingCart | async; let shoping">
+      @if (shopingCart | async; as shoping) {
+      <div class="products">
         <div class="devider"></div>
-        <div class="product" *ngFor="let item of shoping.items">
+        @for (item of shoping.items; track $index) {
+        <div class="product">
           <div class="product__title">{{item.product.title}}</div>
           <div class="product__number">
             <div class="product__multiply">x</div>
@@ -50,9 +52,9 @@
             <!-- <div class="product__price">{{item.product.price | currency}}</div> -->
           </div>
           <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
-        </div>
+        </div>}
         <div class="devider"></div>
-      </div>
+      </div>}
       <div class="total-price">
         <div class="title">
           Total
