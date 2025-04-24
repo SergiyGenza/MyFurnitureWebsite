@@ -1,7 +1,8 @@
 <div class="container-lg wrapper">
   <app-breadcrumb [min]="true"></app-breadcrumb>
-  <app-spinner *ngIf="showSpinner"></app-spinner>
-  <div class="container-product-page" *ngIf="product$ | async; let product">
+  @defer {
+  @if (product$ | async; as product) {
+  <div class="container-product-page">
     <div class="product">
       <img class="product__preview" src="{{product.img}}" alt="product">
       <div class="product__contetn">
@@ -34,7 +35,9 @@
         <div class="product__color">
           <div class="title">Color:</div>
           <div class="product__color__list">
-            <div class="product__color__item" *ngFor="let i of product.colors" [style.background-color]="i.c"></div>
+            @for (i of product.colors; track $index) {
+            <div class="product__color__item" [style.background-color]="i.c"></div>
+            }
           </div>
         </div>
         <div class="btn-group">
@@ -75,7 +78,8 @@
         </div>
       </div>
       <div class="contents">
-        <div class="tab" *ngIf="tab === 1">
+        @if (tab === 1) {
+        <div class="tab">
           Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar
           as one of
           the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio
@@ -85,13 +89,15 @@
           fine tune the controls to your personal preferences while the guitar-influenced leather strap enables easy and
           stylish
           travel.
-        </div>
-        <div class="tab" *ngIf="tab === 2">
+        </div>}
+        @if (tab === 2) {
+        <div class="tab">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates cumque, minus
           voluptatibus eius numquam rerum rem consequatur magnam aliquid quas iusto expedita dicta et, vel mollitia
           eligendi ex, culpa earum?
-        </div>
-        <div class="tab-review" *ngIf="tab === 3">
+        </div>}
+        @if (tab === 3) {
+        <div class="tab-review">
           <div class="review-block">
             <div class="title">
               Штанопупка Батьківна
@@ -108,8 +114,11 @@
               крісло в кожну хату!!!!!!!!!!!!!
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </div>
-  </div>
+  </div>}
+  } @loading (minimum 1s){
+  <app-spinner></app-spinner>
+  }
 </div>
