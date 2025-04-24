@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-cart-product-item',
-  templateUrl: './cart-product-item.component.html',
-  styleUrls: ['./cart-product-item.component.scss']
+    selector: 'app-cart-product-item',
+    templateUrl: './cart-product-item.component.html',
+    styleUrls: ['./cart-product-item.component.scss'],
+    standalone: true,
+    imports: [CheckboxComponent, CurrencyPipe]
 })
 export class CartProductItemComponent {
   @Input() cartItem!: CartItem;

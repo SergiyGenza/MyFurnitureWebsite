@@ -8,8 +8,8 @@ describe('ComparisonPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComparisonPageComponent ]
-    })
+    imports: [ComparisonPageComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ComparisonPageComponent);

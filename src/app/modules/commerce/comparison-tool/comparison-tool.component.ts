@@ -3,11 +3,15 @@ import { Observable } from 'rxjs';
 import { Comparison, ComparisonItem } from 'src/app/common/models/comparison.model';
 import { Product } from 'src/app/common/models/product.model';
 import { ComparisonService } from 'src/app/services/comparison.service';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-comparison-tool',
-  templateUrl: './comparison-tool.component.html',
-  styleUrls: ['./comparison-tool.component.scss']
+    selector: 'app-comparison-tool',
+    templateUrl: './comparison-tool.component.html',
+    styleUrls: ['./comparison-tool.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgFor, FormsModule, AsyncPipe]
 })
 export class ComparisonToolComponent {
   comparisonList$!: Observable<Comparison>;

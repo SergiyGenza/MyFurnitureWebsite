@@ -1,11 +1,15 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf, NgClass, NgFor } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { HEADER_CONTENT } from 'src/app/common/mocks/header';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ShopingCartComponent } from '../components/shoping-cart/shoping-cart.component';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [RouterLink, NgIf, NgClass, NgFor, RouterLinkActive, ShopingCartComponent]
 })
 export class HeaderComponent {
   header = HEADER_CONTENT;

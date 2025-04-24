@@ -8,8 +8,8 @@ describe('PostBannerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostBannerComponent ]
-    })
+    imports: [PostBannerComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(PostBannerComponent);

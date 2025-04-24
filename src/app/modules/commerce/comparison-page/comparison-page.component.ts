@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { COMPARISON, SOFAINFO, BEDINFO, CHARINFO, KiTCHENINFO } from 'src/app/common/mocks/comparison';
-import { KeyValue } from '@angular/common';
+import { KeyValue, NgIf, NgFor, AsyncPipe, KeyValuePipe } from '@angular/common';
 import { PositionTitle } from 'src/app/common/models/positionTitle';
 import { ComparisonService } from 'src/app/services/comparison.service';
 import { Observable } from 'rxjs';
 import { Comparison } from 'src/app/common/models/comparison.model';
+import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { ComparisonHeadComponent } from '../comparison-head/comparison-head.component';
+import { ProductDescriptionItemComponent } from '../product-description-item/product-description-item.component';
 
 @Component({
-  selector: 'app-comparison-page',
-  templateUrl: './comparison-page.component.html',
-  styleUrls: ['./comparison-page.component.scss']
+    selector: 'app-comparison-page',
+    templateUrl: './comparison-page.component.html',
+    styleUrls: ['./comparison-page.component.scss'],
+    standalone: true,
+    imports: [NgIf, BreadcrumbComponent, ComparisonHeadComponent, ProductDescriptionItemComponent, NgFor, AsyncPipe, KeyValuePipe]
 })
 export class ComparisonPageComponent implements OnInit {
   products$!: Observable<Comparison>;

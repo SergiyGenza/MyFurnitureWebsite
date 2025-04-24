@@ -1,10 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+    selector: 'app-checkbox',
+    templateUrl: './checkbox.component.html',
+    styleUrls: ['./checkbox.component.scss'],
+    standalone: true,
+    imports: [NgIf, FormsModule]
 })
 export class CheckboxComponent {
   @Input() remove: boolean | undefined = undefined;

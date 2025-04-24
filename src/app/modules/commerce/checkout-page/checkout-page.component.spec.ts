@@ -8,8 +8,8 @@ describe('CheckoutPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutPageComponent ]
-    })
+    imports: [CheckoutPageComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(CheckoutPageComponent);

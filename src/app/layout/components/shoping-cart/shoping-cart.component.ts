@@ -1,15 +1,19 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf, NgFor, AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Component, Input, Output, EventEmitter, Inject, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { SHOPING_CART } from 'src/app/common/mocks/shoping-cart';
 import { Cart } from 'src/app/common/models/cart.model';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
+import { ClickStopPropagationDirective } from '../../../common/derective/click-stop-propagation.directive';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-shoping-cart',
-  templateUrl: './shoping-cart.component.html',
-  styleUrls: ['./shoping-cart.component.scss']
+    selector: 'app-shoping-cart',
+    templateUrl: './shoping-cart.component.html',
+    styleUrls: ['./shoping-cart.component.scss'],
+    standalone: true,
+    imports: [NgIf, ClickStopPropagationDirective, NgFor, RouterLink, AsyncPipe, CurrencyPipe]
 })
 export class ShopingCartComponent implements OnInit {
   @Input() isOpen: boolean = false;

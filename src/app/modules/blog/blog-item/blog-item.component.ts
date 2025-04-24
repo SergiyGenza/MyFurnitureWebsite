@@ -4,11 +4,15 @@ import { Observable, Subscription } from 'rxjs';
 import { BLOG } from 'src/app/common/mocks/blog';
 import { Blog } from 'src/app/common/models/blog.model';
 import { BlogService } from 'src/app/services/blog/blog.service';
+import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-blog-item',
-  templateUrl: './blog-item.component.html',
-  styleUrls: ['./blog-item.component.scss']
+    selector: 'app-blog-item',
+    templateUrl: './blog-item.component.html',
+    styleUrls: ['./blog-item.component.scss'],
+    standalone: true,
+    imports: [BreadcrumbComponent, NgIf, AsyncPipe]
 })
 export class BlogItemComponent implements OnInit, OnDestroy {
   b = BLOG;

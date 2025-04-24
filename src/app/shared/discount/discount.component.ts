@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DISCOUNT } from 'src/app/common/mocks/discount';
+import { NgStyle, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-discount',
-  templateUrl: './discount.component.html',
-  styleUrls: ['./discount.component.scss']
+    selector: 'app-discount',
+    templateUrl: './discount.component.html',
+    styleUrls: ['./discount.component.scss'],
+    standalone: true,
+    imports: [NgStyle, NgIf]
 })
 export class DiscountComponent implements OnInit {
   @Input() state: any;

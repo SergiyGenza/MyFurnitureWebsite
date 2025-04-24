@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommerceRoutingModule } from './commerce.routing';
-import { SharedModule } from 'src/app/shared/shared.module';
+
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { ComparisonPageComponent } from './comparison-page/comparison-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
@@ -13,19 +13,16 @@ import { ComparisonHeadComponent } from './comparison-head/comparison-head.compo
 
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    CommerceRoutingModule,
+    FormsModule,
     CartPageComponent,
     ComparisonPageComponent,
     CheckoutPageComponent,
     ProductDescriptionItemComponent,
     ComparisonToolComponent,
-    ComparisonHeadComponent,
-  ],
-  imports: [
-    CommonModule,
-    CommerceRoutingModule,
-    SharedModule,
-    FormsModule
-  ]
+    ComparisonHeadComponent
+]
 })
 export class CommerceModule { }

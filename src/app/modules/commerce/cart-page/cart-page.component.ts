@@ -5,11 +5,18 @@ import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { SelectItemsService } from 'src/app/services/select/select-items.service';
+import { NgIf, NgFor, AsyncPipe, CurrencyPipe } from '@angular/common';
+import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { RouterLink } from '@angular/router';
+import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
+import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
 
 @Component({
-  selector: 'app-cart-page',
-  templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss']
+    selector: 'app-cart-page',
+    templateUrl: './cart-page.component.html',
+    styleUrls: ['./cart-page.component.scss'],
+    standalone: true,
+    imports: [NgIf, BreadcrumbComponent, NgFor, RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
 })
 export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
   shopingCart$!: Observable<Cart>;

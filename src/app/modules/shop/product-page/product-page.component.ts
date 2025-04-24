@@ -5,11 +5,16 @@ import { Product } from 'src/app/common/models/product.model';
 import { ProductService } from 'src/app/common/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ComparisonService } from 'src/app/services/comparison.service';
+import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { NgIf, NgFor, NgClass, AsyncPipe, CurrencyPipe } from '@angular/common';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 
 @Component({
-  selector: 'app-product-page',
-  templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+    selector: 'app-product-page',
+    templateUrl: './product-page.component.html',
+    styleUrls: ['./product-page.component.scss'],
+    standalone: true,
+    imports: [BreadcrumbComponent, NgIf, SpinnerComponent, NgFor, NgClass, AsyncPipe, CurrencyPipe]
 })
 export class ProductPageComponent implements OnInit, OnDestroy {
   key: string;
