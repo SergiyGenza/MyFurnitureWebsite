@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { CartProductItemComponent } from './elements/cart-product-item/cart-product-item.component';
 
 
-
 @NgModule({
     declarations: [
         BannerComponent,
@@ -24,7 +23,6 @@ import { CartProductItemComponent } from './elements/cart-product-item/cart-prod
         DiscountComponent,
         CheckboxComponent,
         CartProductItemComponent,
-
     ],
     exports: [
         BannerComponent,

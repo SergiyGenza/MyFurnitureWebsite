@@ -8,6 +8,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { ShopingCartComponent } from './layout/components/shoping-cart/shoping-cart.component';
 
 import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environments';
 import { ClickStopPropagationDirective } from './common/derective/click-stop-propagation.directive';
 
@@ -22,6 +23,7 @@ import { ClickStopPropagationDirective } from './common/derective/click-stop-pro
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
