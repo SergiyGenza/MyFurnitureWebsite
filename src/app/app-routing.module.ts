@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./modules/blog/blog.module').then((m) => m.BlogModule),
+    // canActivate: [AuthService],
     data: { breadcrumb: 'home' }
   },
   {
@@ -28,6 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/commerce/commerce.module').then((m) => m.CommerceModule),
     data: { breadcrumb: 'home' }
   },
+  {
+    path: '',
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+
 
 ];
 
