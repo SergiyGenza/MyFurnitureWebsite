@@ -1,31 +1,24 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, map } from 'rxjs';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Breadcrumb } from 'src/app/common/models/breadcrumb.model';
 import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
-import { NgIf, NgClass, NgFor, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-breadcrumb',
-    templateUrl: './breadcrumb.component.html',
-    styleUrls: ['./breadcrumb.component.scss'],
-    standalone: true,
-    imports: [NgIf, NgClass, NgFor, RouterLink, AsyncPipe]
+  selector: 'app-breadcrumb',
+  templateUrl: './breadcrumb.component.html',
+  styleUrls: ['./breadcrumb.component.scss'],
+  standalone: true,
+  imports: [NgClass, RouterLink, AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BreadcrumbComponent implements OnInit, OnDestroy {
+export class BreadcrumbComponent {
   @Input() min = false;
-  subscription!: Subscription;
-  breadcrumbs$: Observable<Breadcrumb[]>;
+  private readonly breadcrumbService = inject(BreadcrumbService);
 
-  constructor(private readonly breadcrumbService: BreadcrumbService) {
-    this.breadcrumbs$ = breadcrumbService.breadcrumbs$;
-  }
+  public breadcrumbs$: Observable<Breadcrumb[]> = this.breadcrumbService.breadcrumbs$;
 
-  ngOnInit(): void {
-    this.subscription = this.breadcrumbs$.subscribe();
-  }
+  constructor() { }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }

@@ -1,7 +1,7 @@
 @import "../../../assets/style/utils/variables";
 @import "../../../assets/style/utils/mixins";
 
-.spinner-wrapper {
+:host {
   display: flex;
   justify-content: center;
   margin-top: 7rem;
