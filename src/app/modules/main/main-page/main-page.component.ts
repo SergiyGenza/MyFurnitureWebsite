@@ -1,41 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Sofa } from 'src/app/common/models/product.model';
 import { ProductService } from 'src/app/common/services/product.service';
 import { SofaService } from 'src/app/common/services/sofa/sofa.service';
 import { BannerComponent } from '../../../shared/banner/banner.component';
 import { PostBannerComponent } from '../post-banner/post-banner.component';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
 
 @Component({
-    selector: 'app-main-page',
-    templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.scss'],
-    standalone: true,
-    imports: [BannerComponent, PostBannerComponent, NgIf, SpinnerComponent, NgFor, ProductCardComponent, AsyncPipe]
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss'],
+  standalone: true,
+  imports: [BannerComponent, PostBannerComponent, SpinnerComponent, ProductCardComponent, AsyncPipe]
 })
-export class MainPageComponent implements OnInit, OnDestroy {
-  products: Observable<Sofa[]> | undefined;
-  showSpinner: boolean = true;
-  subscription!: Subscription;
+export class MainPageComponent implements OnInit {
+  private readonly productService = inject(ProductService);
+  private readonly sofaService = inject(SofaService)
+  public products: Observable<Sofa[]> | undefined;
 
-  constructor(
-    private productService: ProductService,
-    private sofaService: SofaService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
-  private getAllProducts() {
+  private getAllProducts(): void {
     this.products = this.sofaService.getAllProducts();
-    this.subscription = this.products.subscribe(() => this.showSpinner = false);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }

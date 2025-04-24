@@ -7,10 +7,15 @@
     <div class="products__title">
       Our Products
     </div>
-    <app-spinner *ngIf="showSpinner"></app-spinner>
+    @defer (on viewport) {
     <div class="products__list">
-      <app-product-card *ngFor="let p of products | async" [product]="p"></app-product-card>
+      @for (p of products | async; track $index) {
+      <app-product-card [product]="p"></app-product-card>
+      }
     </div>
+    } @placeholder (minimum 1.5s) {
+    <app-spinner></app-spinner>
+    }
     <div class="show-more">
       <button class="btn__show-more">Show More</button>
     </div>

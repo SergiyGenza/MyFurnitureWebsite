@@ -28,11 +28,12 @@
     </form>
   </div>
   <div class="info">
-    <div class="info__item" *ngFor="let info of contact.info">
+    @for (info of contact.info; track $index) {
+    <div class="info__item">
       <img class="info__icon" src="{{info.icon}}" alt="icon">
       <h3 class="info__title">{{info.title}}</h3>
       <p class="info__text">{{info.text}}</p>
-    </div>
+    </div>}
   </div>
   <app-benefits></app-benefits>
 </div>
