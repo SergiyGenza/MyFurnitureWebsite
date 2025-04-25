@@ -1,48 +1,51 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { ComparisonService } from 'src/app/services/comparison.service';
 import { DiscountComponent } from '../discount/discount.component';
-import { NgIf, NgClass, CurrencyPipe } from '@angular/common';
+import { NgClass, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-product-card',
-    templateUrl: './product-card.component.html',
-    styleUrls: ['./product-card.component.scss'],
-    standalone: true,
-    imports: [DiscountComponent, NgIf, NgClass, RouterLink, CurrencyPipe]
+  selector: 'app-product-card',
+  templateUrl: './product-card.component.html',
+  styleUrls: ['./product-card.component.scss'],
+  standalone: true,
+  imports: [DiscountComponent, NgClass, RouterLink, CurrencyPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
-  url: string | undefined = '';
-  showMenu: boolean = false;
-  cartArray: any;
-  state: any;
 
-  constructor(
-    private cartService: CartService,
-    private comparisonService: ComparisonService,
-  ) { }
+  private readonly cartService = Inject(CartService);
+  private readonly comparisonService = Inject(ComparisonService);
+
+  public url: string | undefined = '';
+  public showMenu: boolean = false;
+
+  // need ref
+  public state: any;
+
+  constructor() { }
 
   ngOnInit(): void {
     this.setQuarryKey();
     this.hasState();
   }
 
-  public onCartAdding(product: Product) {
+  public onCartAdding(product: Product): void {
     this.cartService.updateCart(product);
   }
 
-  public onProductCompare(product: Product) {
+  public onProductCompare(product: Product): void {
     this.comparisonService.addToCompareList(product);
   }
 
-  private setQuarryKey() {
+  private setQuarryKey(): void {
     this.url = this.product.title.toLowerCase();
   }
 
-  private hasState() {
+  private hasState(): void {
     if (this.product!.state) {
       this.state = this.product!.state;
     }
