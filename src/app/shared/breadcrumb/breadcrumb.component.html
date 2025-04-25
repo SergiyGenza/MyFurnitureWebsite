@@ -1,6 +1,7 @@
 @if(breadcrumbs$ | async; as breadcrumb){
 <div class="breadcrumb" [ngClass]="{'breadcrumb-min': min}">
   @if(!min){
+  <img src="../../../assets/images/logo.png" alt="">
   @for(item of breadcrumb; track item; let i = $index){
   <div class="breadcrumb__header">
     @if(i == breadcrumb.length - 1){
