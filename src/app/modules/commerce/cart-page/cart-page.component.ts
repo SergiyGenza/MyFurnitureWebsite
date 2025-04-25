@@ -6,7 +6,6 @@ import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { SelectItemsService } from 'src/app/services/select/select-items.service';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { RouterLink } from '@angular/router';
 import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
@@ -16,7 +15,7 @@ import { CartProductItemComponent } from '../../../shared/elements/cart-product-
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
+  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
 })
 export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
   private readonly cartService = inject(CartService);

@@ -1,49 +1,46 @@
-<div class="container-lg">
-  @if(products$ | async; as products){
-  <app-breadcrumb></app-breadcrumb>
-  <div class="table">
-    <app-comparison-head [comparison]="comparisonTest" [products]="products.compareArr"></app-comparison-head>
-    <!-- ms add ngFor -->
-    <div class="comparison">
-      <app-product-description-item [comparisonTest]="comparisonTest.generalTitle">
-        @for (p of products.compareArr; track $index) {
-        <div class="product" id="{{p.code}}">
-          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
-          <div class="product__desctription">
-            {{text.value}}
-          </div>}
+@if(products$ | async; as products){
+<div class="table">
+  <app-comparison-head [comparison]="comparisonTest" [products]="products.compareArr"></app-comparison-head>
+  <!-- ms add ngFor -->
+  <div class="comparison">
+    <app-product-description-item [comparisonTest]="comparisonTest.generalTitle">
+      @for (p of products.compareArr; track $index) {
+      <div class="product" id="{{p.code}}">
+        @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+        <div class="product__desctription">
+          {{text.value}}
         </div>}
-      </app-product-description-item>
+      </div>}
+    </app-product-description-item>
 
-      <app-product-description-item [comparisonTest]="comparisonTest.productTitle">
-        @for (p of products.compareArr; track $index) {
-        <div class="product" id="{{p.code}}">
-          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
-          <div class="product__desctription">
-            {{text.value}}
-          </div>}
+    <app-product-description-item [comparisonTest]="comparisonTest.productTitle">
+      @for (p of products.compareArr; track $index) {
+      <div class="product" id="{{p.code}}">
+        @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+        <div class="product__desctription">
+          {{text.value}}
         </div>}
-      </app-product-description-item>
+      </div>}
+    </app-product-description-item>
 
-      <app-product-description-item [comparisonTest]="comparisonTest.dimensionsTitle">
-        @for (p of products.compareArr; track $index) {
-        <div class="product" id="{{p.code}}">
-          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
-          <div class="product__desctription">
-            {{text.value}}
-          </div>}
+    <app-product-description-item [comparisonTest]="comparisonTest.dimensionsTitle">
+      @for (p of products.compareArr; track $index) {
+      <div class="product" id="{{p.code}}">
+        @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+        <div class="product__desctription">
+          {{text.value}}
         </div>}
-      </app-product-description-item>
+      </div>}
+    </app-product-description-item>
 
-      <app-product-description-item [comparisonTest]="comparisonTest.warrantyTitle">
-        @for (p of products.compareArr; track $index) {
-        <div class="product" id="{{p.code}}">
-          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
-          <div class="product__desctription">
-            {{text.value}}
-          </div>}
+    <app-product-description-item [comparisonTest]="comparisonTest.warrantyTitle">
+      @for (p of products.compareArr; track $index) {
+      <div class="product" id="{{p.code}}">
+        @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+        <div class="product__desctription">
+          {{text.value}}
         </div>}
-      </app-product-description-item>
-    </div>
-  </div>}
-</div>
+      </div>}
+    </app-product-description-item>
+  </div>
+</div>}

@@ -1,26 +1,24 @@
-<main class="main container-lg">
-  <!-- banner -->
-  <app-banner></app-banner>
-  <app-post-banner></app-post-banner>
-  <!-- Our Products -->
-  <section class="products container-products">
-    <div class="products__title">
-      Our Products
-    </div>
-    @defer (on viewport) {
-    <div class="products__list">
-      @for (p of products | async; track $index) {
-      <app-product-card [product]="p"></app-product-card>
-      }
-    </div>
-    } @placeholder (minimum 1.5s) {
-    <app-spinner></app-spinner>
+<!-- banner -->
+<app-banner></app-banner>
+<app-post-banner></app-post-banner>
+<!-- Our Products -->
+<section class="products container-products">
+  <div class="products__title">
+    Our Products
+  </div>
+  @defer (on viewport) {
+  <div class="products__list">
+    @for (p of products | async; track $index) {
+    <app-product-card [product]="p"></app-product-card>
     }
-    <div class="show-more">
-      <button class="btn__show-more">Show More</button>
-    </div>
-  </section>
-  <!-- slider -->
-  <!-- <app-slider></app-slider> -->
-  <!-- Share your setup with -->
-</main>
+  </div>
+  } @placeholder (minimum 1.5s) {
+  <app-spinner></app-spinner>
+  }
+  <div class="show-more">
+    <button class="btn__show-more">Show More</button>
+  </div>
+</section>
+<!-- slider -->
+<!-- <app-slider></app-slider> -->
+<!-- Share your setup with -->

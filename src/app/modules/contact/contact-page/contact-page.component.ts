@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CONTACT } from 'src/app/common/mocks/contact';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 
 @Component({
@@ -8,7 +7,7 @@ import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, BenefitsComponent]
+  imports: [BenefitsComponent]
 })
 export class ContactPageComponent {
   public readonly contact = CONTACT;

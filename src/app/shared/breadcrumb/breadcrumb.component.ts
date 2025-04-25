@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbComponent {
-  @Input() min = false;
+  @Input() min: boolean | null = false;
   private readonly breadcrumbService = inject(BreadcrumbService);
 
   public breadcrumbs$: Observable<Breadcrumb[]> = this.breadcrumbService.breadcrumbs$;
