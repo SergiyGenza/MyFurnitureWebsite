@@ -1,4 +1,4 @@
-<div class="card" (mouseenter)="showMenu=true" (mouseleave)="showMenu=false">
+<div class="card">
   <img class="card__img" src="{{product.img}}" alt="product">
   <app-discount class="card__state" [state]="state"></app-discount>
   <div class="card__content">
@@ -18,7 +18,6 @@
       </div>
     </div>
   </div>
-  @if (showMenu) {
   <div class="card-tool">
     <a routerLink="{{url}}">
       <button class="btn btn-view-more">View more</button>
@@ -40,5 +39,5 @@
         Like
       </div>
     </div>
-  </div>}
+  </div>
 </div>

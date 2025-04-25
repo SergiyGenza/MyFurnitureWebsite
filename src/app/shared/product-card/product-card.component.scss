@@ -57,6 +57,13 @@
   }
 }
 
+.card:hover {
+  .card-tool {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+}
+
 .card-tool {
   position: absolute;
   display: flex;
@@ -65,6 +72,7 @@
   justify-content: center;
   gap: 24px;
   background-color: $card-tool-bg;
+  opacity: 0;
   top: 0;
   left: 0;
   width: 285px;
@@ -98,4 +106,5 @@
       &__icon {}
     }
   }
+
 }

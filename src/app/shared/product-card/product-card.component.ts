@@ -21,7 +21,6 @@ export class ProductCardComponent implements OnInit {
   private readonly comparisonService = Inject(ComparisonService);
 
   public url: string | undefined = '';
-  public showMenu: boolean = false;
 
   // need ref
   public state: any;
