@@ -1,6 +1,12 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
+
+:host {
+  text-align: center;
+  color: #333;
+}
+
 .title {
   font-family: $font-hind;
   font-size: 40px;
@@ -8,11 +14,6 @@
   text-align: center;
   padding-top: 80px;
   margin-bottom: 40px;
-}
-
-.post__container {
-  text-align: center;
-  color: #333;
 }
 
 .post__content {

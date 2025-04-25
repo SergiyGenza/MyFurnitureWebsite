@@ -3,13 +3,17 @@
   <!-- <button (click)="addBlogs()">add blogs</button> -->
 </div>
 <div class="container-blog">
-  <div class="blog-page">
-    <app-spinner *ngIf="showSpinner"></app-spinner>
-    <div class="blog" *ngIf="blogArray$ | async; let blogs">
-      <div class="blog__item" *ngFor="let post of blogs">
-        <app-blog-card [post]="post" [icon]="blog.postsIcons">
-        </app-blog-card>
+  <section class="blog-page">
+    <div class="blog">
+      @for(post of blogArray$ | async; track post){
+      <div class="blog__item">
+        @defer{
+        <app-blog-card [post]="post" [icon]="blog.postsIcons"></app-blog-card>
+        } @loading (minimum 1s) {
+        <app-spinner></app-spinner>
+        }
       </div>
+      }
     </div>
     <div class="sidebar">
       <div class="filters">
@@ -20,10 +24,11 @@
         <div class="categories">
           {{blog.filterTitle}}
           <div class="categories__list">
-            <div class="categories__item" *ngFor="let category of blog.categories">
+            @for (category of blog.categories; track $index) {
+            <div class="categories__item">
               <p class="category__title">{{category.title}}</p>
               <p class="category__number">{{category.number}}</p>
-            </div>
+            </div>}
           </div>
         </div>
       </div>
@@ -32,7 +37,8 @@
           {{blog.resentPostsTitle}}
         </div>
         <div class="resent__posts">
-          <div class="post" *ngFor="let post of blog.resentPosts">
+          @for (post of blog.resentPosts; track $index) {
+          <div class="post">
             <img class="post__preview" src="{{post.img}}" alt="preview">
             <div class="post__content">
               <h4 class="post__title">
@@ -42,11 +48,12 @@
                 {{post.time}}
               </p>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     </div>
-  </div>
+
+  </section>
   <div class="pagination">
     <div class="pagination__btn-group">
       <button class="btn-pagination">1</button>

@@ -9,15 +9,17 @@
       {{product.type}}
     </div>
     <div class="card__price">
-      <div *ngIf="state != 'new' && state != undefined">
+      @if (state != 'new' && state != undefined) {
+      <div>
         {{-product.price / 100 * (state!) | currency}}
-      </div>
+      </div>}
       <div [ngClass]="{'card__price__old' : state != 'new' && state != undefined }">
         {{product.price | currency}}
       </div>
     </div>
   </div>
-  <div class="card-tool" *ngIf="showMenu">
+  @if (showMenu) {
+  <div class="card-tool">
     <a routerLink="{{url}}">
       <button class="btn btn-view-more">View more</button>
     </a>
@@ -38,5 +40,5 @@
         Like
       </div>
     </div>
-  </div>
+  </div>}
 </div>

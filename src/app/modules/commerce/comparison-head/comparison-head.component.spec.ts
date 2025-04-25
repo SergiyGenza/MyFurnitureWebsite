@@ -8,8 +8,8 @@ describe('ComparisonHeadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComparisonHeadComponent ]
-    })
+    imports: [ComparisonHeadComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ComparisonHeadComponent);

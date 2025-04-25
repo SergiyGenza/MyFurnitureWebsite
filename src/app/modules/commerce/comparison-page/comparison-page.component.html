@@ -1,36 +1,49 @@
-<div class="container-lg" *ngIf=" products$ | async; let products">
+<div class="container-lg">
+  @if(products$ | async; as products){
   <app-breadcrumb></app-breadcrumb>
   <div class="table">
-    <app-comparison-head [comparisonTest]="comparisonTest" [products]="products.compareArr"></app-comparison-head>
+    <app-comparison-head [comparison]="comparisonTest" [products]="products.compareArr"></app-comparison-head>
     <!-- ms add ngFor -->
     <div class="comparison">
       <app-product-description-item [comparisonTest]="comparisonTest.generalTitle">
-        <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
-          <div class="product__desctription" *ngFor="let text of p.productDetails.general | keyvalue:onCompare">
-            {{text.value}}</div>
-        </div>
+        @for (p of products.compareArr; track $index) {
+        <div class="product" id="{{p.code}}">
+          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+          <div class="product__desctription">
+            {{text.value}}
+          </div>}
+        </div>}
       </app-product-description-item>
 
       <app-product-description-item [comparisonTest]="comparisonTest.productTitle">
-        <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
-          <div class="product__desctription" *ngFor="let text of p.productDetails.product | keyvalue:onCompare">
-            {{text.value}}</div>
-        </div>
+        @for (p of products.compareArr; track $index) {
+        <div class="product" id="{{p.code}}">
+          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+          <div class="product__desctription">
+            {{text.value}}
+          </div>}
+        </div>}
       </app-product-description-item>
 
       <app-product-description-item [comparisonTest]="comparisonTest.dimensionsTitle">
-        <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
-          <div class="product__desctription" *ngFor="let text of p.productDetails.dimensions | keyvalue:onCompare">
-            {{text.value}}</div>
-        </div>
+        @for (p of products.compareArr; track $index) {
+        <div class="product" id="{{p.code}}">
+          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+          <div class="product__desctription">
+            {{text.value}}
+          </div>}
+        </div>}
       </app-product-description-item>
 
       <app-product-description-item [comparisonTest]="comparisonTest.warrantyTitle">
-        <div class="product" *ngFor="let p of products.compareArr" id="{{p.code}}">
-          <div class="product__desctription" *ngFor="let text of p.productDetails.warranty | keyvalue:onCompare">
-            {{text.value}}</div>
-        </div>
+        @for (p of products.compareArr; track $index) {
+        <div class="product" id="{{p.code}}">
+          @for (text of p.productDetails.general | keyvalue:onCompare; track $index) {
+          <div class="product__desctription">
+            {{text.value}}
+          </div>}
+        </div>}
       </app-product-description-item>
     </div>
-  </div>
+  </div>}
 </div>

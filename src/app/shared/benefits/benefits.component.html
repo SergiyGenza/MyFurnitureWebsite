@@ -1,7 +1,8 @@
 <div class="benefits">
-  <div class="benefits__item" *ngFor="let item of benefits">
+  @for (item of benefits; track $index) {
+  <div class="benefits__item">
     <img class="benefits__icon" src="{{item.icon}}" alt="icon">
     <h3 class="benefits__title">{{item.title}}</h3>
     <p class="benefits__text">{{item.text}}</p>
-  </div>
+  </div>}
 </div>

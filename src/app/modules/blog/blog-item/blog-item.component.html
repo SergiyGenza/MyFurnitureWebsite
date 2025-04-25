@@ -1,28 +1,34 @@
 <div class="container-lg ">
   <app-breadcrumb></app-breadcrumb>
+  @defer{
   <div class="container-blog">
-    <div class="blog" *ngIf="blog$ | async; let blog">
+    @if(blog$ | async; as blog){
+    <div class="blog">
       <div class="post__img">
-        <img class="post__img" src="{{blog!.img}}" alt="Alt">
+        <img class="post__img" src="{{blog.img}}" alt="Alt">
       </div>
       <div class="post__info">
         <div class="post__auth">
           <img class="icon" src="{{b.postsIcons.user}}" alt="user-icon">
-          {{blog!.author}}
+          {{blog.author}}
         </div>
         <div class="post__time">
           <img class="icon" src="{{b.postsIcons.calendar}}" alt="calendar">
-          {{blog!.time}}
+          {{blog.time}}
         </div>
         <div class="post__time">
           <img class="icon" src="{{b.postsIcons.tag}}" alt="tag">
-          {{blog!.tag}}
+          {{blog.tag}}
         </div>
       </div>
       <div class="post__content">
-        <h3 class="post__title">{{blog!.title}}</h3>
+        <h3 class="post__title">{{blog.title}}</h3>
         <article class="post__text" [innerHTML]="blog!.text"></article>
       </div>
     </div>
+    }
   </div>
+  } @loading (minimum 1s) {
+  <app-spinner></app-spinner>
+  }
 </div>

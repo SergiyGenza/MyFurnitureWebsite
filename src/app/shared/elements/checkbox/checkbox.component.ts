@@ -1,10 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  standalone: true,
+  imports: [FormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent {
   @Input() remove: boolean | undefined = undefined;
@@ -15,6 +19,7 @@ export class CheckboxComponent {
   public onItemRemove(remove: boolean): void {
     this.isClose.emit(remove);
   }
+
   public onAllRemove(removeAll: boolean): void {
     this.canRemoveAll.emit(removeAll);
   }

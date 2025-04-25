@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BLOG } from 'src/app/common/mocks/blog';
 import { Blog } from 'src/app/common/models/blog.model';
 import { BlogService } from 'src/app/services/blog/blog.service';
+import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { AsyncPipe } from '@angular/common';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import { BlogCardComponent } from '../blog-card/blog-card.component';
 
 @Component({
   selector: 'app-blog-page',
   templateUrl: './blog-page.component.html',
-  styleUrls: ['./blog-page.component.scss']
+  styleUrls: ['./blog-page.component.scss'],
+  standalone: true,
+  imports: [BreadcrumbComponent, SpinnerComponent, BlogCardComponent, AsyncPipe]
 })
 export class BlogPageComponent {
-  blog = BLOG;
-  blogArray$: Observable<Blog[]> | undefined;
-  showSpinner: boolean = true;
-  subscription!: Subscription;
+  private readonly blogService = inject(BlogService);
 
-  constructor(
-    private blogService: BlogService,
-  ) {
-    // this.blogArray = blogService.getAllBlogs();
-  }
+  blog = BLOG;
+  blogArray$!: Observable<Blog[]>;
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.getBlogs();
-  }
-
-  getBlogs() {
     this.blogArray$ = this.blogService.getAllBlogs();
-    this.subscription = this.blogArray$.subscribe(() => this.showSpinner = false);
   }
 
   // addBlogs() {

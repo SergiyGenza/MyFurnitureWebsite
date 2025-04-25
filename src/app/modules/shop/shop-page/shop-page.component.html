@@ -2,9 +2,13 @@
   <app-breadcrumb></app-breadcrumb>
   <app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
   <div class="container-products">
-    <app-spinner *ngIf="showSpinner"></app-spinner>
     <div class="products">
-      <app-product-card *ngFor="let p of products | async" [product]="p"></app-product-card>
+      @defer {
+      @for (p of products | async; track $index) {
+      <app-product-card [product]="p"></app-product-card>}
+      } @loading {
+      <app-spinner></app-spinner>
+      }
     </div>
   </div>
   <app-benefits></app-benefits>
