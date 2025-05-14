@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   imports: [NgClass],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   @Input() title: string = '';
@@ -32,8 +32,6 @@ export class ButtonComponent {
 
   public onClick(): void {
     if (this.disabled) return;
-    console.log('click');
-    
     this.buttonClick.emit();
   }
 }

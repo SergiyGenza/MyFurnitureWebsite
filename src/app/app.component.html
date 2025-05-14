@@ -1,5 +1,7 @@
 @if (showLayout$ | async) {
-<app-header></app-header>}
+<header class="container-lg">
+  <app-header></app-header>
+</header>}
 <main class="container-lg">
   @if (showBreadcrumb$ | async) {
   <app-breadcrumb [min]="min$ | async"></app-breadcrumb>}

@@ -22,6 +22,9 @@
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: min-content;
 
   &__primary {
@@ -40,10 +43,33 @@
     @include button;
   }
 
-  &__secondary {}
+  &__secondary {
+    border-radius: 10px;
+    border: 1px solid $link-color;
+    font-family: $font-fira;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px 30px;
+  }
+
+  &__product-card {
+    background-color: $white;
+    color: $btn-title;
+    font-size: 16px;
+    line-height: 150%;
+    padding: 12px 52px;
+    height: 48px;
+    width: 200px;
+    @include p-semiBold;
+  }
 
   &__big {
     width: 100%;
     height: 64px;
+  }
+
+  &__header-icon {
+    width: 28px;
+    height: 28px;
   }
 }

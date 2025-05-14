@@ -44,8 +44,9 @@ export class CartService {
   public removeProduct(product: Product) {
     this.cart.items = this.cart.items!.filter(p => {
       return p.product !== product;
-    })
+    });
     this.setCartToLocalStorage(this.cart);
+    this.cartSubject$.next(this.cart);
   }
 
   public clearCart() {

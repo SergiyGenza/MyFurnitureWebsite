@@ -12,34 +12,42 @@
     </div>
     <div class="card__price">
       @if (product.state != 'new' && product.discount) {
-      <div>
+      <span>
         {{product.price / 100 * (product.discount) | currency}}
-      </div>}
-      <div [ngClass]="{'card__price__old' : product.state != 'new' && product.discount }">
+      </span>}
+      <span [ngClass]="{'card__price__old' : product.state != 'new' && product.discount }">
         {{product.price | currency}}
-      </div>
+      </span>
     </div>
   </div>
   <div class="card-tool">
-    <a routerLink="{{url}}">
-      <button class="btn btn-view-more">View more</button>
+    <a [routerLink]="['/shop', product.title.toLowerCase()]">
+      <app-button
+        [classList]="['btn__product-card']"
+        [title]="'View more'">
+      </app-button>
     </a>
-    <button class="btn btn-add" (click)="onCartAdding(product)">Add to cart</button>
+    <div>
+      <app-button 
+        [classList]="['btn__product-card']"
+        [title]="'Add to cart'"
+        (click)="onCartAdding(product)">
+      </app-button>
+    </div>
     <div class="card-tool__btn-group">
-      <div class="btn__share">
-        <img class="btn__icon" src="../../../assets/images/icons/share.svg" alt="">
-        share
-      </div>
-      <div class="btn__compare">
-        <button (click)="onProductCompare(product)">
-          <img class="btn__icon" src="../../../assets/images/icons/compare.svg" alt="">
-          compare
-        </button>
-      </div>
-      <div class="btn__like">
-        <img class="btn__icon" src="../../../assets/images/icons/favourite.svg" alt="">
-        Like
-      </div>
+      <app-button
+        [title]="'share'">
+        <img class="icon" src="../../../assets/images/icons/share.svg" alt="">
+      </app-button>
+      <app-button 
+        [title]="'compare'"
+        (click)="onProductCompare(product)">
+        <img class="icon" src="../../../assets/images/icons/compare.svg" alt="">
+      </app-button>
+      <app-button 
+        [title]="'Like'">
+        <img class="icon" src="../../../assets/images/icons/favourite.svg" alt="">
+      </app-button>
     </div>
   </div>
 </div>

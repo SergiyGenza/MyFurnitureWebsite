@@ -28,15 +28,15 @@ export class AppComponent {
     shareReplay(1)
   );
 
-  public showBreadcrumb$: Observable<boolean> = this.currentUrl$.pipe(
+  public readonly showBreadcrumb$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => !this.hiddenRoutes.includes(url))
   );
 
-  public min$: Observable<boolean> = this.currentUrl$.pipe(
+  public readonly min$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => this.minPatterns.some(pattern => this.matchesPattern(url, pattern)))
   );
 
-  public showLayout$: Observable<boolean> = this.currentUrl$.pipe(
+  public readonly showLayout$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => !this.hiddenLayout.includes(url))
   );
 
