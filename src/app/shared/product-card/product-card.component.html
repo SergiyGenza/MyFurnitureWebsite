@@ -1,6 +1,8 @@
 <div class="card">
   <img class="card__img" src="{{product.img}}" alt="product">
-  <app-discount class="card__state" [state]="state"></app-discount>
+  @if(product.discount || product.state){
+  <app-discount class="card__state" [state]="product.state" [discount]="product.discount"></app-discount>
+  }
   <div class="card__content">
     <div class="card__title">
       {{product.title}}
@@ -9,11 +11,11 @@
       {{product.type}}
     </div>
     <div class="card__price">
-      @if (state != 'new' && state != undefined) {
+      @if (product.state != 'new' && product.discount) {
       <div>
-        {{-product.price / 100 * (state!) | currency}}
+        {{product.price / 100 * (product.discount) | currency}}
       </div>}
-      <div [ngClass]="{'card__price__old' : state != 'new' && state != undefined }">
+      <div [ngClass]="{'card__price__old' : product.state != 'new' && product.discount }">
         {{product.price | currency}}
       </div>
     </div>

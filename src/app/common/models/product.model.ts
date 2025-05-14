@@ -10,7 +10,7 @@ export interface Product {
   discount?: number;
   description?: '';
   colors?: Color[];
-  state?: number | string;
+  state?: 'new' | undefined;
 }
 
 interface Size {

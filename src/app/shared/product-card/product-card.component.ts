@@ -19,17 +19,12 @@ export class ProductCardComponent implements OnInit {
 
   private readonly cartService = Inject(CartService);
   private readonly comparisonService = Inject(ComparisonService);
-
   public url: string | undefined = '';
-
-  // need ref
-  public state: any;
 
   constructor() { }
 
   ngOnInit(): void {
     this.setQuarryKey();
-    this.hasState();
   }
 
   public onCartAdding(product: Product): void {
@@ -42,11 +37,5 @@ export class ProductCardComponent implements OnInit {
 
   private setQuarryKey(): void {
     this.url = this.product.title.toLowerCase();
-  }
-
-  private hasState(): void {
-    if (this.product!.state) {
-      this.state = this.product!.state;
-    }
   }
 }
