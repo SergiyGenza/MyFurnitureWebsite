@@ -1,27 +1,64 @@
-<div class="container">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required />
-      </div>
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPassword required />
-      </div>
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Log in"
-          (click)="authService.SignIn(userName.value, userPassword.value)" />
-      </div>
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
-      </div>
-    </div>
-    <div class="redirectToLogin">
-      <span>Don't have an account?<span class="redirect" routerLink="/register-user">
-          Sign Up</span></span>
-    </div>
+<div class="auth">
+  <div class="auth__head">
+    <h3>Sign In</h3>
+    <button type="button" class="btn__close">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M10.5858 10.5858C11.3668 9.80474 12.6332 9.80474 13.4142 10.5858L24 21.1716L34.5858 10.5858C35.3668 9.80474 36.6332 9.80474 37.4142 10.5858C38.1952 11.3668 38.1952 12.6332 37.4142 13.4142L26.8284 24L37.4142 34.5858C38.1952 35.3668 38.1952 36.6332 37.4142 37.4142C36.6332 38.1952 35.3668 38.1952 34.5858 37.4142L24 26.8284L13.4142 37.4142C12.6332 38.1952 11.3668 38.1952 10.5858 37.4142C9.80474 36.6332 9.80474 35.3668 10.5858 34.5858L21.1716 24L10.5858 13.4142C9.80474 12.6332 9.80474 11.3668 10.5858 10.5858Z"
+          fill="#0F1729" />
+      </svg>
+    </button>
   </div>
+
+  <form class="auth__form" [formGroup]="form">
+    <div class="auth__email">
+      <label for="email">Email</label>
+      <input type="text" class="basic-input" placeholder="eamil" formControlName="login"/>
+    </div>
+
+    <div class="auth__password">
+      <label for="password">Password</label>
+      <div class="auth__input-wrapper">
+        <input type="{{inputType}}" class="basic-input" placeholder="password" formControlName="password"/>
+        <button type="button" (click)="onTypeChange()">
+          @if(this.inputType == 'password') {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M30.0014 24C30.0014 27.3138 27.3152 30 24.0014 30C20.6878 30 18.0015 27.3138 18.0015 24C18.0015 20.6862 20.6878 18 24.0014 18C27.3152 18 30.0014 20.6862 30.0014 24Z"
+              stroke="#B88E2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M24.0024 10C15.0471 10 7.46653 15.8858 4.91797 24C7.46649 32.1142 15.0471 38 24.0024 38C32.9576 38 40.5382 32.1142 43.0868 24C40.5382 15.8858 32.9576 10 24.0024 10Z"
+              stroke="#B88E2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>} @else {
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.99804 6L41.998 42M19.6866 19.8273C18.6413 20.9072 17.998 22.3784 17.998 24C17.998 27.3138 20.6844 30 23.998 30C25.643 30 27.1334 29.338 28.2172 28.266M12.998 13.2943C9.19944 15.8007 6.3061 19.5679 4.91406 24C7.46256 32.1142 15.0432 38 23.9984 38C27.9762 38 31.6828 36.8388 34.7976 34.8368M21.998 10.0988C22.656 10.0335 23.3234 10 23.9984 10C32.9538 10 40.5344 15.8858 43.0828 24C42.5214 25.788 41.7154 27.4676 40.7044 29"
+              stroke="#B88E2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>}
+        </button>
+      </div>
+      <div routerLink="/auth" class="forget-pass">Forgot Password?</div>
+    </div>
+    
+    <div class="auth__confirm">
+      <app-button
+        [classList]="['btn btn__primary btn__big']"
+        [disabled]="!this.form.valid"
+        [title]="'Sign In'"
+        (buttonClick)="onSubmit()">
+      </app-button>
+      <app-button
+        [classList]="['btn btn__primary btn__big']"
+        [title]="'Sign up'"
+        (buttonClick)="onSubmit()">
+      </app-button>
+    </div>
+
+    <div class="auth__or"><span class="orInner">or</span></div>
+    <app-button 
+      [classList]="['btn btn__primary btn__big']"
+      [title]="'Google'"
+      (buttonClick)="onGoogleAuth()">
+    </app-button>
+  </form>
 </div>

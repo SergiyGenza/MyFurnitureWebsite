@@ -1,4 +1,4 @@
-<div class="contact container-contact">
+<section class="contact container-contact">
   <div class="contact__head">
     <h2 class="contact__title">{{contact.title}}</h2>
     <p class="contact__text">{{contact.text}}</p>
@@ -6,31 +6,31 @@
   <form class="form" action="">
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.name}}</label>
-      <input type="text" name="userName" placeholder="{{contact.form.namePlaseholder}}">
+      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.namePlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.email}}</label>
-      <input type="emal" name="userName" placeholder="{{contact.form.emailPlaseholder}}">
+      <input class="basic-input" type="emal" name="userName" placeholder="{{contact.form.emailPlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.about}}</label>
-      <input type="text" name="userName" placeholder="{{contact.form.aboutPlaseholder}}">
+      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.aboutPlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.message}}</label>
-      <input class="message" type="text" name="userName" placeholder="{{contact.form.messagePlaseholder}}">
+      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.messagePlaseholder}}">
     </div>
     <div class="form__btn">
       <button type="submit">{{contact.form.btnTitle}}</button>
     </div>
   </form>
-</div>
-<div class="info">
+</section>
+<section class="info">
   @for (info of contact.info; track $index) {
   <div class="info__item">
     <img class="info__icon" src="{{info.icon}}" alt="icon">
     <h3 class="info__title">{{info.title}}</h3>
     <p class="info__text">{{info.text}}</p>
   </div>}
-</div>
+</section>
 <app-benefits></app-benefits>

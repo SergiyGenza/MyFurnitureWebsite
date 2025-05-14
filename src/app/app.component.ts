@@ -19,6 +19,8 @@ export class AppComponent {
 
   private readonly hiddenRoutes = ['/home', '/sign-up', '/auth'];
   private readonly minPatterns = ['/shop/*', '/blog/*'];
+  private readonly hiddenLayout = ['/sign-up', '/auth'];
+
   private readonly currentUrl$: Observable<string> = this.router.events.pipe(
     filter(event => event instanceof NavigationEnd),
     map(() => this.router.url),
@@ -32,6 +34,10 @@ export class AppComponent {
 
   public min$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => this.minPatterns.some(pattern => this.matchesPattern(url, pattern)))
+  );
+
+  public showLayout$: Observable<boolean> = this.currentUrl$.pipe(
+    map(url => !this.hiddenLayout.includes(url))
   );
 
   private matchesPattern(url: string, pattern: string): boolean {

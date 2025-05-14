@@ -1,0 +1,9 @@
+@import "../style/utils/variables";
+
+.basic-input {
+  background: $white;
+  border-radius: 10px;
+  border: 1px solid $light-grey;
+  height: 75px;
+  padding: 0 10px;
+}

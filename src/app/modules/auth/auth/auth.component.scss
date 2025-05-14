@@ -1,5 +1,94 @@
-.displayTableCell {
+@import "../../../../assets//style//utils//variables";
+@import "../../../../assets//style//base";
+
+:host {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.auth {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 1px 0px 40px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 40px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 40px -8px rgba(0, 0, 0, 0.75);
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    h3 {
+      font-family: 'Hind', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 100%;
+    }
+  }
+
+  &__form {
+    width: 540px;
+  }
+
+  &__email,
+  &__input-wrapper {
+    margin: 0 0 12px 0;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+
+    input {
+      display: block;
+      width: 80%;
+    }
+  }
+
+  &__password {}
+
+  &__confirm {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+  }
+
+
+  &__or {
+    font-family: 'Rubik' sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center;
+
+    margin: 20px 0;
+  }
+}
+
+label {
+  font-family: Fira Sans Condensed;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.forget-pass {
+  font-family: Fira Sans Condensed;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 12px 0 14px 0;
+}
+
+.auth input {
+  width: 100%;
 }

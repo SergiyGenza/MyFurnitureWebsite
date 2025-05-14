@@ -1,0 +1,49 @@
+@import "../../../assets//style//utils//mixins";
+@import "../../../assets//style//utils/variables";
+
+@mixin button {
+  border-radius: 50px;
+  border: 1px solid #B88E2F;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  cursor: auto;
+  font-family: Fira Sans Condensed;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+
+  padding: 6px 30px;
+}
+
+:host {
+  width: inherit;
+}
+
+.btn {
+  min-width: min-content;
+
+  &__primary {
+    background-color: $primary;
+    border-radius: 10px;
+    color: $white;
+    font-family: Hind;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+  &__primary:disabled {
+    @include button;
+  }
+
+  &__secondary {}
+
+  &__big {
+    width: 100%;
+    height: 64px;
+  }
+}
