@@ -42,12 +42,14 @@
         <div class="devider"></div>
         <div class="nav">
           @for(nav of shoping.nav; track nav.link){
-          <app-button
-            routerLink="{{nav.link}}"
-            [title]="nav.title"
-            [classList]="['btn__secondary']"
-            (buttonClick)="onShopingCartClose()">
-          </app-button>}
+          <a routerLink="{{nav.link}}">
+            <app-button
+              routerLink="{{nav.link}}"
+              [title]="nav.title"
+              [classList]="['btn__secondary']"
+              (buttonClick)="onShopingCartClose()">
+            </app-button>
+          </a>}
         </div>
       </div>
     </div>

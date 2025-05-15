@@ -1,31 +1,33 @@
-<section class="content">
-  <form action="" class="form">
+<form class="content" [formGroup]="form">
+  <div action="" class="form">
     <div class="form__title">
       {{checkout.title}}
     </div>
     <div class="user">
       <div class="user__first-name">
         <label for="first">{{checkout.firstName}}</label>
-        <input type="text" name="first name">
+        <input class="basic-input" type="text" name="first name" formControlName="firstName">
       </div>
       <div class="user__last-name">
         <label for="last">{{checkout.lastName}}</label>
-        <input type="text" name="last">
+        <input class="basic-input" type="text" name="last" formControlName="lastName">
       </div>
     </div>
     <div class="email">
       <label for="email">{{checkout.email}}</label>
-      <input type="email">
+      <input class="basic-input" type="email" formControlName="email">
     </div>
     <div class="phone">
       <label for="phone">{{checkout.phone}}</label>
-      <input type="tel">
+      <input class="basic-input" type="tel" formControlName="phone">
     </div>
     <div class="company">
       <label for="company">{{checkout.companyName}}</label>
-      <input type="text">
+      <input class="basic-input" type="text" formControlName="company">
     </div>
-  </form>
+  </div>
+
+  <!-- mb try coomponent -->
   <div class="shoping-cart">
     <div class="shoping-cart__header">
       <div class="title">
@@ -58,10 +60,14 @@
         Total
       </div>
       <div class="total">
-        {{totalPrice | currency}}
+        {{totalPrice$ | async | currency}}
       </div>
     </div>
-    <button class="btn-primary">Place order</button>
+    <app-button 
+      [title]="'Place order'"
+      [classList]="['btn__primary', 'btn__wide']"
+      [disabled]="form.invalid">
+    </app-button>
   </div>
-</section>
+</form>
 <app-benefits></app-benefits>

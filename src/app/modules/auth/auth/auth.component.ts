@@ -18,7 +18,7 @@ export class AuthComponent implements OnInit {
   public form = new FormGroup({
     login: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
-  })
+  });
 
   constructor() { }
 

@@ -24,14 +24,6 @@
 }
 
 .show-more {
-  text-align: center;
-
-  .btn__show-more {
-    margin-top: 32px;
-    padding: 12px 74px;
-    color: $btn-title;
-    background-color: $white;
-    border: 1.5px solid $btn-title;
-    @include p-bold;
-  }
+  display: flex;
+  justify-content: center;
 }

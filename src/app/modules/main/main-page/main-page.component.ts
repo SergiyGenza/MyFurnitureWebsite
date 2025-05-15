@@ -8,13 +8,14 @@ import { PostBannerComponent } from '../post-banner/post-banner.component';
 import { AsyncPipe } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
+import { ButtonComponent } from 'src/app/shared/button/button.component';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
   standalone: true,
-  imports: [BannerComponent, PostBannerComponent, SpinnerComponent, ProductCardComponent, AsyncPipe]
+  imports: [BannerComponent, PostBannerComponent, SpinnerComponent, ProductCardComponent, AsyncPipe, ButtonComponent]
 })
 export class MainPageComponent implements OnInit {
   private readonly productService = inject(ProductService);

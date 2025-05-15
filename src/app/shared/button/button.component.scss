@@ -52,6 +52,14 @@
     padding: 6px 30px;
   }
 
+  &__tertiary {
+    padding: 12px 74px;
+    color: $btn-title;
+    background-color: $white;
+    border: 1.5px solid $btn-title;
+    @include p-bold;
+  }
+
   &__product-card {
     background-color: $white;
     color: $btn-title;
@@ -66,6 +74,10 @@
   &__big {
     width: 100%;
     height: 64px;
+  }
+
+  &__wide {
+    width: 100%;
   }
 
   &__header-icon {

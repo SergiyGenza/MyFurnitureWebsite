@@ -1,6 +1,6 @@
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Component, Output, EventEmitter, OnInit, inject } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SHOPING_CART } from 'src/app/common/mocks/shoping-cart';
 import { Cart } from 'src/app/common/models/cart.model';
 import { Product } from 'src/app/common/models/product.model';
@@ -29,15 +29,7 @@ export class ShopingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalPrice$ = this.cart$.pipe(
-      map((c) => {
-        let total = 0
-        c.items.forEach(p => {
-          total += p.product.price * p.quantity;
-        })
-        return total;
-      })
-    )
+    this.totalPrice$ = this.cartService.getTotalPrice();
   }
 
   public onShopingCartClose(): void {

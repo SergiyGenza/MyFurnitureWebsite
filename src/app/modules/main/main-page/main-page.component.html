@@ -15,8 +15,12 @@
   } @placeholder (minimum 1.5s) {
   <app-spinner></app-spinner>
   }
+
   <div class="show-more">
-    <button class="btn__show-more">Show More</button>
+    <app-button
+      [title]="'Show More'"
+      [classList]="['btn__tertiary']">
+    </app-button>
   </div>
 </section>
 <!-- slider -->
