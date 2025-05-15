@@ -3,26 +3,33 @@
     <h2 class="contact__title">{{contact.title}}</h2>
     <p class="contact__text">{{contact.text}}</p>
   </div>
-  <form class="form" action="">
+  <form class="form" [formGroup]="form">
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.name}}</label>
-      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.namePlaseholder}}">
+      <input class="basic-input" type="text" name="userName" formControlName="name"
+        placeholder="{{contact.form.namePlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.email}}</label>
-      <input class="basic-input" type="emal" name="userName" placeholder="{{contact.form.emailPlaseholder}}">
+      <input class="basic-input" type="emal" name="userName" formControlName="email"
+        placeholder="{{contact.form.emailPlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.about}}</label>
-      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.aboutPlaseholder}}">
+      <input class="basic-input" type="text" name="userName" formControlName="subject"
+        placeholder="{{contact.form.aboutPlaseholder}}">
     </div>
     <div class="form__item">
       <label class="label" for="userName">{{contact.form.message}}</label>
-      <input class="basic-input" type="text" name="userName" placeholder="{{contact.form.messagePlaseholder}}">
+      <input class="basic-input" type="text" name="userName" formControlName="message"
+        placeholder="{{contact.form.messagePlaseholder}}">
     </div>
-    <div class="form__btn">
-      <button type="submit">{{contact.form.btnTitle}}</button>
-    </div>
+    <app-button  
+      [title]="contact.form.btnTitle"
+      [classList]="['btn__primary', 'btn__wide']"
+      [disabled]="form.invalid"
+      (buttonClick)="onSubmit()">
+    </app-button>
   </form>
 </section>
 <section class="info">

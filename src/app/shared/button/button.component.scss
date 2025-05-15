@@ -84,4 +84,12 @@
     width: 28px;
     height: 28px;
   }
+
+  &__read-more {
+    @include p-medium;
+    color: $link-color;
+    position: relative;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+  }
 }

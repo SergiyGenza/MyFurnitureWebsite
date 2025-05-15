@@ -19,8 +19,10 @@
     <td class="subtotal">{{item.quantity * item.product.price | currency}}</td>
     <td>
       <button>
-        <img (click)="onProductRemove(item.product)" class="remove-btn"
-          src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
+        <img 
+          src="../../../../assets/images/icons/remove-icon.svg"
+          alt="remove-icon"
+          (click)="onProductRemove(item.product)">
       </button>
     </td>
   </tr>}
@@ -29,9 +31,11 @@
     <td></td>
     <td></td>
     <td class="subtotal"></td>
-    <td class="total-price">{{totalPrice | currency}}</td>
+    <td class="total-price">{{totalPrice$ | async | currency}}</td>
     <td class="tablet-cell"></td>
-    <td><button class="btn-primary" routerLink="/checkout">Checkout</button></td>
+    <td>
+      <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>
+    </td>
   </tr>
 </table>} @else {
 <ng-container *ngTemplateOutlet="noCart"></ng-container>}
@@ -46,10 +50,12 @@
         (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)">
       </app-checkbox>
     </div>
-    <button class="cart-page__tool__remove-btn">
-      <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon"
+    <app-button>
+      <img 
+        src="../../../../assets/images/icons/remove-icon.svg"
+        alt="remove-icon"
         (click)="onProductListRemove()">
-    </button>
+    </app-button>
   </div>
   @for (cartItem of shopingCart.items; track $index) {
   <app-cart-product-item 
@@ -57,12 +63,11 @@
     [cartItem]="cartItem"
     (productForRemove)="checkProductToRemoveList($event)"
     (newProductQuantity)="updateProductQuantity($event, shopingCart.items)">
-  </app-cart-product-item>
-  }
+  </app-cart-product-item>}
   <div class="cart-page__bottom">
-    <button class="btn-primary" routerLink="/checkout">Checkout</button>
+    <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>
     <div class="total-price">
-      {{totalPrice | currency}}
+      {{totalPrice$ | async | currency}}
     </div>
   </div>
 </div>} @else {
@@ -74,4 +79,11 @@
     <div class="">No products!</div>
     <a routerLink="shop">Go to the Shop</a>
   </div>
+</ng-template>
+
+<ng-template #checkoutBtn>
+  <a routerLink="/checkout">
+    <app-button [title]="'Checkout'" [classList]="['btn__primary']">
+    </app-button>
+  </a>
 </ng-template>
