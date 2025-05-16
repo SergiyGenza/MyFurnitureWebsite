@@ -92,4 +92,34 @@
     border-bottom: 1px solid;
     padding-bottom: 8px;
   }
+
+  &__footer-subscribe {
+    color: $link-color;
+    font-family: Fira Sans Condensed;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    border-bottom: 2px solid #555;
+  }
+
+  &__btn-group {
+    cursor: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #9F9F9F;
+    padding: 10px 22px;
+  }
+
+  &__compare {
+    border-radius: 15px;
+    border: 1px solid #9F9F9F;
+    padding: 10px 22px;
+    width: 172px;
+    height: 64px;
+  }
+
+  &__select {
+    justify-content: space-between;
+  }
 }

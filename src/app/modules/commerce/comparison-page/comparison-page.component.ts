@@ -18,8 +18,8 @@ import { ProductDescriptionItemComponent } from '../product-description-item/pro
 export class ComparisonPageComponent implements OnInit {
   private readonly comparisonService = inject(ComparisonService);
 
-  public products$!: Observable<Comparison>;
   public comparisonTest = COMPARISON;
+  public products$!: Observable<Comparison>;
   positionTitles: PositionTitle | undefined;
 
   constructor() { }

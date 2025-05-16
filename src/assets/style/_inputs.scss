@@ -7,3 +7,18 @@
   height: 75px;
   padding: 0 10px;
 }
+
+.input {
+  &__footer {
+    border-bottom: 2px solid $underline;
+    transition: 0.3s ease-in;
+  }
+
+  &__footer::placeholder {
+    color: #9F9F9F;
+  }
+
+  &__footer:focus {
+    background-color: rgb(251, 251, 251, 0.9);
+  }
+}

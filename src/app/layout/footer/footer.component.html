@@ -1,38 +1,30 @@
 <footer class="footer">
-  <div class="container-lg">
-    <div class="footer__title">
-      Funiro.
-    </div>
-    <div class=" footer__wrapper">
-      <div class="footer__left">
-        <nav class="nav">
-          <ul class="nav__list">
-            <li *ngFor="let nav of header.nav">
-              <a class="nav__item" routerLink="{{nav.link}}">
-                {{nav.title}}
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__right">
-        <div class="contacts">
-          {{footer.email}}
-        </div>
-        <div class="subscribe">
-          <input type="email">
-          <button type="submit" class="btn subscription">{{footer.btnTitle}}</button>
-        </div>
-        <div class="adress">
-          {{footer.adress}}
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="copyright">
-        {{footer.copyright}}
-      </div>
-    </div>
+  <div class="footer__title">
+    Funiro.
   </div>
-
+  <nav class="nav">
+    <ul class="nav__list">
+      @for(nav of header.nav; track nav.link){
+      <li>
+        <a class="nav__item" routerLink="{{nav.link}}">
+          {{nav.title}}
+        </a>
+      </li>}
+    </ul>
+  </nav>
+  <div class="subscribe">
+    <input type="email" class="input__footer" placeholder="Enter Your Email Address">
+    <app-button 
+      [title]="footer.btnTitle"
+      [classList]="[' btn__footer-subscribe']">
+    </app-button>
+  </div>
+  <div class="adress">
+    {{footer.adress}}
+  </div>
+  <div class="footer__bottom">
+    <span class="copyright">
+      {{footer.copyright}}
+    </span>
+  </div>
 </footer>

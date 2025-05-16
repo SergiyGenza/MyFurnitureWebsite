@@ -5,7 +5,6 @@
   margin-top: 100px;
   padding: 0 30px;
   color: $link-color;
-  font-size: 24px;
   font-weight: 500;
   line-height: 126.5%;
   display: flex;
@@ -24,6 +23,8 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 25px;
 
-    &__desctription {}
+    &__desctription {
+      font-size: 24px;
+    }
   }
 }

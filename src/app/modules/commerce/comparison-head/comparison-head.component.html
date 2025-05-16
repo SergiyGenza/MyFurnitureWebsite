@@ -1,24 +1,26 @@
-<div class="table__head section">
-  <div class="table__wrapper">
-    <div class="table__title">{{comparison.tableHead}}</div>
-    <button class="btn-view-more">
-      <a routerLink="shop">{{comparison.btnTitle}}</a>
-    </button>
-    <div class="comparison-tool">
-      <button class="comparison-tool__btn" (click)="this.isOpen = !this.isOpen">
-        Choose a Product
+<div class="table__wrapper">
+  <div class="table__title">{{comparison.tableHead}}</div>
+  <a routerLink="shop">  
+    <app-button 
+      [title]="comparison.btnTitle"
+      [classList]="['btn__read-more']">
+    </app-button>
+  </a>
+  <div class="comparison-tool">
+    <app-button 
+      [title]="'Choose a Product'"
+      [classList]="['btn__primary btn__wide btn__select']"
+      (buttonClick)="this.isOpen = !this.isOpen">
         <img class="arrow-icon" src="{{comparison.arrowIcon}}" alt="arrow icon">
-      </button>
-      @if(isOpen) {
-      <app-comparison-tool class="comparison-tool__list"></app-comparison-tool>
-      }
-    </div>
+    </app-button>
+    @if(isOpen) {
+    <app-comparison-tool class="comparison-tool__list"></app-comparison-tool>}
   </div>
-  @for (p of products; track $index) {
-  <div class="product">
-    <img class="product__preview" src="{{p.img}}" alt="alt">
-    <div class="product__title">{{p.title}}</div>
-    <div class="product__code">code: {{p.code}}</div>
-    <div class="product__price">price: {{p.price | currency}}</div>
-  </div>}
 </div>
+@for (p of products; track $index) {
+<div class="product">
+  <img class="product__preview" src="{{p.img}}" alt="product">
+  <div class="product__title">{{p.title}}</div>
+  <div class="product__code">code: {{p.code}}</div>
+  <div class="product__price">price: {{p.price | currency}}</div>
+</div>}
