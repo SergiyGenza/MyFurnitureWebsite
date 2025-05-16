@@ -1,70 +1,73 @@
-<div class="container-lg">
-  <app-breadcrumb></app-breadcrumb>
-  <div class="content">
-    <form action="" class="form">
-      <div class="form__title">
-        {{checkout.title}}
+<form class="content" [formGroup]="form">
+  <div action="" class="form">
+    <div class="form__title">
+      {{checkout.title}}
+    </div>
+    <div class="user">
+      <div class="user__first-name">
+        <label for="first">{{checkout.firstName}}</label>
+        <input class="basic-input" type="text" name="first name" formControlName="firstName">
       </div>
-      <div class="user">
-        <div class="user__first-name">
-          <label for="first">{{checkout.firstName}}</label>
-          <input type="text" name="first name">
-        </div>
-        <div class="user__last-name">
-          <label for="last">{{checkout.lastName}}</label>
-          <input type="text" name="last">
-        </div>
+      <div class="user__last-name">
+        <label for="last">{{checkout.lastName}}</label>
+        <input class="basic-input" type="text" name="last" formControlName="lastName">
       </div>
-      <div class="email">
-        <label for="email">{{checkout.email}}</label>
-        <input type="email">
-      </div>
-      <div class="phone">
-        <label for="phone">{{checkout.phone}}</label>
-        <input type="tel">
-      </div>
-      <div class="company">
-        <label for="company">{{checkout.companyName}}</label>
-        <input type="text">
-      </div>
-    </form>
-    <div class="shoping-cart">
-      <div class="shoping-cart__header">
-        <div class="title">
-          Product
-        </div>
-        <div class="quantity">
-          Quantity
-        </div>
-        <div class="total">
-          Subtotal
-        </div>
-      </div>
-      @if (shopingCart | async; as shoping) {
-      <div class="products">
-        <div class="devider"></div>
-        @for (item of shoping.items; track $index) {
-        <div class="product">
-          <div class="product__title">{{item.product.title}}</div>
-          <div class="product__number">
-            <div class="product__multiply">x</div>
-            <div class="product__quantity">{{item.quantity}}</div>
-            <!-- <div class="product__price">{{item.product.price | currency}}</div> -->
-          </div>
-          <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
-        </div>}
-        <div class="devider"></div>
-      </div>}
-      <div class="total-price">
-        <div class="title">
-          Total
-        </div>
-        <div class="total">
-          {{totalPrice | currency}}
-        </div>
-      </div>
-      <button class="btn-primary">Place order</button>
+    </div>
+    <div class="email">
+      <label for="email">{{checkout.email}}</label>
+      <input class="basic-input" type="email" formControlName="email">
+    </div>
+    <div class="phone">
+      <label for="phone">{{checkout.phone}}</label>
+      <input class="basic-input" type="tel" formControlName="phone">
+    </div>
+    <div class="company">
+      <label for="company">{{checkout.companyName}}</label>
+      <input class="basic-input" type="text" formControlName="company">
     </div>
   </div>
-  <app-benefits></app-benefits>
-</div>
+
+  <!-- mb try coomponent -->
+  <div class="shoping-cart">
+    <div class="shoping-cart__header">
+      <div class="title">
+        Product
+      </div>
+      <div class="quantity">
+        Quantity
+      </div>
+      <div class="total">
+        Subtotal
+      </div>
+    </div>
+    @if (shopingCart | async; as shoping) {
+    <div class="products">
+      <div class="devider"></div>
+      @for (item of shoping.items; track $index) {
+      <div class="product">
+        <div class="product__title">{{item.product.title}}</div>
+        <div class="product__number">
+          <div class="product__multiply">x</div>
+          <div class="product__quantity">{{item.quantity}}</div>
+          <!-- <div class="product__price">{{item.product.price | currency}}</div> -->
+        </div>
+        <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
+      </div>}
+      <div class="devider"></div>
+    </div>}
+    <div class="total-price">
+      <div class="title">
+        Total
+      </div>
+      <div class="total">
+        {{totalPrice$ | async | currency}}
+      </div>
+    </div>
+    <app-button 
+      [title]="'Place order'"
+      [classList]="['btn__primary', 'btn__wide']"
+      [disabled]="form.invalid">
+    </app-button>
+  </div>
+</form>
+<app-benefits></app-benefits>

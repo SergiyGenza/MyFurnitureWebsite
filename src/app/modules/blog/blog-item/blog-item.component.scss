@@ -15,7 +15,6 @@
   }
 
   img {
-    // width: 817px;
     border-radius: 10px;
     max-height: 475px;
   }
@@ -28,19 +27,22 @@
 
   &__content {
     margin-top: 15px;
+    margin-left: 10;
   }
 
   &__title {
     @include p-medium;
+    text-align: center;
     color: $link-color;
     font-size: 30px;
+    margin-bottom: 12px;
   }
 
-  &__text {
-    margin-top: 12px;
-    text-align: justify;
+  &__article {
     font-size: 15px;
-    line-height: 150%;
+    margin: 0 auto;
+    line-height: 180%;
+    width: 800px;
   }
 
   &__open {

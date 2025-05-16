@@ -1,48 +1,39 @@
-import { Component, inject, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Cart } from 'src/app/common/models/cart.model';
 import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { SelectItemsService } from 'src/app/services/select/select-items.service';
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
+import { AsyncPipe, CurrencyPipe, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
+import { ButtonComponent } from 'src/app/shared/button/button.component';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe]
+  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe, ButtonComponent, NgTemplateOutlet]
 })
-export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
+export class CartPageComponent implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly selectItemsService = inject(SelectItemsService);
 
   public shopingCart$: Observable<Cart> = this.cartService.cartSubject$;
   public removeAll: boolean = false;
 
-  public totalPrice: number = 0;
-  private subscription!: Subscription;
+  public totalPrice$!: Observable<number>;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.calcTotalPrice();
+    this.totalPrice$ = this.cartService.getTotalPrice();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.calcTotalPrice();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public checkProductToRemoveList(cartItem: CartItemForDelete) {
+  public checkProductToRemoveList(cartItem: CartItemForDelete): void {
     cartItem.state
       ? this.selectItemsService.addProduct(cartItem.cartItem)
       : this.selectItemsService.removeProductFromList(cartItem.cartItem);
@@ -68,7 +59,6 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
     list.map((i: CartItem) => {
       this.cartService.removeProduct(i.product);
     })
-    this.calcTotalPrice();
   }
 
   public updateProductQuantity(newCartItem: CartItem, cartItems: CartItem[]): void {
@@ -82,17 +72,5 @@ export class CartPageComponent implements OnInit, OnDestroy, OnChanges {
 
   public onProductRemove(item: Product): void {
     this.cartService.removeProduct(item);
-    this.calcTotalPrice();
-  }
-
-  // need ref
-  private calcTotalPrice(): void {
-    this.totalPrice = 0;
-    // debugger
-    this.subscription = this.shopingCart$.subscribe(c => {
-      c.items.map(p => {
-        return this.totalPrice += p.product.price * p.quantity;
-      })
-    })
   }
 }

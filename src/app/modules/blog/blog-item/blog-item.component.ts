@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { BLOG } from 'src/app/common/mocks/blog';
 import { Blog } from 'src/app/common/models/blog.model';
 import { BlogService } from 'src/app/services/blog/blog.service';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { AsyncPipe } from '@angular/common';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 
@@ -13,14 +12,14 @@ import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
   templateUrl: './blog-item.component.html',
   styleUrls: ['./blog-item.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, AsyncPipe, SpinnerComponent]
+  imports: [AsyncPipe, SpinnerComponent]
 })
 export class BlogItemComponent implements OnInit {
   private readonly blogService = inject(BlogService);
 
-  b = BLOG;
-  key: string;
-  blog$!: Observable<Blog | undefined>;
+  public readonly b = BLOG;
+  private key: string;
+  public blog$!: Observable<Blog | undefined>;
 
   constructor(
     private route: ActivatedRoute,

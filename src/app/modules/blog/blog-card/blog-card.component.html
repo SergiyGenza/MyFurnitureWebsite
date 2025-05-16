@@ -24,7 +24,10 @@
   </div>
   <div class="post__open">
     <a routerLink="{{url}}">
-      <button class="btn">Read more</button>
+      <app-button
+        [title]="'Read more'"
+        [classList]="['btn__read-more']">
+      </app-button>
     </a>
   </div>
 </div>

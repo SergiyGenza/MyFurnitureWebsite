@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Cart } from '../common/models/cart.model';
 import { CartItem } from '../common/models/cartItem';
 import { Product } from '../common/models/product.model';
@@ -44,8 +44,9 @@ export class CartService {
   public removeProduct(product: Product) {
     this.cart.items = this.cart.items!.filter(p => {
       return p.product !== product;
-    })
+    });
     this.setCartToLocalStorage(this.cart);
+    this.cartSubject$.next(this.cart);
   }
 
   public clearCart() {
@@ -63,6 +64,19 @@ export class CartService {
 
   public updateProductQuantity(cart: Cart) {
     this.setCartToLocalStorage(cart);
+  }
+
+  public getTotalPrice(): Observable<number> {
+    let cart$ = this.getCartObservable();
+    return cart$.pipe(
+      map((c) => {
+        let total = 0
+        c.items.forEach(p => {
+          total += p.product.price * p.quantity;
+        })
+        return total;
+      })
+    )
   }
 
   private setCartToLocalStorage(item: Cart) {

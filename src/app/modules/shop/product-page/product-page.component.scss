@@ -1,10 +1,6 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
-.wrapper {
-  height: 80vh;
-}
-
 .product {
   margin-top: 42px;
   display: grid;
@@ -43,6 +39,14 @@
     font-weight: 400;
   }
 
+  &__description {
+    max-width: 424px;
+    font-family: $font-fira;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
   &__rate-group {
     display: flex;
     align-items: center;
@@ -54,12 +58,10 @@
     color: #9F9F9F;
   }
 
-  &__description {
-    max-width: 424px;
-    font-family: $font-fira;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 24px;
+  &__price {
+    font-family: "Hind", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
   }
 
   &__size {
@@ -94,33 +96,14 @@
     }
   }
 
-  &__price {
-    font-size: 24px;
-    font-weight: 500;
-  }
+}
 
-  &__quantity {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .btn-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    font-weight: 400;
-    font-size: 16px;
-
-    &__united {
-      display: flex;
-      align-items: center;
-      border-radius: 15px;
-      border: 1px solid #9F9F9F;
-      padding: 10px 22px;
-    }
-  }
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .quantity {
@@ -158,13 +141,7 @@
   line-height: 24px;
 }
 
-.btn-compare {
-  border-radius: 15px;
-  border: 1px solid #9F9F9F;
-  padding: 10px 22px;
-  width: 172px;
-  height: 64px;
-}
+.btn-compare {}
 
 .btn-quantity {
   display: flex;
@@ -192,19 +169,22 @@
 .tabs-container {
   margin-top: 100px;
 
-  .index {
+  .index-list {
     display: flex;
     justify-content: center;
     gap: 94px;
     color: #9F9F9F;
     margin-bottom: 32px;
 
-    color: var(--, #9F9F9F);
-    font-family: Fira Sans Condensed;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
+    &__item {
+      cursor: pointer;
+      color: var(--, #9F9F9F);
+      font-family: Fira Sans Condensed;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
 
     .active {
       color: #000000;
@@ -213,9 +193,28 @@
   }
 
   .tab,
-  .tab-review {
+  .tab__review {
     -webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s;
+  }
+
+  .tab {
+    &__review {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    &__review-block {
+      max-width: 374px;
+      background-color: #FCF8F3;
+      padding: 24px;
+    }
+
+    &__review__rate {}
+
+    &__review__commets {}
   }
 
   /* Fade in tabs */
@@ -238,19 +237,4 @@
       opacity: 1;
     }
   }
-
-}
-
-.tab-review {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-
-}
-
-.review-block {
-  max-width: 374px;
-  background-color: #FCF8F3;
-  padding: 24px;
 }

@@ -5,7 +5,6 @@ import { PositionTitle } from 'src/app/common/models/positionTitle';
 import { ComparisonService } from 'src/app/services/comparison.service';
 import { Observable } from 'rxjs';
 import { Comparison } from 'src/app/common/models/comparison.model';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { ComparisonHeadComponent } from '../comparison-head/comparison-head.component';
 import { ProductDescriptionItemComponent } from '../product-description-item/product-description-item.component';
 
@@ -14,13 +13,13 @@ import { ProductDescriptionItemComponent } from '../product-description-item/pro
   templateUrl: './comparison-page.component.html',
   styleUrls: ['./comparison-page.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, ComparisonHeadComponent, ProductDescriptionItemComponent, AsyncPipe, KeyValuePipe]
+  imports: [ComparisonHeadComponent, ProductDescriptionItemComponent, AsyncPipe, KeyValuePipe]
 })
 export class ComparisonPageComponent implements OnInit {
   private readonly comparisonService = inject(ComparisonService);
 
-  public products$!: Observable<Comparison>;
   public comparisonTest = COMPARISON;
+  public products$!: Observable<Comparison>;
   positionTitles: PositionTitle | undefined;
 
   constructor() { }

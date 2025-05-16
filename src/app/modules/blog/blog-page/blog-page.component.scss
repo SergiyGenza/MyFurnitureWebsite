@@ -7,8 +7,10 @@
   column-gap: 70px;
   margin-top: 100px;
   grid-template-areas: "l r" "c c";
+
   .blog {
     grid-area: l;
+
     &__item {
       margin-bottom: 54px;
     }
@@ -22,11 +24,13 @@
     color: $link-color;
     @include p-medium;
     font-size: 24px;
+
     .filters {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: max-content;
+
       .search {
         display: flex;
         align-items: center;
@@ -34,6 +38,7 @@
         border: 1px solid $light-grey;
         width: max-content;
         padding: 0 10px;
+
         input {
           max-width: 290px;
           height: 58px;
@@ -44,8 +49,10 @@
           width: 24px;
         }
       }
+
       .categories {
         margin-top: 43px;
+
         // padding: 43px 66px 0px 36px;
         &__list {
           margin-top: 33px;
@@ -53,6 +60,7 @@
           flex-direction: column;
           gap: 40px;
         }
+
         &__item {
           display: flex;
           justify-content: space-between;
@@ -61,43 +69,51 @@
           @include p-regular;
           font-size: 16px;
         }
-        &__title {
-        }
-        &__number {
-        }
+
+        &__title {}
+
+        &__number {}
       }
     }
+
     .resent {
       margin-top: 130px;
+
       &__title {
         color: $link-color;
         @include p-medium;
         font-size: 24px;
       }
+
       &__posts {
         margin-top: 24px;
         display: flex;
         flex-direction: column;
         gap: 40px;
         max-width: 250px;
+
         .post {
           display: flex;
           align-items: center;
           gap: 12px;
+
           &__preview {
             width: 80px;
             height: 80px;
           }
+
           &__content {
             display: flex;
             flex-direction: column;
             gap: 5px;
           }
+
           &__title {
             @include p-regular;
             font-size: 16px;
             height: 42px;
           }
+
           &__time {
             color: $light-grey;
             @include p-regular;
@@ -112,11 +128,13 @@
 .pagination {
   grid-area: c;
   text-align: center;
+
   &__btn-group {
     display: flex;
     justify-content: center;
     gap: 34px;
     margin-bottom: 54px;
+
     .btn-pagination {
       width: 60px;
       height: 60px;
@@ -126,6 +144,7 @@
       @include p-regular;
       font-size: 20px;
       transition: all 0.2s ease-in;
+
       &:active {
         background: $moderate-orange;
         color: $white;

@@ -1,5 +1,7 @@
-<div [ngStyle]="{'background-image': 'url('+background+')'}">
+<div class="discount" [style.background-color]="bgColor">
+  @if (this.state === 'new') {
   {{state}}
-  @if (background == discont.discount) {
+  } @else {
+  {{discount}}
   <span>%</span>}
 </div>

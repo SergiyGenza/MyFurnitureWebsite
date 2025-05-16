@@ -1,19 +1,13 @@
-<div class="container-lg ">
-  <app-breadcrumb></app-breadcrumb>
-  <!-- <button (click)="addBlogs()">add blogs</button> -->
-</div>
 <div class="container-blog">
-  <section class="blog-page">
+  <div class="blog-page">
     <div class="blog">
       @for(post of blogArray$ | async; track post){
       <div class="blog__item">
         @defer{
         <app-blog-card [post]="post" [icon]="blog.postsIcons"></app-blog-card>
         } @loading (minimum 1s) {
-        <app-spinner></app-spinner>
-        }
-      </div>
-      }
+        <app-spinner></app-spinner> }
+      </div>}
     </div>
     <div class="sidebar">
       <div class="filters">
@@ -52,8 +46,7 @@
         </div>
       </div>
     </div>
-
-  </section>
+  </div>
   <div class="pagination">
     <div class="pagination__btn-group">
       <button class="btn-pagination">1</button>

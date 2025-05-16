@@ -1,6 +1,8 @@
-<div class="card" (mouseenter)="showMenu=true" (mouseleave)="showMenu=false">
+<div class="card">
   <img class="card__img" src="{{product.img}}" alt="product">
-  <app-discount class="card__state" [state]="state"></app-discount>
+  @if(product.discount || product.state){
+  <app-discount class="card__state" [state]="product.state" [discount]="product.discount"></app-discount>
+  }
   <div class="card__content">
     <div class="card__title">
       {{product.title}}
@@ -9,36 +11,43 @@
       {{product.type}}
     </div>
     <div class="card__price">
-      @if (state != 'new' && state != undefined) {
-      <div>
-        {{-product.price / 100 * (state!) | currency}}
-      </div>}
-      <div [ngClass]="{'card__price__old' : state != 'new' && state != undefined }">
+      @if (product.state != 'new' && product.discount) {
+      <span>
+        {{product.price / 100 * (product.discount) | currency}}
+      </span>}
+      <span [ngClass]="{'card__price__old' : product.state != 'new' && product.discount }">
         {{product.price | currency}}
-      </div>
+      </span>
     </div>
   </div>
-  @if (showMenu) {
   <div class="card-tool">
-    <a routerLink="{{url}}">
-      <button class="btn btn-view-more">View more</button>
+    <a [routerLink]="['/shop', product.title.toLowerCase()]">
+      <app-button
+        [classList]="['btn__product-card']"
+        [title]="'View more'">
+      </app-button>
     </a>
-    <button class="btn btn-add" (click)="onCartAdding(product)">Add to cart</button>
-    <div class="card-tool__btn-group">
-      <div class="btn__share">
-        <img class="btn__icon" src="../../../assets/images/icons/share.svg" alt="">
-        share
-      </div>
-      <div class="btn__compare">
-        <button (click)="onProductCompare(product)">
-          <img class="btn__icon" src="../../../assets/images/icons/compare.svg" alt="">
-          compare
-        </button>
-      </div>
-      <div class="btn__like">
-        <img class="btn__icon" src="../../../assets/images/icons/favourite.svg" alt="">
-        Like
-      </div>
+    <div>
+      <app-button 
+        [classList]="['btn__product-card']"
+        [title]="'Add to cart'"
+        (click)="onCartAdding(product)">
+      </app-button>
     </div>
-  </div>}
+    <div class="card-tool__btn-group">
+      <app-button
+        [title]="'share'">
+        <img class="icon" src="../../../assets/images/icons/share.svg" alt="">
+      </app-button>
+      <app-button 
+        [title]="'compare'"
+        (click)="onProductCompare(product)">
+        <img class="icon" src="../../../assets/images/icons/compare.svg" alt="">
+      </app-button>
+      <app-button 
+        [title]="'Like'">
+        <img class="icon" src="../../../assets/images/icons/favourite.svg" alt="">
+      </app-button>
+    </div>
+  </div>
 </div>

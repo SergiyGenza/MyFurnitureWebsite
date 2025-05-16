@@ -5,16 +5,16 @@ import { Product } from 'src/app/common/models/product.model';
 import { ProductService } from 'src/app/common/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ComparisonService } from 'src/app/services/comparison.service';
-import { BreadcrumbComponent } from '../../../shared/breadcrumb/breadcrumb.component';
 import { NgClass, AsyncPipe, CurrencyPipe } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import { ButtonComponent } from 'src/app/shared/button/button.component';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, SpinnerComponent, NgClass, AsyncPipe, CurrencyPipe]
+  imports: [SpinnerComponent, NgClass, AsyncPipe, CurrencyPipe, ButtonComponent]
 })
 export class ProductPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
@@ -22,10 +22,10 @@ export class ProductPageComponent implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly comparisonService = inject(ComparisonService);
 
+  private readonly key: string;
   public product$!: Observable<Product | undefined>;
   public quantity: number = 1;
   public tab = 1;
-  private readonly key: string;
 
   constructor() {
     this.key = this.route.snapshot.paramMap.get('key') as string;

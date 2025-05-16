@@ -1,80 +1,89 @@
-<div class="container-lg">
-  @if(shopingCart$ | async; as shopingCart) {
-  <app-breadcrumb></app-breadcrumb>
-  <!-- desktop -->
-  @if(shopingCart.items.length > 0){
-  <table>
-    <tr>
-      <th>Preview</th>
-      <th>Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th class="subtotal">Subtotal</th>
-      <th>Remove</th>
-    </tr>
-    @for (item of shopingCart.items; track item) {
-    <tr class="product">
-      <td class="product__preview"><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
-      <td>{{item.product.title}}</td>
-      <td>{{item.product.price | currency}}</td>
-      <td>{{item.quantity}}</td>
-      <td class="subtotal">{{item.quantity * item.product.price | currency}}</td>
-      <td>
-        <button>
-          <img (click)="onProductRemove(item.product)" class="remove-btn"
-            src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon">
-        </button>
-      </td>
-    </tr>}
-    <tr>
-      <td class="subtotal"></td>
-      <td></td>
-      <td></td>
-      <td class="subtotal"></td>
-      <td class="total-price">{{totalPrice | currency}}</td>
-      <td class="tablet-cell"></td>
-      <td><button class="btn-primary" routerLink="/checkout">Checkout</button></td>
-    </tr>
-  </table>} @else {
-  <ng-container *ngTemplateOutlet="noCart"></ng-container>}
-
-  <!-- mobile -->
-  @if(shopingCart.items.length > 0){
-  <div class="cart-page__mobile">
-    <div class="cart-page__tool">
-      <div class="cart-page__tool__checkbox checkbox">
-        <app-checkbox 
-          [removeAll]="removeAll"
-          (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)">
-        </app-checkbox>
-      </div>
-      <button class="cart-page__tool__remove-btn">
-        <img class="remove-btn" src="../../../../assets/images/icons/remove-icon.svg" alt="remove-icon"
-          (click)="onProductListRemove()">
+@if(shopingCart$ | async; as shopingCart) {
+<!-- desktop -->
+@if(shopingCart.items.length > 0){
+<table>
+  <tr>
+    <th>Preview</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th class="subtotal">Subtotal</th>
+    <th>Remove</th>
+  </tr>
+  @for (item of shopingCart.items; track item) {
+  <tr class="product">
+    <td class="product__preview"><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
+    <td>{{item.product.title}}</td>
+    <td>{{item.product.price | currency}}</td>
+    <td>{{item.quantity}}</td>
+    <td class="subtotal">{{item.quantity * item.product.price | currency}}</td>
+    <td>
+      <button>
+        <img 
+          src="../../../../assets/images/icons/remove-icon.svg"
+          alt="remove-icon"
+          (click)="onProductRemove(item.product)">
       </button>
+    </td>
+  </tr>}
+  <tr>
+    <td class="subtotal"></td>
+    <td></td>
+    <td></td>
+    <td class="subtotal"></td>
+    <td class="total-price">{{totalPrice$ | async | currency}}</td>
+    <td class="tablet-cell"></td>
+    <td>
+      <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>
+    </td>
+  </tr>
+</table>} @else {
+<ng-container *ngTemplateOutlet="noCart"></ng-container>}
+
+<!-- mobile -->
+@if(shopingCart.items.length > 0){
+<div class="cart-page__mobile">
+  <div class="cart-page__tool">
+    <div class="cart-page__tool__checkbox checkbox">
+      <app-checkbox 
+        [removeAll]="removeAll"
+        (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)">
+      </app-checkbox>
     </div>
-    @for (cartItem of shopingCart.items; track $index) {
-    <app-cart-product-item 
-      [remove]="removeAll"
-      [cartItem]="cartItem"
-      (productForRemove)="checkProductToRemoveList($event)"
-      (newProductQuantity)="updateProductQuantity($event, shopingCart.items)">
-    </app-cart-product-item>
-    }
-    <div class="cart-page__bottom">
-      <button class="btn-primary" routerLink="/checkout">Checkout</button>
-      <div class="total-price">
-        {{totalPrice | currency}}
-      </div>
+    <app-button>
+      <img 
+        src="../../../../assets/images/icons/remove-icon.svg"
+        alt="remove-icon"
+        (click)="onProductListRemove()">
+    </app-button>
+  </div>
+  @for (cartItem of shopingCart.items; track $index) {
+  <app-cart-product-item 
+    [remove]="removeAll"
+    [cartItem]="cartItem"
+    (productForRemove)="checkProductToRemoveList($event)"
+    (newProductQuantity)="updateProductQuantity($event, shopingCart.items)">
+  </app-cart-product-item>}
+  <div class="cart-page__bottom">
+    <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>
+    <div class="total-price">
+      {{totalPrice$ | async | currency}}
     </div>
-  </div>} @else {
-  <ng-container *ngTemplateOutlet="noCart"></ng-container>}
-  }
-</div>
+  </div>
+</div>} @else {
+<ng-container *ngTemplateOutlet="noCart"></ng-container>}
+}
 
 <ng-template #noCart>
   <div class="">
     <div class="">No products!</div>
     <a routerLink="shop">Go to the Shop</a>
   </div>
+</ng-template>
+
+<ng-template #checkoutBtn>
+  <a routerLink="/checkout">
+    <app-button [title]="'Checkout'" [classList]="['btn__primary']">
+    </app-button>
+  </a>
 </ng-template>

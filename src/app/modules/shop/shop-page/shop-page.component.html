@@ -1,15 +1,12 @@
-<div class="container-lg">
-  <app-breadcrumb></app-breadcrumb>
-  <app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
-  <div class="container-products">
-    <div class="products">
-      @defer {
-      @for (p of products | async; track $index) {
-      <app-product-card [product]="p"></app-product-card>}
-      } @loading {
-      <app-spinner></app-spinner>
-      }
-    </div>
+<app-shop-filter [filter]="shop.shopFilter"></app-shop-filter>
+<section class="container-products">
+  <div class="products">
+    @defer {
+    @for (p of products | async; track $index) {
+    <app-product-card [product]="p"></app-product-card>}
+    } @loading {
+    <app-spinner></app-spinner>
+    }
   </div>
-  <app-benefits></app-benefits>
-</div>
+</section>
+<app-benefits></app-benefits>

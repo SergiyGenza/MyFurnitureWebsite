@@ -33,11 +33,12 @@
     font-size: 24px;
     font-weight: 600;
 
-    &__title {
-      display: flex;
-      justify-content: space-between;
-      padding: 0px 10px 30px 0px;
-    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px 30px 0px;
   }
 
   &__icon {
@@ -91,12 +92,6 @@
       font-weight: 400;
       line-height: 24px;
     }
-
-    .close {
-      background-image: url(../../../../assets/images/icons/remove-icon.svg);
-      width: 23px;
-      height: 25px;
-    }
   }
 
   .no-product {
@@ -128,15 +123,6 @@
     .nav {
       display: flex;
       justify-content: space-between;
-
-      &__btn {
-        border-radius: 10px;
-        border: 1px solid $link-color;
-        font-family: $font-fira;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 6px 30px;
-      }
     }
   }
 }

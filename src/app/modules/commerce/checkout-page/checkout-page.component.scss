@@ -54,7 +54,6 @@
     font-family: $font-hind;
   }
 
-
   .title {}
 
   .total {}
@@ -126,15 +125,8 @@
   }
 }
 
-.btn-primary {
-  width: max-content;
-  font-size: 24px;
-  font-weight: 400;
-  padding: 16px 50px;
-  border-radius: 10px;
-  width: 100%;
+app-button {
   grid-area: submit;
-  height: 64px;
 }
 
 .user {
@@ -168,10 +160,5 @@
 }
 
 input {
-  border-radius: 10px;
-  border: 1px solid $light-grey;
-  background: $white;
-  height: 75px;
   margin-bottom: 36px;
-  padding: 0px 10px;
 }
