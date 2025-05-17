@@ -10,13 +10,14 @@ import { RouterLink } from '@angular/router';
 import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss'],
   standalone: true,
-  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe, ButtonComponent, NgTemplateOutlet]
+  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe, ButtonComponent, NgTemplateOutlet, DiscountPipe]
 })
 export class CartPageComponent implements OnInit {
   private readonly cartService = inject(CartService);

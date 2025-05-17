@@ -72,11 +72,16 @@ export class CartService {
       map((c) => {
         let total = 0
         c.items.forEach(p => {
-          total += p.product.price * p.quantity;
+          total = this.calcTotalPrice(p.product.price, p.product.discount, p.quantity);
         })
         return total;
       })
     )
+  }
+
+  private calcTotalPrice(price: number, discount: number | undefined, quantity: number): number {
+    if (discount) return price / 100 * discount! * quantity;
+    return price * quantity;
   }
 
   private setCartToLocalStorage(item: Cart) {

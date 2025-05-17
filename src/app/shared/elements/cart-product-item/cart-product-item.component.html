@@ -9,7 +9,7 @@
     </div>
     <div class="bottom">
       <div class="price">
-        {{cartItem.product.price | currency}}
+        {{cartItem.product.price | discount:cartItem.product.discount | currency}}
       </div>
       <div class="btn-quantity">
         <button class="quantity__reduse" (click)="decrease()">-</button>

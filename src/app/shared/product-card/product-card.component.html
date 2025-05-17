@@ -13,7 +13,7 @@
     <div class="card__price">
       @if (product.state != 'new' && product.discount) {
       <span>
-        {{product.price / 100 * (product.discount) | currency}}
+        {{product.price | discount:product.discount | currency}}
       </span>}
       <span [ngClass]="{'card__price__old' : product.state != 'new' && product.discount }">
         {{product.price | currency}}
