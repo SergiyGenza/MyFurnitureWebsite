@@ -20,7 +20,9 @@
             <div class="product__number">
               <div class="product__quantity">{{product.quantity}}</div>
               <div class="product__multiply">x</div>
-              <div class="product__price">{{product.product.price | currency}}</div>
+              <div class="product__price">
+                {{product.product.price | discount: product.product.discount | currency}}
+              </div>
             </div>
           </div>
           <app-button 
@@ -34,11 +36,12 @@
       </div>}}
 
       <div class="shoping-cart__footer">
+        @if((totalPrice$ | async)! !== 0){
         <div class="devider"></div>
         <div class="total">
           <span class="total__title">{{shoping.total}}</span>
           <span class="total__price">{{totalPrice$ | async | currency}}</span>
-        </div>
+        </div>}
         <div class="devider"></div>
         <div class="nav">
           @for(nav of shoping.nav; track nav.link){

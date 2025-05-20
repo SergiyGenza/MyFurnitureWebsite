@@ -16,7 +16,7 @@
     <td>{{item.product.title}}</td>
     <td>{{item.product.price | discount:item.product.discount | currency}}</td>
     <td>{{item.quantity}}</td>
-    <td class="subtotal">{{item.quantity * item.product.price | discount:item.product.discount | currency}}</td>
+    <td class="subtotal">{{ item.product.price | discount:item.product.discount:item.quantity | currency}}</td>
     <td>
       <button>
         <img 

@@ -80,7 +80,7 @@ export class CartService {
   }
 
   private calcTotalPrice(price: number, discount: number | undefined, quantity: number): number {
-    if (discount) return price / 100 * discount! * quantity;
+    if (discount) return (price - (price / 100 * discount!)) * quantity;
     return price * quantity;
   }
 

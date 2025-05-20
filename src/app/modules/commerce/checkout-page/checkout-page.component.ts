@@ -7,13 +7,15 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { RouterLink } from '@angular/router';
+import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
 
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.scss'],
   standalone: true,
-  imports: [FormsModule, BenefitsComponent, AsyncPipe, CurrencyPipe, ButtonComponent, ReactiveFormsModule]
+  imports: [FormsModule, BenefitsComponent, AsyncPipe, CurrencyPipe, ButtonComponent, ReactiveFormsModule, RouterLink, DiscountPipe]
 })
 export class CheckoutPageComponent implements OnInit {
   private readonly cartService = inject(CartService);
@@ -33,5 +35,6 @@ export class CheckoutPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalPrice$ = this.cartService.getTotalPrice();
+    this.shopingCart.subscribe(s => console.log(s));
   }
 }

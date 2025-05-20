@@ -8,13 +8,14 @@ import { CartService } from 'src/app/services/cart.service';
 import { ClickStopPropagationDirective } from '../../../common/derective/click-stop-propagation.directive';
 import { RouterLink } from '@angular/router';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
 
 @Component({
   selector: 'app-shoping-cart',
   templateUrl: './shoping-cart.component.html',
   styleUrls: ['./shoping-cart.component.scss'],
   standalone: true,
-  imports: [ClickStopPropagationDirective, RouterLink, AsyncPipe, CurrencyPipe, ButtonComponent]
+  imports: [ClickStopPropagationDirective, RouterLink, AsyncPipe, CurrencyPipe, ButtonComponent, DiscountPipe]
 })
 export class ShopingCartComponent implements OnInit {
   @Output() isClose = new EventEmitter<boolean>();

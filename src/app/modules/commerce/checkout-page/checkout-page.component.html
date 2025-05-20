@@ -1,3 +1,5 @@
+@if ((shopingCart | async)!.items.length) {
+
 <form class="content" [formGroup]="form">
   <div action="" class="form">
     <div class="form__title">
@@ -51,7 +53,7 @@
           <div class="product__quantity">{{item.quantity}}</div>
           <!-- <div class="product__price">{{item.product.price | currency}}</div> -->
         </div>
-        <div class="product_total-price">{{item.quantity * item.product.price | currency}}</div>
+        <div class="product_total-price">{{item.quantity * item.product.price | discount:item.product.discount| currency}}</div>
       </div>}
       <div class="devider"></div>
     </div>}
@@ -70,4 +72,18 @@
     </app-button>
   </div>
 </form>
-<app-benefits></app-benefits>
+<app-benefits></app-benefits>} 
+@else {
+<div class="info">
+  <div class="info__title">
+    Pleace add some products to cart!
+  </div>
+
+  <!-- <div class="devider"></div> -->
+  <a [routerLink]="['/shop']">
+    <app-button 
+      [title]="'Check products'" 
+      [classList]="['btn__primary']">
+    </app-button>
+  </a>
+</div>}
