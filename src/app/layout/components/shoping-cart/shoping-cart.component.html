@@ -1,5 +1,5 @@
-<div class="modal" (click)="onShopingCartClose()">
-  <div clickStopPropagation class="container-lg">
+<div class="modal" appCloseOnEsc (closeOnEsc)="onShopingCartClose()" (click)="onShopingCartClose()">
+  <div clickStopPropagation class="container-lg slide-in-top">
     <div class="shoping-cart">
       <div class="shoping-cart__header">
         <div class="shoping-cart__title">
@@ -11,9 +11,9 @@
       
       @if(cart$ | async; as cart){
       @if (cart.items.length > 0){
-      <div class="product">
+      <ul class="product-list">
         @for(product of cart.items; track product.product.key){
-        <div class="product__item">
+        <li class="product__item">
           <img class="product__preview" src="{{product.product.img}}" alt="product">
           <div class="product__contetn">
             <div class="product__title">{{product.product.title}}</div>
@@ -29,8 +29,8 @@
             (buttonClick)="onProductRemove(product.product)">
             <img src="../../../../assets/images/icons/remove-icon.svg" alt="remove product">
           </app-button>
-        </div>}
-      </div>} @else {
+        </li>}
+      </ul>} @else {
       <div class="no-product">
         Your cart is empty!
       </div>}}

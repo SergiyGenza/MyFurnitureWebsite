@@ -4,9 +4,8 @@
     @defer {
     @for (p of products | async; track $index) {
     <app-product-card [product]="p"></app-product-card>}
-    } @loading {
-    <app-spinner></app-spinner>
-    }
+    } @placeholder (minimum 1.5s) {
+    <app-spinner></app-spinner>}
   </div>
 </section>
 <app-benefits></app-benefits>

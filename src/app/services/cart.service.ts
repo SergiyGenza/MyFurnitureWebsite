@@ -72,7 +72,7 @@ export class CartService {
       map((c) => {
         let total = 0
         c.items.forEach(p => {
-          total = this.calcTotalPrice(p.product.price, p.product.discount, p.quantity);
+          total += this.calcTotalPrice(p.product.price, p.product.discount, p.quantity);
         })
         return total;
       })

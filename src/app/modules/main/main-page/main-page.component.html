@@ -11,10 +11,9 @@
     @for (p of products | async; track $index) {
     <app-product-card [product]="p"></app-product-card>
     }
-  </div>
-  } @placeholder (minimum 1.5s) {
-  <app-spinner></app-spinner>
-  }
+  </div>} 
+  @placeholder (minimum 1.5s) {
+  <app-spinner></app-spinner>}
 
   <div class="show-more">
     <app-button
