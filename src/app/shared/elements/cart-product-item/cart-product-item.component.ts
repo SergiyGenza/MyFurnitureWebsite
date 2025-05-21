@@ -3,6 +3,7 @@ import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { CurrencyPipe } from '@angular/common';
 import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
+import { QuantityComponent } from '../../quantity/quantity.component';
 
 @Component({
   selector: 'app-cart-product-item',

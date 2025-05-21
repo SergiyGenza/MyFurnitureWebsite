@@ -22,7 +22,7 @@
         <img 
           src="../../../../assets/images/icons/remove-icon.svg"
           alt="remove-icon"
-          (click)="onProductRemove(item.product)">
+          (click)="onProductRemove(item)">
       </button>
     </td>
   </tr>}
@@ -50,19 +50,21 @@
         (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)">
       </app-checkbox>
     </div>
-    <app-button>
+    <app-button (buttonClick)="onProductListRemove()">
       <img 
         src="../../../../assets/images/icons/remove-icon.svg"
-        alt="remove-icon"
-        (click)="onProductListRemove()">
+        alt="remove-icon">
     </app-button>
   </div>
-  @for (cartItem of shopingCart.items; track $index) {
+  @for (cartItem of shopingCart.items; track cartItem.product.code) {
   <app-cart-product-item 
     [remove]="removeAll"
     [cartItem]="cartItem"
-    (productForRemove)="checkProductToRemoveList($event)"
-    (newProductQuantity)="updateProductQuantity($event, shopingCart.items)">
+    (productForRemove)="checkProductToRemoveList($event)">
+    <app-quantity 
+      [quantity]="cartItem.quantity"
+      (quantityChange)="updateProductQuantity($event, cartItem)">
+    </app-quantity>
   </app-cart-product-item>}
   <div class="cart-page__bottom">
     <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>

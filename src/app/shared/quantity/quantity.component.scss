@@ -1,0 +1,17 @@
+.quantity {
+  display: flex;
+  gap: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 6px;
+  height: 36px;
+
+  &__reduse {}
+
+  &__number {
+    width: 22px;
+    text-align: center;
+  }
+
+  &__add {}
+}

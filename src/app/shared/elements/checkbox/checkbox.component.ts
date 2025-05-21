@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./checkbox.component.scss'],
   standalone: true,
   imports: [FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent {
   @Input() remove: boolean | undefined = undefined;

@@ -11,11 +11,7 @@
       <div class="price">
         {{cartItem.product.price | discount:cartItem.product.discount | currency}}
       </div>
-      <div class="btn-quantity">
-        <button class="quantity__reduse" (click)="decrease()">-</button>
-        <p class="quantity__number">{{cartItem.quantity}}</p>
-        <button class="quantity__add" (click)="increase()">+</button>
-      </div>
+      <ng-content></ng-content>
     </div>
   </div>
 </div>

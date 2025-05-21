@@ -37,10 +37,6 @@ export class BlogService {
     return this.blogs$.pipe(
       map((blogs) => {
         return blogs.find((b) => {
-          // console.log(b.title.toLowerCase() === name);
-          // console.log(name);
-          // console.log(b.title.toLowerCase());
-
           return b.title.toLowerCase() === name;
         });
       })
