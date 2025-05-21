@@ -8,4 +8,6 @@
   <router-outlet></router-outlet>
 </main>
 @if (showLayout$ | async) {
-<app-footer></app-footer>}
+<app-footer
+  [minimize]="(minimizeFooter$ | async)!">
+</app-footer>}

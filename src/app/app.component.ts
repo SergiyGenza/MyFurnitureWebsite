@@ -15,11 +15,12 @@ import { AsyncPipe } from '@angular/common';
 })
 export class AppComponent {
   public readonly title = 'eCommerce';
-  public router = inject(Router);
+  public readonly router = inject(Router);
 
   private readonly hiddenRoutes = ['/home', '/sign-up', '/auth'];
   private readonly minPatterns = ['/shop/*', '/blog/*'];
   private readonly hiddenLayout = ['/sign-up', '/auth'];
+  private readonly minimizeFooter = ['/blog', '/checkout', '/comparison'];
 
   private readonly currentUrl$: Observable<string> = this.router.events.pipe(
     filter(event => event instanceof NavigationEnd),
@@ -39,6 +40,10 @@ export class AppComponent {
   public readonly showLayout$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => !this.hiddenLayout.includes(url))
   );
+
+  public readonly minimizeFooter$: Observable<boolean> = this.currentUrl$.pipe(
+    map(url => this.minimizeFooter.includes(url))
+  )
 
   private matchesPattern(url: string, pattern: string): boolean {
     const regexPattern = '^' + pattern.replace('*', '.*') + '$';

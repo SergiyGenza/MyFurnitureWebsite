@@ -2,7 +2,6 @@
 @import "../../../assets//style//utils/variables";
 
 @mixin button {
-  border-radius: 50px;
   border: 1px solid #B88E2F;
   border-radius: 10px;
   background-color: white;
@@ -13,7 +12,6 @@
   font-size: 24px;
   line-height: 24px;
   text-align: center;
-
   padding: 6px 30px;
 }
 
@@ -26,6 +24,7 @@
   align-items: center;
   justify-content: center;
   min-width: min-content;
+  transition: background-color .3s ease-in;
 
   &__primary {
     background-color: $primary;
@@ -37,9 +36,11 @@
     line-height: 100%;
     text-align: center;
     padding: 10px 20px;
+    height: 44px;
   }
 
   &__primary:disabled {
+    height: 44px;
     @include button;
   }
 
@@ -73,7 +74,7 @@
 
   &__big {
     width: 100%;
-    height: 64px;
+    height: 64px !important;
   }
 
   &__wide {
