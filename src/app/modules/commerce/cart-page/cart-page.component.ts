@@ -11,13 +11,15 @@ import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.co
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
 import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
+import { InfoTempComponent } from 'src/app/shared/info-temp/info-temp.component';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss'],
   standalone: true,
-  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe, ButtonComponent, NgTemplateOutlet, DiscountPipe]
+  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe,
+    ButtonComponent, NgTemplateOutlet, DiscountPipe, InfoTempComponent]
 })
 export class CartPageComponent implements OnInit {
   private readonly cartService = inject(CartService);

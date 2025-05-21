@@ -74,10 +74,13 @@
 <ng-container *ngTemplateOutlet="noCart"></ng-container>}
 }
 
+<!-- it shows twice -->
 <ng-template #noCart>
-  <div class="">
-    <div class="">No products!</div>
-    <a routerLink="shop">Go to the Shop</a>
+  <div class="info">
+    <app-info-temp
+      [infoTitle]="'Your cart is empty!'"
+      [btnTitle]="'Find Products here'">
+    </app-info-temp>
   </div>
 </ng-template>
 

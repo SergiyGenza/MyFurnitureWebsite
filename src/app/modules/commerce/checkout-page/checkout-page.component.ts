@@ -7,15 +7,15 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
-import { RouterLink } from '@angular/router';
 import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
+import { InfoTempComponent } from 'src/app/shared/info-temp/info-temp.component';
 
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.scss'],
   standalone: true,
-  imports: [FormsModule, BenefitsComponent, AsyncPipe, CurrencyPipe, ButtonComponent, ReactiveFormsModule, RouterLink, DiscountPipe]
+  imports: [FormsModule, BenefitsComponent, AsyncPipe, CurrencyPipe, ButtonComponent, ReactiveFormsModule, DiscountPipe, InfoTempComponent]
 })
 export class CheckoutPageComponent implements OnInit {
   private readonly cartService = inject(CartService);
