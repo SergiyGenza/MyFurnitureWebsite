@@ -7,14 +7,13 @@ import { ShopFilterComponent } from '../shop-filter/shop-filter.component';
 import { AsyncPipe } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
-import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 
 @Component({
   selector: 'app-shop-page',
   templateUrl: './shop-page.component.html',
   styleUrls: ['./shop-page.component.scss'],
   standalone: true,
-  imports: [ShopFilterComponent, SpinnerComponent, ProductCardComponent, BenefitsComponent, AsyncPipe]
+  imports: [ShopFilterComponent, SpinnerComponent, ProductCardComponent, AsyncPipe]
 })
 export class ShopPageComponent implements OnInit {
   public readonly sofaService = inject(SofaService);

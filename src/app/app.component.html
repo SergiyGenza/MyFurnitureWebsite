@@ -7,6 +7,9 @@
   <app-breadcrumb [min]="min$ | async"></app-breadcrumb>}
   <router-outlet></router-outlet>
 </main>
+@if (showBenefits$ | async) {
+  <app-benefits></app-benefits>
+}
 @if (showLayout$ | async) {
 <app-footer
   [minimize]="(minimizeFooter$ | async)!">

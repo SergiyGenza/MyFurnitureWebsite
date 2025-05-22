@@ -5,13 +5,14 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { filter, map, Observable, shareReplay, startWith } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { BenefitsComponent } from './shared/benefits/benefits.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet, FooterComponent, BreadcrumbComponent, AsyncPipe]
+  imports: [HeaderComponent, RouterOutlet, FooterComponent, BreadcrumbComponent, AsyncPipe, BenefitsComponent]
 })
 export class AppComponent {
   public readonly title = 'eCommerce';
@@ -21,6 +22,7 @@ export class AppComponent {
   private readonly minPatterns = ['/shop/*', '/blog/*'];
   private readonly hiddenLayout = ['/sign-up', '/auth'];
   private readonly minimizeFooter = ['/blog', '/checkout', '/comparison', '/cart'];
+  private readonly showBenefits = ['/checkout', '/contact', '/shop'];
 
   private readonly currentUrl$: Observable<string> = this.router.events.pipe(
     filter(event => event instanceof NavigationEnd),
@@ -43,6 +45,10 @@ export class AppComponent {
 
   public readonly minimizeFooter$: Observable<boolean> = this.currentUrl$.pipe(
     map(url => this.minimizeFooter.includes(url))
+  )
+
+  public readonly showBenefits$: Observable<boolean> = this.currentUrl$.pipe(
+    map(url => this.showBenefits.includes(url))
   )
 
   private matchesPattern(url: string, pattern: string): boolean {

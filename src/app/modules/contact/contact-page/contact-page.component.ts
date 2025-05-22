@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CONTACT } from 'src/app/common/mocks/contact';
-import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
 
@@ -9,7 +8,7 @@ import { ButtonComponent } from 'src/app/shared/button/button.component';
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.scss'],
   standalone: true,
-  imports: [BenefitsComponent, ReactiveFormsModule, ButtonComponent]
+  imports: [ ReactiveFormsModule, ButtonComponent]
 })
 export class ContactPageComponent {
   public readonly contact = CONTACT;

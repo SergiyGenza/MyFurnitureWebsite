@@ -5,7 +5,6 @@ import { Cart } from 'src/app/common/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
-import { BenefitsComponent } from '../../../shared/benefits/benefits.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
 import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
 import { InfoTempComponent } from 'src/app/shared/info-temp/info-temp.component';
@@ -17,7 +16,7 @@ import { CartItem } from 'src/app/common/models/cartItem';
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.scss'],
   standalone: true,
-  imports: [FormsModule, BenefitsComponent, AsyncPipe, CurrencyPipe, ButtonComponent,
+  imports: [FormsModule, AsyncPipe, CurrencyPipe, ButtonComponent,
     ReactiveFormsModule, DiscountPipe, InfoTempComponent, QuantityComponent]
 })
 export class CheckoutPageComponent implements OnInit {
