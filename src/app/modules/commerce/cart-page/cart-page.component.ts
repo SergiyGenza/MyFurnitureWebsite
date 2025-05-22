@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cart } from 'src/app/common/models/cart.model';
 import { CartItem, CartItemForDelete } from 'src/app/common/models/cartItem';
-import { Product } from 'src/app/common/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { SelectItemsService } from 'src/app/services/select/select-items.service';
 import { AsyncPipe, CurrencyPipe, NgTemplateOutlet } from '@angular/common';
@@ -10,13 +9,17 @@ import { RouterLink } from '@angular/router';
 import { CheckboxComponent } from '../../../shared/elements/checkbox/checkbox.component';
 import { CartProductItemComponent } from '../../../shared/elements/cart-product-item/cart-product-item.component';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
+import { InfoTempComponent } from 'src/app/shared/info-temp/info-temp.component';
+import { QuantityComponent } from 'src/app/shared/quantity/quantity.component';
 
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss'],
   standalone: true,
-  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe, ButtonComponent, NgTemplateOutlet]
+  imports: [RouterLink, CheckboxComponent, CartProductItemComponent, AsyncPipe, CurrencyPipe,
+    ButtonComponent, NgTemplateOutlet, DiscountPipe, InfoTempComponent, QuantityComponent]
 })
 export class CartPageComponent implements OnInit {
   private readonly cartService = inject(CartService);
@@ -55,22 +58,23 @@ export class CartPageComponent implements OnInit {
   }
 
   onProductListRemove(): void {
+    this.removeAll = true;
+
     let list = this.selectItemsService.getProductsList();
     list.map((i: CartItem) => {
       this.cartService.removeProduct(i.product);
-    })
+      this.removeAll = false;
+    });
   }
 
-  public updateProductQuantity(newCartItem: CartItem, cartItems: CartItem[]): void {
-    let cart: Cart = {
-      items: cartItems,
-      totalPrice: 0,
-      totalItems: 0,
-    }
-    this.cartService.updateProductQuantity(cart);
+  public updateProductQuantity(quantity: number, cartItem: CartItem): void {
+    cartItem.quantity = quantity;
+    this.cartService.updateProductQuantity(quantity, cartItem);
   }
 
-  public onProductRemove(item: Product): void {
-    this.cartService.removeProduct(item);
+  public onProductRemove(item: CartItem): void {
+    this.cartService.removeProduct(item.product);
+    this.selectItemsService.removeProductFromList(item);
+
   }
 }

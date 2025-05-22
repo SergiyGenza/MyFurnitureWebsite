@@ -1,5 +1,5 @@
-<div class="modal" (click)="onShopingCartClose()">
-  <div clickStopPropagation class="container-lg">
+<div class="modal" appCloseOnEsc (closeOnEsc)="onShopingCartClose()" (click)="onShopingCartClose()">
+  <div clickStopPropagation class="container-lg slide-in-top">
     <div class="shoping-cart">
       <div class="shoping-cart__header">
         <div class="shoping-cart__title">
@@ -9,36 +9,34 @@
         <div class="devider"></div>
       </div>
       
-      @if(cart$ | async; as cart){
+      @if(cart$ | async; as cart ){
       @if (cart.items.length > 0){
-      <div class="product">
-        @for(product of cart.items; track product.product.key){
-        <div class="product__item">
-          <img class="product__preview" src="{{product.product.img}}" alt="product">
-          <div class="product__contetn">
-            <div class="product__title">{{product.product.title}}</div>
-            <div class="product__number">
-              <div class="product__quantity">{{product.quantity}}</div>
-              <div class="product__multiply">x</div>
-              <div class="product__price">{{product.product.price | currency}}</div>
-            </div>
-          </div>
-          <app-button 
-            (buttonClick)="onProductRemove(product.product)">
-            <img src="../../../../assets/images/icons/remove-icon.svg" alt="remove product">
-          </app-button>
-        </div>}
-      </div>} @else {
+      <ul class="product-list">
+        @for(cartItem of cart.items; track cartItem.product.key){
+        <li class="product__item">
+          <app-cart-product-item 
+              [cartItem]="cartItem"
+              [removeBtn]="true"
+              (removeProduct)="onProductRemove($event)">
+            <img class="product__preview" src="{{cartItem.product.img}}" alt="product">
+            <app-quantity 
+              [quantity]="cartItem.quantity" 
+              (quantityChange)="updateProductQuantity($event, cartItem)">
+            </app-quantity>
+          </app-cart-product-item>
+        </li>}
+      </ul>} @else {
       <div class="no-product">
         Your cart is empty!
       </div>}}
 
       <div class="shoping-cart__footer">
+        @if((totalPrice$ | async)! !== 0){
         <div class="devider"></div>
         <div class="total">
           <span class="total__title">{{shoping.total}}</span>
           <span class="total__price">{{totalPrice$ | async | currency}}</span>
-        </div>
+        </div>}
         <div class="devider"></div>
         <div class="nav">
           @for(nav of shoping.nav; track nav.link){

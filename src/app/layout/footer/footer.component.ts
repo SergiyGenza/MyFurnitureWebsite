@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FOOTER } from 'src/app/common/mocks/footer';
 import { HEADER_CONTENT } from 'src/app/common/mocks/header';
 import { RouterLink } from '@angular/router';
@@ -14,6 +14,8 @@ import { ButtonComponent } from 'src/app/shared/button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent {
+  @Input() minimize: boolean = false;
+
   public readonly header = HEADER_CONTENT;
   public readonly footer = FOOTER;
 }

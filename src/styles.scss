@@ -6,6 +6,10 @@
 @import "./assets/style/base";
 @import "./assets//style//inputs";
 
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: $font-main;

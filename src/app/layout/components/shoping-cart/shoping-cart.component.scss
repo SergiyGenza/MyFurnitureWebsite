@@ -1,12 +1,11 @@
-// @import "../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
 .modal {
   position: absolute;
   z-index: 100;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   height: 100%;
   width: 100%;
   background: $modal-bg;
@@ -23,44 +22,52 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 28px 22px;
-  right: 30px;
+  right: 0;
   width: 417px;
-  height: max-content;
   background-color: $white;
   color: $link-color;
 
   &__header {
     font-size: 24px;
     font-weight: 600;
-
   }
 
   &__title {
     display: flex;
     justify-content: space-between;
-    padding: 0px 10px 30px 0px;
+    padding: 0 10px 30px 0;
   }
 
   &__icon {
     cursor: pointer;
   }
 
-  .product {
+  .product-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 24px 0;
     font-size: 16px;
+    overflow: auto;
+    scroll-behavior: smooth;
+    max-height: 20rem;
+  }
 
+  .product {
     &__item {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
+      height: 126px;
     }
 
     &__preview {
+      max-width: 140px;
+      min-width: 80px;
+      max-height: 102px;
       border-radius: 10px;
-      width: 110px;
+
+      img {
+        border-radius: 10px;
+        width: 110px;
+      }
     }
 
     &__contetn {
@@ -81,16 +88,18 @@
       align-items: flex-end;
     }
 
-    &__quantity {
-      font-family: $font-fira;
+    &__quantity,
+    &__price {
       font-weight: 400;
       line-height: 24px;
     }
 
+    &__quantity {
+      font-family: $font-fira;
+    }
+
     &__price {
       font-family: $font-hind;
-      font-weight: 400;
-      line-height: 24px;
     }
   }
 
@@ -113,8 +122,6 @@
       font-size: 20px;
       font-weight: 600;
 
-      &__title {}
-
       &__price {
         color: $primary;
       }
@@ -124,5 +131,35 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+
+.slide-in-top {
+  animation: slide-in-top 0.6s cubic-bezier(0.1, 1, 0.2, 1) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    transform-origin: 50% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    transform-origin: 50% 50%;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shoping-cart {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .shoping-cart {
+    padding: 28px 2px;
   }
 }

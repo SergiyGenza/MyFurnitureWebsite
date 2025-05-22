@@ -2,6 +2,7 @@
   <div class="footer__title">
     Funiro.
   </div>
+  @if(!minimize){
   <nav class="nav">
     <ul class="nav__list">
       @for(nav of header.nav; track nav.link){
@@ -21,7 +22,7 @@
   </div>
   <div class="adress">
     {{footer.adress}}
-  </div>
+  </div>}
   <div class="footer__bottom">
     <span class="copyright">
       {{footer.copyright}}
