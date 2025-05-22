@@ -15,7 +15,13 @@
     <td class="product__preview"><img class="product__preview" src="{{item.product.img}}" alt="product"></td>
     <td>{{item.product.title}}</td>
     <td>{{item.product.price | discount:item.product.discount | currency}}</td>
-    <td>{{item.quantity}}</td>
+    <td>
+      <app-quantity 
+        [quantity]="item.quantity"
+        [bgColor]="'#f9f1e7'"
+        (quantityChange)="updateProductQuantity($event, item)">
+      </app-quantity>
+    </td>
     <td class="subtotal">{{ item.product.price | discount:item.product.discount:item.quantity | currency}}</td>
     <td>
       <button>
@@ -44,7 +50,7 @@
 @if(shopingCart.items.length > 0){
 <div class="cart-page__mobile">
   <div class="cart-page__tool">
-    <div class="cart-page__tool__checkbox checkbox">
+  <div class="cart-page__tool__checkbox checkbox">
       <app-checkbox 
         [removeAll]="removeAll"
         (canRemoveAll)="checkAllToRemoveList($event, shopingCart.items)">
@@ -56,16 +62,21 @@
         alt="remove-icon">
     </app-button>
   </div>
-  @for (cartItem of shopingCart.items; track cartItem.product.code) {
-  <app-cart-product-item 
-    [remove]="removeAll"
-    [cartItem]="cartItem"
-    (productForRemove)="checkProductToRemoveList($event)">
-    <app-quantity 
-      [quantity]="cartItem.quantity"
-      (quantityChange)="updateProductQuantity($event, cartItem)">
-    </app-quantity>
-  </app-cart-product-item>}
+  <ul>@for (cartItem of shopingCart.items; track cartItem.product.code) {
+    <li>  
+      <app-cart-product-item 
+          [cartItem]="cartItem"
+          [checkbox]="true"
+          [remove]="removeAll"
+          (productForRemove)="checkProductToRemoveList($event)">
+        <img class="cart-page__preview" src="{{cartItem.product.img}}" alt="product">
+        <app-quantity 
+          [quantity]="cartItem.quantity"
+          (quantityChange)="updateProductQuantity($event, cartItem)">
+        </app-quantity>
+      </app-cart-product-item>
+    </li>}
+  </ul>
   <div class="cart-page__bottom">
     <ng-container *ngTemplateOutlet="checkoutBtn"></ng-container>
     <div class="total-price">

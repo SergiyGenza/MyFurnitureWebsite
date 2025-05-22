@@ -69,12 +69,6 @@ export class CartPageComponent implements OnInit {
 
   public updateProductQuantity(quantity: number, cartItem: CartItem): void {
     cartItem.quantity = quantity;
-    
-    // let cart: Cart = {
-    //   items: cartItems,
-    //   totalPrice: 0,
-    //   totalItems: 0,
-    // }
     this.cartService.updateProductQuantity(quantity, cartItem);
   }
 

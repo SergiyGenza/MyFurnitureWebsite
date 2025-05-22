@@ -20,7 +20,7 @@ export class AppComponent {
   private readonly hiddenRoutes = ['/home', '/sign-up', '/auth'];
   private readonly minPatterns = ['/shop/*', '/blog/*'];
   private readonly hiddenLayout = ['/sign-up', '/auth'];
-  private readonly minimizeFooter = ['/blog', '/checkout', '/comparison'];
+  private readonly minimizeFooter = ['/blog', '/checkout', '/comparison', '/cart'];
 
   private readonly currentUrl$: Observable<string> = this.router.events.pipe(
     filter(event => event instanceof NavigationEnd),

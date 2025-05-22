@@ -8,9 +8,11 @@ import { FormsModule } from '@angular/forms';
   imports: [ButtonComponent, FormsModule],
   templateUrl: './quantity.component.html',
   styleUrl: './quantity.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuantityComponent {
-  @Input() quantity!: number;
+  @Input({ required: true }) quantity!: number;
+  @Input() bgColor: string = 'white';
   @Output() quantityChange = new EventEmitter<number>();
 
   private readonly MIN_QUANTITY = 1;
@@ -24,9 +26,8 @@ export class QuantityComponent {
   }
 
   public decrease(): void {
-    this.quantity < 2
-      ? this.quantity = this.quantity
-      : this.quantity = this.quantity - 1;
+    if (this.quantity < 2) return
+    this.quantity = this.quantity - 1;
 
     this.quantityChange.emit(this.quantity);
   }
@@ -35,11 +36,10 @@ export class QuantityComponent {
     let limitedValue = value;
 
     limitedValue = Math.max(this.MIN_QUANTITY, Math.min(this.MAX_QUANTITY, limitedValue));
-
     if (this.quantity !== limitedValue) {
       this.quantity = limitedValue;
-      this.quantityChange.emit(this.quantity);
     }
+    this.quantityChange.emit(this.quantity);
   }
 
   public validateKey(event: KeyboardEvent): void {

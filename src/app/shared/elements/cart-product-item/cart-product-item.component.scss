@@ -1,64 +1,21 @@
 @import "../../../../assets/style/utils/variables";
 @import "../../../../assets/style/utils/mixins";
 
-.cart-page {
-  &__tool {
-    height: 70px;
-    background-color: #f9f1e7;
+.cart-item {
+  &__product {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    &__checkbox {
-      position: relative;
-      width: 10%;
-      min-width: 18px;
-    }
-
-    &__checkbox::after {
-      position: absolute;
-      content: "Select All";
-      font-weight: bold;
-      top: 2px;
-      right: -5.5em;
-    }
-
-    &__remove-btn {
-      width: 20%;
-    }
-
-  }
-
-  &__product-item {}
-
-
-  .quantity__reduse {}
-
-  .quantity__number {}
-
-  .quantity__add {}
-
-
-  &__mobile {
-    display: none;
-  }
-
-  &__tool {
-    &__remove-btn {}
-  }
-
-  &__product-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0;
+    justify-content: space-evenly;
     gap: 6px;
+    height: 126px;
+    margin: 4px 2px;
 
     &__preview {
-      max-width: 140px;
-      min-width: 80px;
-      border-radius: 10px;
-      max-height: 102px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f1e7;
+      height: 100%;
     }
 
     &__content {
@@ -102,14 +59,18 @@
       }
     }
 
+    &__remove-btn {
+      width: 20%;
+    }
   }
 }
 
 @media screen and (max-width: 420px) {
-  .product-item {
-    &__preview {
-      max-width: 80px;
-    }
+  .cart-item__product {
+    justify-content: space-between;
   }
 
+  .cart-item__product__preview {
+    max-width: 80px;
+  }
 }

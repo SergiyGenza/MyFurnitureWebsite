@@ -1,9 +1,12 @@
-<div class="cart-page__product-item">
+<div class="cart-item__product">
+  @if (checkbox){
   <div class="checkbox">
     <app-checkbox [remove]="remove" (isClose)="canRemove($event)" (click)="onItemRemove(cartItem)"></app-checkbox>
+  </div>}
+  <div class="cart-item__product__preview">
+    <ng-content select="img"></ng-content>
   </div>
-  <img class="cart-page__product-item__preview" src="{{cartItem.product.img}}" alt="product">
-  <div class="cart-page__product-item__content">
+  <div class="cart-item__product__content">
     <div class="title">
       {{cartItem.product.title}}
     </div>
@@ -11,7 +14,13 @@
       <div class="price">
         {{cartItem.product.price | discount:cartItem.product.discount | currency}}
       </div>
-      <ng-content></ng-content>
+      <ng-content select="app-quantity"></ng-content>
     </div>
   </div>
+  @if(removeBtn){
+  <div class="cart-item__remove-btn">
+    <app-button (buttonClick)="onProductRemove(cartItem.product)">
+      <img src="../../../../assets/images/icons/remove-icon.svg" alt="remove product">
+    </app-button>
+  </div>}
 </div>

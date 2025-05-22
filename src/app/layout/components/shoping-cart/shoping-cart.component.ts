@@ -8,8 +8,10 @@ import { CartService } from 'src/app/services/cart.service';
 import { ClickStopPropagationDirective } from '../../../common/derective/click-stop-propagation.directive';
 import { RouterLink } from '@angular/router';
 import { ButtonComponent } from 'src/app/shared/button/button.component';
-import { DiscountPipe } from 'src/app/common/pipes/discount.pipe';
 import { CloseOnEscDirective } from 'src/app/common/derective/closeOnEsc.directive';
+import { QuantityComponent } from 'src/app/shared/quantity/quantity.component';
+import { CartProductItemComponent } from 'src/app/shared/elements/cart-product-item/cart-product-item.component';
+import { CartItem } from 'src/app/common/models/cartItem';
 
 @Component({
   selector: 'app-shoping-cart',
@@ -17,7 +19,7 @@ import { CloseOnEscDirective } from 'src/app/common/derective/closeOnEsc.directi
   styleUrls: ['./shoping-cart.component.scss'],
   standalone: true,
   imports: [ClickStopPropagationDirective, RouterLink, AsyncPipe, CurrencyPipe,
-    ButtonComponent, DiscountPipe, CloseOnEscDirective]
+    ButtonComponent, CloseOnEscDirective, QuantityComponent, CartProductItemComponent]
 })
 export class ShopingCartComponent implements OnInit {
   @Output() isClose = new EventEmitter<boolean>();
@@ -41,5 +43,11 @@ export class ShopingCartComponent implements OnInit {
 
   public onProductRemove(item: Product): void {
     this.cartService.removeProduct(item);
+  }
+
+  public updateProductQuantity(quantity: number, cartItem: CartItem): void {
+    cartItem.quantity = quantity;
+
+    this.cartService.updateProductQuantity(quantity, cartItem);
   }
 }
